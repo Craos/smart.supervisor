@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Ranchers' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style/style.css">
+    <script type='text/javascript' src="js/postimage.js"></script>
+    <style>
+        html, body, #objvideo {
+            margin: 0;
+            padding: 0;
+        }
+
+        #objvideo {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <video id="objvideo" autoplay="autoplay" style="width: 248px; height: 180px"></video>
+    <a href='#' id='draw-window' onclick="getSnapshot('objvideo');"
+       style="position: absolute; top: 380px" class="button blue">Obter foto</a>
+    <div id="snapshot"></div>
+    <script src="js/ScreenCast/ScreenCast.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

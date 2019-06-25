@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<menu>
+    <item id="Cadastros" text="Cadastros">
+        <item id="prestador" text="Prestadores" img="prestadores.png" imgdis="prestadores.png" />
+        <item id="visitante" text="Visitantes" img="visitantes.png" imgdis="visitantes.png" />
+    </item>
+</menu>

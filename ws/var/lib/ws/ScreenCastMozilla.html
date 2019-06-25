@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://anima.craos.net/dhtmlx/codebase/dhtmlx.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://anima.craos.net/dhtmlx/skins/material/dhtmlx.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #f3f9ed;
+        }
+
+        #localVideo {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script src="recurso.js"></script>
+</head>
+<body>
+    <video id="localVideo" autoplay></video>
+</body>
+<script>
+    recurso.servicos.ScreenCastMozilla();
+</script>
+</html>

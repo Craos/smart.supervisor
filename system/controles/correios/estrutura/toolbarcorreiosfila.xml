@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<toolbar>
+	<item id="imprimir" type="button"  img="etiquetas.png" imgdis="etiquetas.png" text="Imprimir Etiquetas"/>
+	<item id="recibos" type="button"  img="etiquetas.png" imgdis="etiquetas.png" text="Imprimir Recibos"/>
+	<item type="text" text="Código-Torre-Unidade:"/>
+	<item id="num" type="buttonInput" width="70"/>
+	<item id="bloco" type="buttonInput" width="30"/>
+	<item id="unidade" type="buttonInput" width="30"/>
+	<item id="enfileirar" type="buttonSelect" img="enfileirar.png" imgdis="enfileirar.png" text="Enfileirar">
+	</item>
+	<item type="separator"/>
+	<item id="atualizarfila" type="button" img="atualizarfila.png" imgdis="atualizarfila.png" text="Atualizar / Processar fila"/>
+	<item type="separator"/>
+	<item id="recibos" type="button"  img="modelos.png" imgdis="modelos.png" text="Editar modelos"/>
+</toolbar>

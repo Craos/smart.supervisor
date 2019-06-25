@@ -1,0 +1,4 @@
+Mon, 21 Aug 2017 11:23:56 -0300 | INFO   | server     |  | Serving using application   : /usr/bin/mono Smart.exe
+Mon, 21 Aug 2017 11:23:56 -0300 | INFO   | server     |  | Starting WebSocket server   : ws://asmc:3000/
+Mon, 21 Aug 2017 11:24:22 -0300 | INFO   | server     |  | Serving using application   : /usr/bin/mono Smart.exe
+Mon, 21 Aug 2017 11:24:22 -0300 | INFO   | server     |  | Starting WebSocket server   : ws://asmc:3000/

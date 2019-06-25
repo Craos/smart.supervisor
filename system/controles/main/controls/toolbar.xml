@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<toolbar>
+    <item id="prestador" type="button" img="prestadores.png" imgdis="prestadores.png" action="prestador" text="Prestadores"/>
+</toolbar>

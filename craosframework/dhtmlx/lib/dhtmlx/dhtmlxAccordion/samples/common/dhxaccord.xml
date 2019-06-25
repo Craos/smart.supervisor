@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<accordion skin="dhx_skyblue" mode="single" iconsPath="../common/" openEffect="false">
+    <cell id="a1" height="120">Main Page</cell>
+    <cell id="a2" open="true">Site Navigation</cell>
+    <cell id="a3" icon="icon2.gif">Support &amp; Feedback</cell>
+    <cell id="a4" icon="icon3.gif">Comments</cell>
+</accordion>
