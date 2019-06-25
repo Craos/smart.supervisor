@@ -16,7 +16,7 @@ require_once('../recordset/RecordSet.class.php');
 $server_web = new Database();
 $server_web->DatabaseType = DataBaseType::PostgreSQL;
 $server_web->Server = 'postgresql03.craos.net';
-$server_web->Port = '5432';
+$server_web->Port = '5555';
 $server_web->DatabaseName = 'craos15';
 $server_web->UserName = 'craos15';
 $server_web->Password = 'yu45thn@';

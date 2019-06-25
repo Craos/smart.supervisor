@@ -4,7 +4,7 @@ require('../barcodegen2/class/BCGColor.php');
 require('../barcodegen2/class/BCGDrawing.php');
 require('../barcodegen2/class/BCGean8.barcode.php');
 
-$cnn = pg_connect("host=127.0.0.1 port=5432 dbname=smt user=postgres password=yu45thn@");
+$cnn = pg_connect("host=127.0.0.1 port=5555 dbname=smt user=postgres password=yu45thn@");
 $result = pg_query("SELECT numero FROM condominio.cria_sequencias() ORDER BY numero;");
 
 $etiqueta = "";

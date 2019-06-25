@@ -8,7 +8,7 @@
 
 /* PostgreSQL */
 define('PGSERVER', '127.0.0.1');
-define('PGPORT', '5432');
+define('PGPORT', '5555');
 define('PGDATABASE', 'smt');
 define('PGUSERAME', 'smart_supervisor');
 define('PGPASSWORD', 'yu45thn@');
