@@ -11,7 +11,6 @@ var Image = {
 
     openWebcam : function(num_morador, titulo_janela, target_table, target_field, target_form) {
         numero_identificador_registro = num_morador;
-        var userinfo;
         var windowID = 'windowAtualizarDadosFoto';
         var windowsClientInfo;
         var titulo = 'Obter foto do morador';

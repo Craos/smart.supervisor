@@ -1,0 +1,139 @@
+@media print, screen {
+    body, page[size="A4"] {
+        font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+        font-size: small;
+        width: 28cm;
+        height: 19cm;
+        display: block;
+        margin-top: 0.5cm;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cabecalho, .corpo, .rodape, .campos {
+        width: 99.8%;
+        margin: 0;
+        padding: 0;
+        border: 1px solid #000;
+    }
+
+    .cabecalho {
+        height: 130px;
+        border-bottom: 1px solid #000;
+    }
+
+    .corpo {
+        min-height: 400px;
+    }
+
+    .dados {
+        width: 100%;
+        height: 100%;
+    }
+
+    thead {
+        background-color: #0c5377;
+        color: white;
+        height: 29px;
+        line-height: 29px;
+    }
+
+    td {
+        height: 28px;
+        line-height: 28px;
+        border-bottom: 1px solid #bbb;
+    }
+
+    td.total {
+        color: #fff;
+        background-color: #0c5377;
+    }
+
+    td.analise {
+        border-bottom: none;
+        background-color: #eee;
+    }
+
+    td.lc {
+        text-align: center;
+    }
+
+    .cabecalho_logo {
+        height: inherit;
+        width: 20%;
+        background: url("../img/anima.png");
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .cabecalho_direito {
+        height: inherit;
+        float: left;
+        width: 100%;
+        margin-top: -130px;
+    }
+
+    .cabecalho_titulo {
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        font-size: 28px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .cabecalho_subtitulo {
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        font-size: larger;
+        font-weight: 100;
+    }
+
+    .cabecalho_info {
+        margin-top: 10px;
+        margin-left: 21%;
+    }
+
+    .cabecalho_info_esquerda {
+        float: left;
+        height: inherit;
+        width: 80%;
+    }
+
+    .cabecalho_info_direita {
+        float: right;
+        height: inherit;
+        width: 19%;
+    }
+
+    .rodape {
+        height: 60px;
+    }
+
+    .rodape_esquerdo {
+        float: left;
+        width: 80%;
+        height: inherit;
+    }
+
+    table.rodape_esquerdo_table {
+        border-collapse: collapse;
+    }
+    table.rodape_esquerdo_table td {
+        font-size: x-small;
+        height: 15px;
+        min-width: 80px;
+        text-align: center;
+    }
+
+    .rodape_direito {
+        float: right;
+        width: 19%;
+        background: url("../img/craos.gif");
+        background-size: 70%;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: inherit;
+    }
+}
