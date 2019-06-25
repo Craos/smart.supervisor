@@ -8,11 +8,10 @@ var formcadastro;
 function prestadores() {
 
 	var paramcadastro;
-	userinfo = JSON.parse(sessionStorage.userinfo);
     sessionStorage.recursocorrente = 'cadastro()';
 	formcadastro = nav_layout_principal.attachForm(campos_cadastro_portaria);
 
-	var userprofile = JSON.parse(sessionStorage.perfil_usuario);
+	var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
 	/*var profile_cadastro;
 	 for (var i = 0; i < userprofile.length; i++)
 	 if (userprofile[i].nome_recurso == 'cadastro') {
@@ -269,8 +268,7 @@ function LoadFormcadastro(http) {
 
 function gridLoadcadastro() {
 
-	userinfo = JSON.parse(sessionStorage.userinfo);
-	if (userinfo == undefined)
+	if (userinfo === undefined)
 		return;
 
 	var gridSourcecadastro;
@@ -292,7 +290,6 @@ function ResultFormCadastrocadastro(http) {
 	var out;
 
 	out = JSON.parse(http.responseText);
-	userinfo = JSON.parse(sessionStorage.userinfo);
 
 	if (out.situacao.indexOf('sucesso') > 0) {
 		recebeImagemPrestador(ultimaimagem);

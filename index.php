@@ -35,7 +35,6 @@
     <script src="craosframework/ajax/common_functions.js" type="text/javascript"></script>
     <script src="craosframework/ajax/date.format.js" type="text/javascript"></script>
     <script src="craosframework/ajax/md5.js" type="text/javascript"></script>
-    <script src="craosframework/ajax/System.js" type="text/javascript"></script>
 
 
     <script src="../ws/var/lib/ws/ws.js"></script>
@@ -43,6 +42,7 @@
     <script src="controles/main/moment.js" type="text/javascript"></script>
     <script src="controles/main/moment-with-locales.js" type="text/javascript"></script>
     <script src="controles/main/Webservice.js" type="text/javascript"></script>
+    <script src="controles/main/System.js" type="text/javascript"></script>
 
     <!-- Administracao -->
     <script src="controles/main/estrutura/campos.agradecimento.js" type="text/javascript"></script>

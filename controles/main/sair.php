@@ -15,9 +15,7 @@
     }
 
     function limpezadecookie() {
-        delete_cookie('perfil_usuario');
         sessionStorage.clear();
-        delete_cookie('userinfo');
     }
     </script>
 </head>

@@ -7,7 +7,6 @@ var formConvidado;
 function convidados() {
 
 	var paramVeiculo;
-	userinfo = JSON.parse(sessionStorage.userinfo);
     sessionStorage.recursocorrente = 'convidados()';
 	formConvidado = nav_layout_principal.attachForm(campos_convidados);
 	formConvidado.enableLiveValidation(true);
@@ -121,8 +120,7 @@ function LoadFormConvidado(http) {
 
 function gridLoadHistoricoConvidados() {
 
-	userinfo = JSON.parse(sessionStorage.userinfo);
-	if (userinfo == undefined)
+	if (userinfo === undefined)
 		return;
 
 	var gridSourceHistoricoConvidados;

@@ -10,7 +10,6 @@ function visitante() {
     formVisitantesHistorico = nav_layout_principal.attachForm(campos_historico_visitante);
 
 	var paramVeiculo;
-	userinfo = JSON.parse(sessionStorage.userinfo);
     sessionStorage.recursocorrente = 'visitante()';
 
 	formVisitantesHistorico.attachEvent("onButtonClick", carregaHistoricoAutoricacoes);
@@ -94,8 +93,7 @@ function LoadFormVisitante(http) {
 
 function gridLoadHistoricoVisitas() {
 
-	userinfo = JSON.parse(sessionStorage.userinfo);
-	if (userinfo == undefined)
+	if (userinfo === undefined)
 		return;
 
 	var gridSourceHistoricoVisitas;
@@ -108,7 +106,7 @@ function gridLoadHistoricoVisitas() {
 		origem: 'acesso.visitante_info'
 	};
 
-    var userprofile = JSON.parse(sessionStorage.perfil_usuario);
+    var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
     for (var i = 0; i < userprofile.length; i++)
         if (userprofile[i].nome_recurso == 'visitante') {
@@ -156,7 +154,7 @@ function carregaHistoricoAutoricacoes() {
         where: "filedate between '"+data_inicial+"' and '"+data_final + busca_localizacao
 	};
 
-    var userprofile = JSON.parse(sessionStorage.perfil_usuario);
+    var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
     for (var i = 0; i < userprofile.length; i++)
         if (userprofile[i].nome_recurso == 'visitante') {

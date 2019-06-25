@@ -34,34 +34,7 @@ function prestadores_autorizados() {
     data_final.hideTime();
 
     var paramPrestador;
-    userinfo = JSON.parse(sessionStorage.userinfo);
     sessionStorage.recursocorrente = 'prestadores_autorizados()';
-
-/*    var userprofile = JSON.parse(sessionStorage.perfil_usuario);
-    var perfil_corrente;
-    for (var i = 0; i < userprofile.length; i++)
-        if (userprofile[i].nome_recurso == 'empregados') {
-            perfil_corrente = userprofile[i];
-            break;
-        }
-
-    if (perfil_corrente.adicionar == 0)
-        formRegistroAcesso.hideItem('novo');
-
-    if (perfil_corrente.editar == 0)
-        formRegistroAcesso.hideItem('salvar');
-
-    if (perfil_corrente.remover == 0)
-        formRegistroAcesso.hideItem('remover');
-
-    if (perfil_corrente.telefones == 0)
-        formRegistroAcesso.hideItem('telefone_cel');
-
-    if (perfil_corrente.documentos == 0) {
-        formRegistroAcesso.hideItem('rg');
-        formRegistroAcesso.hideItem('cpf');
-    }
-*/
 
     formRegistroAcesso.attachEvent("onButtonClick", function (name) {
 
@@ -334,8 +307,7 @@ function LoadFormEmpregadoParaRegistro(http) {
 
 function gridCarregaEmpregadoParaRegistro() {
 
-    userinfo = JSON.parse(sessionStorage.userinfo);
-    if (userinfo == undefined)
+    if (userinfo === undefined)
         return;
 
     var gridSourceEmpregados;
@@ -556,7 +528,6 @@ function ResultFormCadastroPrestadores(http) {
     var out;
 
     out = JSON.parse(http.responseText);
-    userinfo = JSON.parse(sessionStorage.userinfo);
 
     if (out.situacao.indexOf('sucesso') > 0) {
         recebeImagemPrestador_autorizado(ultimaimagem);

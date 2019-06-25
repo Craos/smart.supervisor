@@ -6,11 +6,10 @@ var formEmpregados;
 function empregados() {
 
     var paramEmpregado;
-    userinfo = JSON.parse(sessionStorage.userinfo);
     sessionStorage.recursocorrente = 'empregados()';
     formEmpregados = nav_layout_principal.attachForm(campos_empregados);
 
-    var userprofile = JSON.parse(sessionStorage.perfil_usuario);
+    var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
     for (var i = 0; i < userprofile.length; i++)
         if (userprofile[i].nome_recurso == 'empregados') {
@@ -163,8 +162,7 @@ function LoadFormEmpregados(http) {
 
 function gridLoadEmpregados() {
 
-    userinfo = JSON.parse(sessionStorage.userinfo);
-    if (userinfo == undefined)
+    if (userinfo === undefined)
         return;
 
     var gridSourceEmpregados;

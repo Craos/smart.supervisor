@@ -6,11 +6,10 @@ var formVisitantes;
 function visitantes() {
 
     var paramVisitante;
-    userinfo = JSON.parse(sessionStorage.userinfo);
     sessionStorage.recursocorrente = 'visitantes()';
     formVisitantes = nav_layout_principal.attachForm(campos_visitantes);
 
-    var userprofile = JSON.parse(sessionStorage.perfil_usuario);
+    var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
     for (var i = 0; i < userprofile.length; i++)
         if (userprofile[i].nome_recurso == 'visitantes') {
@@ -164,8 +163,7 @@ function LoadFormVisitantes(http) {
 
 function gridLoadVisitantes() {
 
-    userinfo = JSON.parse(sessionStorage.userinfo);
-    if (userinfo == undefined)
+    if (userinfo === undefined)
         return;
 
     var gridSourceVisitantes;

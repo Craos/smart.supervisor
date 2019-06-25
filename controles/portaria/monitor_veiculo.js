@@ -6,7 +6,6 @@ var formAcessoVeiculos;
 function monitor_veiculo() {
 
     sessionStorage.recursocorrente = 'monitor_veiculo()';
-    userinfo = JSON.parse(sessionStorage.userinfo);
     formAcessoVeiculos = nav_layout_principal.attachForm(campos_acesso_veiculos);
 
     gridAcessoVeiculos = new dhtmlXGridObject(formAcessoVeiculos.getContainer("gridAcessoVeiculos"));
@@ -18,8 +17,7 @@ function monitor_veiculo() {
 
 function gridLoadacesso_veiculos() {
 
-    userinfo = JSON.parse(sessionStorage.userinfo);
-    if (userinfo == undefined)
+    if (userinfo === undefined)
         return;
 
     var gridSourceacesso_veiculos;

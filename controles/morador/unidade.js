@@ -216,10 +216,9 @@ function unidade() {
 
     var tabnotificacoes = tabbarUnidade.cells('tabNotificacoes');
 
-    userinfo = JSON.parse(sessionStorage.userinfo);
     sessionStorage.recursocorrente = 'unidade()';
 
-    var userprofile = JSON.parse(sessionStorage.perfil_usuario);
+    var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
     for (var i = 0; i < userprofile.length; i++)
         if (userprofile[i].nome_recurso == 'unidade') {
@@ -297,12 +296,18 @@ function unidade() {
     });
 
     objformUnidade = formUnidade;
+
+
     sys.FormClear(formUnidade, null, false, null);
 
-    objformUnidade.setItemValue('nome_condominio', userinfo.nome_condominio);
-    objformUnidade.setItemValue('nome_bloco', userinfo.nome_bloco);
-    objformUnidade.setItemValue('nome_andar', userinfo.nome_andar);
-    objformUnidade.setItemValue('nome_unidade', userinfo.unidade);
+    if (userinfo !== undefined) {
+
+        objformUnidade.setItemValue('nome_condominio', userinfo.nome_condominio);
+        objformUnidade.setItemValue('nome_bloco', userinfo.nome_bloco);
+        objformUnidade.setItemValue('nome_andar', userinfo.nome_andar);
+        objformUnidade.setItemValue('nome_unidade', userinfo.unidade);
+
+    }
 
     var layoutnotificacoes = tabnotificacoes.attachLayout('2E');
     var cell_a = layoutnotificacoes.cells('a');
@@ -471,7 +476,8 @@ function unidade() {
         CarregaNotificacao(id);
     });
 
-    CarregaInformacoes(true);
+    if (userinfo !== undefined)
+        CarregaInformacoes(true);
 
 }
 
@@ -480,7 +486,7 @@ function Resultformnotificacoes(http) {
     out = {registro: '', situacao: ''};
     out = JSON.parse(http.responseText);
 
-    if (out.registro !== undefined && out.registro.length > 0) {
+    if (userinfo !== undefined && out.registro !== undefined && out.registro.length > 0) {
         CarregaInformacoes(true);
         formnotificacoes.clear();
         alert(out.situacao);
@@ -664,7 +670,7 @@ function MudancanaUnidade() {
                         'andar': userinfo.andar,
                         'unidade': userinfo.unidade,
                         'pkunidade': userinfo.pk_unidade,
-                        'usuario':JSON.parse(sessionStorage.perfil_usuario)[0].login,
+                        'usuario':JSON.parse(sessionStorage.auth).login,
                         'ativacao_data':formAlteracao.getItemValue('ativacao_data'),
                         'ativacao_hora':formAlteracao.getItemValue('ativacao_hora')
                     });

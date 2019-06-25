@@ -9,7 +9,6 @@ var main_layout;
 var navlayout;
 var body;
 var header;
-var sys;
 var menu_esquerda;
 
 
@@ -21,6 +20,9 @@ var formPrincipal;
 var formTopLayoutPrincipalTop;
 var menu_lateral;
 var informacoesdousuario;
+
+let sys = new SystemCraos();
+let userinfo;
 
 function main() {
 
@@ -39,7 +41,7 @@ function main() {
         return;
     }
 
-    dhtmlx.image_path = '../craosframework/dhtmlx/codebase/imgs/';
+    dhtmlx.image_path = 'js/dhtmlx/codebase/imgs/';
     dhtmlx.skin = 'dhx_terrace';
     main_layout = new dhtmlXLayoutObject(document.body, '2E', 'dhx_terrace');
     main_layout.cont.obj._offsetTop = 0;
@@ -81,10 +83,11 @@ function main() {
     nav_layout_principal.hideHeader();
     formPrincipal = nav_layout_principal.attachForm(campos_main);
 
-    informacoesdousuario = JSON.parse(sessionStorage.auth);
+    informacoesdousuario = JSON.parse(sessionStorage.auth).user.perfil;
 
     /* controle de perfil */
-    var userprofile = informacoesdousuario.perfil;
+    var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
+
     if (userprofile != null) {
         menu_lateral.forEachItem(function (name) {
             if (menu_lateral.getItemType(name) == 'template') {

@@ -6,12 +6,10 @@ var formAnimais;
 function animais() {
 
     var paramAnimal;
-    userinfo = JSON.parse(sessionStorage.userinfo);
     sessionStorage.recursocorrente = 'animais()';
     formAnimais = nav_layout_principal.attachForm(campos_animais);
 
-    var userprofile = JSON.parse(docCookies.getItem('perfil_usuario'));
-    var userprofile = JSON.parse(sessionStorage.perfil_usuario);
+    var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
     for (var i = 0; i < userprofile.length; i++)
         if (userprofile[i].nome_recurso == 'animais') {
@@ -157,8 +155,7 @@ function LoadFormAnimais(http) {
 
 function gridLoadAnimais() {
 
-    userinfo = JSON.parse(sessionStorage.userinfo);
-    if (userinfo == undefined)
+    if (userinfo === undefined)
         return;
 
     var gridSourceAnimais;

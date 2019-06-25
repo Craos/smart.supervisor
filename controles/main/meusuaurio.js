@@ -18,7 +18,7 @@ function meusuaurio() {
     windowMeuUsuario.button('minmax1').hide();
 
     var formMeuUsuario = windowMeuUsuario.attachForm(campos_meuusuario);
-    var perfil = JSON.parse(sessionStorage.perfil_usuario);
+    var perfil = JSON.parse(sessionStorage.auth).user.perfil;
 
     var formSourceCadastroUsuario;
     formSourceCadastroUsuario = {

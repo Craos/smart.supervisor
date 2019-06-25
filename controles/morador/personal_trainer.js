@@ -9,11 +9,10 @@ var autenticacaopersonal;
 function personal_trainer() {
 
     var paramPersonal;
-    userinfo = JSON.parse(sessionStorage.userinfo);
     sessionStorage.recursocorrente = 'personal_trainer()';
     formPersonal = nav_layout_principal.attachForm(campos_personal_trainer);
 
-    var userprofile = JSON.parse(sessionStorage.perfil_usuario);
+    var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
     for (var i = 0; i < userprofile.length; i++)
         if (userprofile[i].nome_recurso == 'personal_trainer') {
@@ -277,7 +276,6 @@ function ResultFormCadastroPersonal(http) {
     var out;
 
     out = JSON.parse(http.responseText);
-    userinfo = JSON.parse(sessionStorage.userinfo);
 
     if (out.situacao.indexOf('sucesso') > 0) {
         recebeImagemPersonal_autorizado(ultimaimagem);

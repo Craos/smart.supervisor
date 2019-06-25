@@ -26,11 +26,10 @@ function veiculos() {
 	formVeiculosPassagens = tabbarVeiculosPassagens.attachForm(campos_veiculos_passagens);
 
 	var paramVeiculo;
-	userinfo = JSON.parse(sessionStorage.userinfo);
     sessionStorage.recursocorrente = 'veiculos()';
 	formVeiculos.enableLiveValidation(true);
 
-    var userprofile = JSON.parse(sessionStorage.perfil_usuario);
+    var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
     for (var i = 0; i < userprofile.length; i++)
         if (userprofile[i].nome_recurso == 'veiculos') {
@@ -370,8 +369,7 @@ function ResultTransferenciaVeiculo(http) {
 
 function gridLoadVeiculos() {
 
-	userinfo = JSON.parse(sessionStorage.userinfo);
-	if (userinfo == undefined)
+	if (userinfo === undefined)
 		return;
 
 	var gridSourceVeiculos;
@@ -396,8 +394,7 @@ function gridLoadVeiculos() {
 
 function gridLoadVeiculosExcluidos() {
 
-	userinfo = JSON.parse(sessionStorage.userinfo);
-	if (userinfo == undefined)
+	if (userinfo === undefined)
 		return;
 
 	var gridSourceVeiculos;
@@ -422,8 +419,7 @@ function gridLoadVeiculosExcluidos() {
 
 function buscaInformacoes(tipo) {
 
-	userinfo = JSON.parse(sessionStorage.userinfo);
-	if (userinfo == undefined)
+	if (userinfo === undefined)
 		return;
 
 	var data_inicial = new Date(formVeiculosPassagens.getItemValue('data_inicial'));

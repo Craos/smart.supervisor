@@ -20,8 +20,6 @@ function atendimento() {
     windowAtualizarDadosAtendimento.button('minmax1').hide();
 
     formCadastroAtendimento = windowAtualizarDadosAtendimento.attachForm(campos_atendimento);
-    userinfo = JSON.parse(sessionStorage.userinfo);
-
     formCadastroAtendimento.attachEvent("onButtonClick", function (name) {
 
         formCadastroAtendimento.validate();
@@ -47,7 +45,6 @@ function ResultFormCadastroAtendimento(http) {
     var out;
 
     out = JSON.parse(http.responseText);
-    userinfo = JSON.parse(sessionStorage.userinfo);
 
     if (out.situacao.indexOf('sucesso') > 0) {
 

@@ -19,24 +19,30 @@ function cadastro() {
 
     var formCadastroUsuario = windowAtualizarDadosUsuario.attachForm(campos_cadastro);
 
-    var formSourceCadastroUsuario;
-    formSourceCadastroUsuario = {
-        contenttype: 'xml',
-        action: 'dhtmlxform',
-        origem: 'portal.usuario_info',
-        where: 'pk_unidade/' + userinfo.pk_unidade,
-        chave: 'num'
-    };
 
-    formCadastroUsuario.load(sys.setParameters(formSourceCadastroUsuario), function() {
-	    var senha = base64_decode(formCadastroUsuario.getItemValue('lbsenha'));
-	    formCadastroUsuario.setItemValue('lbsenha', senha);
-    });
+    if (userinfo !== undefined) {
+
+        var formSourceCadastroUsuario;
+        formSourceCadastroUsuario = {
+            contenttype: 'xml',
+            action: 'dhtmlxform',
+            origem: 'portal.usuario_info',
+            where: 'pk_unidade/' + userinfo.unidade,
+            chave: 'num'
+        };
+
+        formCadastroUsuario.load(sys.setParameters(formSourceCadastroUsuario), function() {
+            var senha = base64_decode(formCadastroUsuario.getItemValue('lbsenha'));
+            formCadastroUsuario.setItemValue('lbsenha', senha);
+        });
+
+    }
+
 
     formCadastroUsuario.attachEvent("onButtonClick", function (name) {
 
         formCadastroUsuario.validate();
-        if (formCadastroUsuario.getItemValue('password') != formCadastroUsuario.getItemValue('repassword')) {
+        if (formCadastroUsuario.getItemValue('password') !== formCadastroUsuario.getItemValue('repassword')) {
             alert('A senha enviada n�o est� igual a sua confirma��o');
             return;
         }
@@ -45,8 +51,8 @@ function cadastro() {
             contenttype: 'xml',
             action: 'update',
             origem: 'portal.usuario',
-            where: 'pk_unidade/' + userinfo.pk_unidade,
-            pk_unidade: userinfo.pk_unidade,
+            where: 'pk_unidade/' + userinfo.unidade,
+            pk_unidade: userinfo.unidade,
             login: formCadastroUsuario.getItemValue('login'),
             password: base64_encode(formCadastroUsuario.getItemValue('password'))
         };
@@ -61,7 +67,7 @@ function ResultFormCadastroUsuario(http) {
     out = {registro: '', situacao: ''};
     out = JSON.parse(http.responseText);
 
-    if (out.situacao != undefined && out.situacao.length > 0) {
+    if (out.situacao !== undefined && out.situacao.length > 0) {
         alert('Informa��o cadastrada com sucesso!');
         windowAtualizarDadosUsuario.close();
     } else {

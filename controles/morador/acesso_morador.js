@@ -6,7 +6,6 @@ var formAcessoMoradores;
 function acesso_morador() {
 
     var paramMorador;
-    userinfo = JSON.parse(sessionStorage.userinfo);
     formAcessoMoradores = nav_layout_principal.attachForm(campos_acesso_morador);
 
     gridAcessoMoradores = new dhtmlXGridObject(formAcessoMoradores.getContainer("gridAcessoMoradores"));
@@ -17,8 +16,7 @@ function acesso_morador() {
 
 function gridLoadacesso_moradores() {
 
-    userinfo = JSON.parse(sessionStorage.userinfo);
-    if (userinfo == undefined)
+    if (userinfo === undefined)
         return;
 
     var gridSourceacesso_moradores;

@@ -24,10 +24,9 @@ function hospedes() {
 	//var tabMonitordeAcessoHospede = tabbarHospedes.cells('tabMonitordeAcessoHospede');
 
 	var paramHospede;
-	userinfo = JSON.parse(sessionStorage.userinfo);
     sessionStorage.recursocorrente = 'hospedes()';
 
-	var userprofile = JSON.parse(sessionStorage.perfil_usuario);
+	var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
 	var perfil_corrente;
 	for (var i = 0; i < userprofile.length; i++)
 		if (userprofile[i].nome_recurso == 'hospedes') {
@@ -310,8 +309,7 @@ function LoadFormHospedesHistoricoCadastro(http) {
 
 function gridLoadHospedes() {
 
-	userinfo = JSON.parse(sessionStorage.userinfo);
-	if (userinfo == undefined)
+	if (userinfo === undefined)
 		return;
 
 	var gridSourceHospedes;
@@ -336,8 +334,7 @@ function gridLoadHospedes() {
 
 function gridLoadHospedesHistoricoCadastro() {
 
-	userinfo = JSON.parse(sessionStorage.userinfo);
-	if (userinfo == undefined)
+	if (userinfo === undefined)
 		return;
 
 	var gridSourceHospedesHistoricoCadastro;

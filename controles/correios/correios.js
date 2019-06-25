@@ -11,7 +11,7 @@ function correios() {
     sessionStorage.recursocorrente = 'correios()';
     formCorreios = nav_layout_principal.attachForm(campos_correios);
 
-    var userprofile = JSON.parse(sessionStorage.perfil_usuario);
+    var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
     for (var i = 0; i < userprofile.length; i++)
         if (userprofile[i].nome_recurso == 'correios') {
@@ -230,8 +230,7 @@ function LoadFormFromModelo(http) {
 
 function gridLoadCorreios() {
 
-    userinfo = JSON.parse(sessionStorage.userinfo);
-    if (userinfo == undefined)
+    if (userinfo === undefined)
         return;
 
     var gridSourceCorreios;
@@ -256,8 +255,7 @@ function gridLoadCorreios() {
 
 function gridLoadEmails() {
 
-    userinfo = JSON.parse(sessionStorage.userinfo);
-    if (userinfo == undefined)
+    if (userinfo === undefined)
         return;
 
     var gridSourceEmails;
