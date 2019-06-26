@@ -38,6 +38,7 @@
 
 
     <script src="../smart/lib/liteapi/info.js"></script>
+    <script src="../smart/lib/liteapi/usuarios/usuarios.js"></script>
     <script src="../smart/lib/liteapi/unidade/unidade.js"></script>
     <script src="controles/main/screencast.js" type="text/javascript"></script>
     <script src="controles/main/moment.js" type="text/javascript"></script>
@@ -57,7 +58,6 @@
     <script src="controles/main/estrutura/campos.seletor.js" type="text/javascript"></script>
     <script src="controles/main/estrutura/campos.seletor_new.js" type="text/javascript"></script>
     <script src ="controles/main/agradecimento.js" type="text/javascript"></script>
-    <script src="controles/main/logout.js" type="text/javascript"></script>
     <script src="controles/main/main.js" type="text/javascript"></script>
     <script src="controles/main/recupera.js" type="text/javascript"></script>
     <script src="controles/main/seletor.js" type="text/javascript"></script>

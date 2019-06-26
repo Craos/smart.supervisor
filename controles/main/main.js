@@ -20,7 +20,7 @@ var menu_lateral;
 var informacoesdousuario;
 
 let sys = new SystemCraos();
-let unidadecorrente;
+let unidadecorrente = new Unidade();
 
 function main() {
 
@@ -156,13 +156,12 @@ function reInformacoesUsuario(name, value) {
 
 function topSelecionarRegistro() {
 
-    let unidade = new Unidade();
-    unidade.Identificar(
+    console.debug(unidadecorrente);
+    unidadecorrente.Identificar(
         formTopLayoutPrincipalTop.getItemValue('left_bloco'),
         formTopLayoutPrincipalTop.getItemValue('left_unidade'),
-        function (response) {
+        function () {
 
-            unidadecorrente = response;
             ExibeUnidade();
 
             if (wgridSeletor !== undefined)
@@ -185,16 +184,32 @@ function ExibeUnidade() {
     if (sessionStorage.unidadecorrente === undefined)
         return;
 
-    unidadecorrente = JSON.parse(sessionStorage.unidadecorrente);
+    let info = JSON.parse(sessionStorage.unidadecorrente);
 
     let identificacao = 'Bloco: #nome_bloco# - Unidade:#unidade#  Responsável:#nome#';
 
-    for (let k in unidadecorrente) {
-        if (unidadecorrente.hasOwnProperty(k)) {
-            identificacao = identificacao.replace('#'+k+'#', unidadecorrente[k]);
-        }
-    }
+    for (let k in info)
+        if (info.hasOwnProperty(k))
+            identificacao = identificacao.replace('#'+k+'#', info[k]);
 
     formtop.setItemLabel('identificacao', identificacao);
+
+}
+
+function logout() {
+
+    let user = JSON.parse(sessionStorage.auth).user;
+    let  today = new Date();
+
+    new Usuario().Logout({
+        uidins: user.login,
+        sistema:'Supervisor',
+        logout_date: today.format("yyyy-mm-dd"),
+        logout_time: today.format("HH:MM:ss"),
+        ativo: 0
+    }, function () {
+        sessionStorage.clear();
+        main();
+    });
 
 }

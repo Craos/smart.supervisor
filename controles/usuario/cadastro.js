@@ -11,7 +11,7 @@ function cadastro() {
     windowsClientInfo.setSkin('dhx_terrace');
     sessionStorage.recursocorrente = 'cadastro()';
     windowAtualizarDadosUsuario = windowsClientInfo.createWindow(windowID, 0, 0, 600, 500);
-    windowAtualizarDadosUsuario.setText('Atualiza&ccedil;&atilde;o de Cadastro');
+    windowAtualizarDadosUsuario.setText('Configuração de conta do usuário');
     windowAtualizarDadosUsuario.denyResize();
     windowAtualizarDadosUsuario.centerOnScreen();
     windowAtualizarDadosUsuario.button('park').hide();
@@ -19,23 +19,12 @@ function cadastro() {
 
     var formCadastroUsuario = windowAtualizarDadosUsuario.attachForm(campos_cadastro);
 
+    if (unidadecorrente.info !== undefined) {
+        unidadecorrente.Usuario(function (response) {
+            console.debug(response);
+            formCadastroUsuario.setFormData(response);
 
-    if (unidadecorrente !== undefined) {
-
-        var formSourceCadastroUsuario;
-        formSourceCadastroUsuario = {
-            contenttype: 'xml',
-            action: 'dhtmlxform',
-            origem: 'portal.usuario_info',
-            where: 'pk_unidade/' + unidadecorrente.unidade,
-            chave: 'num'
-        };
-
-        formCadastroUsuario.load(sys.setParameters(formSourceCadastroUsuario), function() {
-            var senha = base64_decode(formCadastroUsuario.getItemValue('lbsenha'));
-            formCadastroUsuario.setItemValue('lbsenha', senha);
         });
-
     }
 
 
