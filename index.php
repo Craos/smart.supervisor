@@ -40,6 +40,7 @@
     <script src="../smart/lib/liteapi/info.js"></script>
     <script src="../smart/lib/liteapi/usuarios/usuarios.js"></script>
     <script src="../smart/lib/liteapi/unidade/AdmUnidade.js"></script>
+    <script src="../smart/lib/liteapi/unidade/morador.js"></script>
 
 
     <script src="controles/main/screencast.js" type="text/javascript"></script>
@@ -68,7 +69,10 @@
 
     <!-- usuario -->
     <script src="controles/usuario/atendimento.js" type="text/javascript"></script>
+
     <script src="controles/unidade/usuario.js" type="text/javascript"></script>
+    <script src="controles/unidade/moradores.js" type="text/javascript"></script>
+
     <script src="controles/usuario/estrutura/campos.atendimento.js" type="text/javascript"></script>
     <script src="controles/usuario/estrutura/campos.cadastro.js" type="text/javascript"></script>
 
@@ -98,7 +102,7 @@
     <script src="controles/morador/acesso_morador.js" type="text/javascript"></script>
     <script src="controles/morador/empregados.js" type="text/javascript"></script>
     <script src="controles/morador/visitantes.js" type="text/javascript"></script>
-    <script src="controles/morador/moradores.js" type="text/javascript"></script>
+
     <script src="controles/morador/hospedes.js" type="text/javascript"></script>
     <script src="controles/morador/grid_prestadores.js" type="text/javascript"></script>
     <script src="controles/morador/unidade.js" type="text/javascript"></script>
@@ -136,9 +140,6 @@
             background-position: 0;
             overflow: hidden;
 
-        }
-        .t {
-            background-color: #346dff;
         }
 
         .dhtmlxLayoutPolyContainer_dhx_terrace {

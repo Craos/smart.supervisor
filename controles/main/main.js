@@ -115,7 +115,25 @@ function main() {
         }
     });
 
-    eval(sessionStorage.recursocorrente);
+    ExecutaRecurso();
+
+}
+
+function ExecutaRecurso() {
+
+    admunidade.AtualizaObjetos();
+
+    if (sessionStorage.recursocorrente !== undefined) {
+        switch (sessionStorage.recursocorrente) {
+            case 'unidade_usuario':
+                unidade_usuario();
+                break;
+
+            case 'unidade_moradores':
+                unidade_moradores();
+                break;
+        }
+    }
 
 }
 
@@ -170,9 +188,7 @@ function topSelecionarRegistro() {
                     // Handle error(s) here
                 }
 
-            if (sessionStorage.recursocorrente !== undefined)
-                eval(sessionStorage.recursocorrente);
-
+            ExecutaRecurso();
         }
     );
 }

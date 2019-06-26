@@ -4,11 +4,12 @@
 var gridMoradores;
 var formMoradores;
 
-function moradores() {
+function unidade_moradores() {
 
     var paramMorador;
 
-    sessionStorage.recursocorrente = 'moradores';
+    sessionStorage.recursocorrente = 'unidade_moradores';
+
     formMoradores = nav_layout_principal.attachForm(campos_moradores);
 
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
@@ -170,6 +171,11 @@ function moradores() {
 
     gridMoradores = new dhtmlXGridObject(formMoradores.getContainer("gridfamiliares"));
     gridMoradores.setIconsPath('./codebase/imgs/');
+    gridMoradores.setHeader("Id,Data cadastro,Nome,Data de nascimento");
+    gridMoradores.setColumnIds("num,filedate,nome,nascimento");
+    gridMoradores.setColTypes("ro,ro,ro,ro");
+    gridMoradores.setColSorting("str,str,str,str,str");
+    gridMoradores.enableAutoWidth(true);
     gridMoradores.init();
     gridMoradores.attachEvent('onRowSelect', function (id) {
 
@@ -283,27 +289,21 @@ function LoadFormMoradores(http) {
 
 function gridLoadMoradores() {
 
-    if (admunidade === undefined)
-        return;
+    console.debug(admunidade);
 
-    var gridSourceMoradores;
-    gridSourceMoradores = {
-        contenttype: 'xml',
-        action: 'dhtmlxgrid',
-        origem: 'condominio.moradores_info',
-        campos: 'num,nome,nascimento',
-        where: 'condominio/' + admunidade.condominio +
-        '|bloco/' + admunidade.bloco +
-        '|andar/' + admunidade.andar +
-        '|admunidade/' + admunidade.pk_unidade,
-        orderby: 'num',
-        usecheckbox: 'false',
-        usedecimal: 'nome',
-        chave: 'num',
-        displaychave: 'false'
-    };
+    admunidade.morador.ListarCadastros(function (response) {
 
-    gridMoradores.loadXML(sys.setParameters(gridSourceMoradores));
+        gridMoradores.clearAll();
+        response.dados.filter(function (item) {
+
+            let data = new Date(item.filedate);
+
+            gridMoradores.addRow(item.num, [item.num, data.format("dd/mm/yyyy"), item.nome, item.nascimento]);
+        });
+
+    });
+
+
 }
 
 function recebeImagemMorador(imagem) {

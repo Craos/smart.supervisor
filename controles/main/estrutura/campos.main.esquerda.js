@@ -23,7 +23,7 @@ var campos_main_esquerda = [
                 </a>"
         },
         {
-            type: "template", name: "moradores", value: "<a style='text-decoration: none' href='#' onclick='moradores();'>\
+            type: "template", name: "moradores", value: "<a style='text-decoration: none' href='#' onclick='unidade_moradores();'>\
                     <div class='item_esquerda'>\
                         <img src='controles/main/img/main/familiares.png' alt='Meus Familiares'>\
                         <p>Moradores da admunidade</p>\
