@@ -199,15 +199,9 @@ function ExibeUnidade() {
 function logout() {
 
     let user = JSON.parse(sessionStorage.auth).user;
-    let  today = new Date();
-
-    new Usuario().Logout({
-        uidins: user.login,
-        sistema:'Supervisor',
-        logout_date: today.format("yyyy-mm-dd"),
-        logout_time: today.format("HH:MM:ss"),
-        ativo: 0
-    }, function () {
+    new Usuarios().Logout(user.login, 'Supervisor', function() {
+        console.debug('teste');
+        sessionStorage.auth = undefined;
         sessionStorage.clear();
         main();
     });
