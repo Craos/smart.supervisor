@@ -156,20 +156,13 @@ function reInformacoesUsuario(name, value) {
 
 function topSelecionarRegistro() {
 
-    $.ajax({
-        url: 'http://anima.craos.net/smart/public/anima/condominio/supervisor_unidade_info',
-        type: 'GET',
-        dataType: 'json',
-        data: JSON.stringify({
-            filter:{
-                bloco:formTopLayoutPrincipalTop.getItemValue('left_bloco'),
-                unidade:formTopLayoutPrincipalTop.getItemValue('left_unidade')
-            }
-        }),
-        success: function (response) {
+    let unidade = new Unidade();
+    unidade.Identificar(
+        formTopLayoutPrincipalTop.getItemValue('left_bloco'),
+        formTopLayoutPrincipalTop.getItemValue('left_unidade'),
+        function (response) {
 
-            unidadecorrente = response.dados[0];
-            sessionStorage.unidadecorrente = JSON.stringify(unidadecorrente);
+            unidadecorrente = response;
             ExibeUnidade();
 
             if (wgridSeletor !== undefined)
@@ -180,12 +173,11 @@ function topSelecionarRegistro() {
                     // Handle error(s) here
                 }
 
-            eval(sessionStorage.recursocorrente);
-        },
-        error: function (request, status, error) {
-            alert('Sem acesso para esta unidadecorrente');
+            if (sessionStorage.recursocorrente !== undefined)
+                eval(sessionStorage.recursocorrente);
+
         }
-    });
+    );
 }
 
 function ExibeUnidade() {
