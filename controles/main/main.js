@@ -116,6 +116,7 @@ function main() {
     });
 
     eval(sessionStorage.recursocorrente);
+
 }
 
 function isFunction(x) {

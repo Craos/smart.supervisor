@@ -26,7 +26,7 @@ function veiculos() {
 	formVeiculosPassagens = tabbarVeiculosPassagens.attachForm(campos_veiculos_passagens);
 
 	var paramVeiculo;
-    sessionStorage.recursocorrente = 'veiculos()';
+    sessionStorage.recursocorrente = 'veiculos';
 	formVeiculos.enableLiveValidation(true);
 
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;

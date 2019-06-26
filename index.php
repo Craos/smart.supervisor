@@ -68,7 +68,7 @@
 
     <!-- usuario -->
     <script src="controles/usuario/atendimento.js" type="text/javascript"></script>
-    <script src="controles/usuario/cadastro.js" type="text/javascript"></script>
+    <script src="controles/unidade/usuario.js" type="text/javascript"></script>
     <script src="controles/usuario/estrutura/campos.atendimento.js" type="text/javascript"></script>
     <script src="controles/usuario/estrutura/campos.cadastro.js" type="text/javascript"></script>
 
@@ -136,6 +136,9 @@
             background-position: 0;
             overflow: hidden;
 
+        }
+        .t {
+            background-color: #346dff;
         }
 
         .dhtmlxLayoutPolyContainer_dhx_terrace {

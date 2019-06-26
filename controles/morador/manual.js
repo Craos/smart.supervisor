@@ -4,7 +4,7 @@
 var formManual;
 function manual() {
 
-    sessionStorage.recursocorrente = 'manual()';
+    sessionStorage.recursocorrente = 'manual';
     formManual = nav_layout_principal.attachForm(campos_manual);
 
     var formSourceManual;

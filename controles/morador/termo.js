@@ -4,7 +4,7 @@
 var formTermo;
 function termo() {
 
-    sessionStorage.recursocorrente = 'termo()';
+    sessionStorage.recursocorrente = 'termo';
     formTermo = nav_layout_principal.attachForm(campos_termo);
 
     var formSourceTermo;

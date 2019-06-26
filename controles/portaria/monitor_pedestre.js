@@ -4,7 +4,7 @@
 var formImgMorador;
 function monitor_pedestre() {
 
-    sessionStorage.recursocorrente = 'monitor_pedestre()';
+    sessionStorage.recursocorrente = 'monitor_pedestre';
     formImgMorador = nav_layout_principal.attachForm(campos_monitor_pedestre);
 
     setInterval(function atualizapassagem() {

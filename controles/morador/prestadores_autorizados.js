@@ -34,7 +34,7 @@ function prestadores_autorizados() {
     data_final.hideTime();
 
     var paramPrestador;
-    sessionStorage.recursocorrente = 'prestadores_autorizados()';
+    sessionStorage.recursocorrente = 'prestadores_autorizados';
 
     formRegistroAcesso.attachEvent("onButtonClick", function (name) {
 

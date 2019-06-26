@@ -5,7 +5,7 @@ var gridAcessoVeiculos;
 var formAcessoVeiculos;
 function monitor_veiculo() {
 
-    sessionStorage.recursocorrente = 'monitor_veiculo()';
+    sessionStorage.recursocorrente = 'monitor_veiculo';
     formAcessoVeiculos = nav_layout_principal.attachForm(campos_acesso_veiculos);
 
     gridAcessoVeiculos = new dhtmlXGridObject(formAcessoVeiculos.getContainer("gridAcessoVeiculos"));

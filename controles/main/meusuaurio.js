@@ -9,7 +9,7 @@ function meusuaurio() {
     var windowsMeuUsuarioInfo;
     windowsMeuUsuarioInfo = new dhtmlXWindows();
     windowsMeuUsuarioInfo.setSkin('dhx_terrace');
-    sessionStorage.recursocorrente = 'meusuaurio()';
+    sessionStorage.recursocorrente = 'meusuaurio';
     windowMeuUsuario = windowsMeuUsuarioInfo.createWindow(windowID, 0, 0, 600, 500);
     windowMeuUsuario.setText('Meu usu&aacute;rio');
     windowMeuUsuario.denyResize();

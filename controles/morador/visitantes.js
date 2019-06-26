@@ -6,7 +6,7 @@ var formVisitantes;
 function visitantes() {
 
     var paramVisitante;
-    sessionStorage.recursocorrente = 'visitantes()';
+    sessionStorage.recursocorrente = 'visitantes';
     formVisitantes = nav_layout_principal.attachForm(campos_visitantes);
 
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;

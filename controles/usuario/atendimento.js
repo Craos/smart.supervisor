@@ -10,7 +10,7 @@ function atendimento() {
     var windowsClientInfo;
     windowsClientInfo = new dhtmlXWindows();
     windowsClientInfo.setSkin('dhx_terrace');
-    sessionStorage.recursocorrente = 'atendimento()';
+    sessionStorage.recursocorrente = 'atendimento';
 
     windowAtualizarDadosAtendimento = windowsClientInfo.createWindow(windowID, 0, 0, 800, 500);
     windowAtualizarDadosAtendimento.setText('Registro de solicita&ccedil;&atilde;o');

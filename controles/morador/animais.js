@@ -6,7 +6,7 @@ var formAnimais;
 function animais() {
 
     var paramAnimal;
-    sessionStorage.recursocorrente = 'animais()';
+    sessionStorage.recursocorrente = 'animais';
     formAnimais = nav_layout_principal.attachForm(campos_animais);
 
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;

@@ -8,7 +8,7 @@ function moradores() {
 
     var paramMorador;
 
-    sessionStorage.recursocorrente = 'moradores()';
+    sessionStorage.recursocorrente = 'moradores';
     formMoradores = nav_layout_principal.attachForm(campos_moradores);
 
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;

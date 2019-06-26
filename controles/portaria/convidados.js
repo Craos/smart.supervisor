@@ -7,7 +7,7 @@ var formConvidado;
 function convidados() {
 
 	var paramVeiculo;
-    sessionStorage.recursocorrente = 'convidados()';
+    sessionStorage.recursocorrente = 'convidados';
 	formConvidado = nav_layout_principal.attachForm(campos_convidados);
 	formConvidado.enableLiveValidation(true);
 	formConvidado.attachEvent("onButtonClick", function (name) {

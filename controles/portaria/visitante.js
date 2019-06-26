@@ -10,7 +10,7 @@ function visitante() {
     formVisitantesHistorico = nav_layout_principal.attachForm(campos_historico_visitante);
 
 	var paramVeiculo;
-    sessionStorage.recursocorrente = 'visitante()';
+    sessionStorage.recursocorrente = 'visitante';
 
 	formVisitantesHistorico.attachEvent("onButtonClick", carregaHistoricoAutoricacoes);
 	var data_inicial = formVisitantesHistorico.getCalendar('data_inicial');

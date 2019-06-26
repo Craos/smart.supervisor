@@ -7,7 +7,7 @@ var campos_main_esquerda = [
     {
         type: "block", name: "bloco_opcoes", list: [
         {
-            type: "template", name: "usuario", value: "<a style='text-decoration: none' href='#' onclick='cadastro();'>\
+            type: "template", name: "usuario", value: "<a style='text-decoration: none' href='#' onclick='unidade_usuario();'>\
                     <div class='item_esquerda'>\
                         <img src='controles/main/img/main/user.png' alt='Conta do usu&aacute;rio'>\
                         <p>Conta do usu&aacute;rio</p>\

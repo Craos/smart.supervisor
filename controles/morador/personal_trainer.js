@@ -9,7 +9,7 @@ var autenticacaopersonal;
 function personal_trainer() {
 
     var paramPersonal;
-    sessionStorage.recursocorrente = 'personal_trainer()';
+    sessionStorage.recursocorrente = 'personal_trainer';
     formPersonal = nav_layout_principal.attachForm(campos_personal_trainer);
 
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;

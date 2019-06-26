@@ -216,7 +216,7 @@ function unidade() {
 
     var tabnotificacoes = tabbarUnidade.cells('tabNotificacoes');
 
-    sessionStorage.recursocorrente = 'admunidade()';
+    sessionStorage.recursocorrente = 'admunidade';
 
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;

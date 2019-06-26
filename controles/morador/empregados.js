@@ -6,7 +6,7 @@ var formEmpregados;
 function empregados() {
 
     var paramEmpregado;
-    sessionStorage.recursocorrente = 'empregados()';
+    sessionStorage.recursocorrente = 'empregados';
     formEmpregados = nav_layout_principal.attachForm(campos_empregados);
 
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;

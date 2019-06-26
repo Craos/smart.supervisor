@@ -8,7 +8,7 @@ var combomodelos;
 function correios() {
 
     var paramCorreios;
-    sessionStorage.recursocorrente = 'correios()';
+    sessionStorage.recursocorrente = 'correios';
     formCorreios = nav_layout_principal.attachForm(campos_correios);
 
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;

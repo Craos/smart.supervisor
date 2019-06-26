@@ -24,7 +24,7 @@ function hospedes() {
 	//var tabMonitordeAcessoHospede = tabbarHospedes.cells('tabMonitordeAcessoHospede');
 
 	var paramHospede;
-    sessionStorage.recursocorrente = 'hospedes()';
+    sessionStorage.recursocorrente = 'hospedes';
 
 	var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
 	var perfil_corrente;

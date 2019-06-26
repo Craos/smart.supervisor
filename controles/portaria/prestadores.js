@@ -8,7 +8,7 @@ var formcadastro;
 function prestadores() {
 
 	var paramcadastro;
-    sessionStorage.recursocorrente = 'cadastro()';
+    sessionStorage.recursocorrente = 'cadastro';
 	formcadastro = nav_layout_principal.attachForm(campos_cadastro_portaria);
 
 	var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
