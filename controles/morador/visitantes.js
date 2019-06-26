@@ -56,10 +56,10 @@ function visitantes() {
 				        action: 'delete',
 				        origem: 'condominio.visitantes',
 				        returnkey: 'num',
-				        condominio: unidadecorrente.condominio,
-				        bloco: unidadecorrente.bloco,
-				        andar: unidadecorrente.andar,
-				        unidade: unidadecorrente.pk_unidade
+				        condominio: admunidade.condominio,
+				        bloco: admunidade.bloco,
+				        andar: admunidade.andar,
+				        unidade: admunidade.pk_unidade
 			        };
 
 			        sys.FormAction(
@@ -87,10 +87,10 @@ function visitantes() {
             action: 'insert',
             origem: 'condominio.visitantes',
             returnkey: 'num',
-            condominio: unidadecorrente.condominio,
-            bloco: unidadecorrente.bloco,
-            andar: unidadecorrente.andar,
-            unidade: unidadecorrente.pk_unidade,
+            condominio: admunidade.condominio,
+            bloco: admunidade.bloco,
+            andar: admunidade.andar,
+            unidade: admunidade.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
             lastuser: informacoesdousuario.uidins
@@ -114,10 +114,10 @@ function visitantes() {
             contenttype: 'xml',
             action: 'directjson',
             origem: 'condominio.visitantes',
-            where: 'condominio/' + unidadecorrente.condominio +
-                '|bloco/' + unidadecorrente.bloco +
-                '|andar/' + unidadecorrente.andar +
-                '|unidadecorrente/' + unidadecorrente.pk_unidade +
+            where: 'condominio/' + admunidade.condominio +
+                '|bloco/' + admunidade.bloco +
+                '|andar/' + admunidade.andar +
+                '|admunidade/' + admunidade.pk_unidade +
                 '|num/' + id,
             chave: 'num'
         };
@@ -154,16 +154,16 @@ function LoadFormVisitantes(http) {
         if (itens.hasOwnProperty(key))
             formVisitantes.setItemValue(key,  itens[key]);
 
-    formVisitantes.setItemValue('nome_condominio', unidadecorrente.nome_condominio);
-    formVisitantes.setItemValue('nome_bloco', unidadecorrente.nome_bloco);
-    formVisitantes.setItemValue('nome_andar', unidadecorrente.nome_andar);
-    formVisitantes.setItemValue('nome_unidade', unidadecorrente.unidade);
+    formVisitantes.setItemValue('nome_condominio', admunidade.nome_condominio);
+    formVisitantes.setItemValue('nome_bloco', admunidade.nome_bloco);
+    formVisitantes.setItemValue('nome_andar', admunidade.nome_andar);
+    formVisitantes.setItemValue('nome_unidade', admunidade.unidade);
 
 }
 
 function gridLoadVisitantes() {
 
-    if (unidadecorrente === undefined)
+    if (admunidade === undefined)
         return;
 
     var gridSourceVisitantes;
@@ -172,10 +172,10 @@ function gridLoadVisitantes() {
         action: 'dhtmlxgrid',
         origem: 'condominio.visitantes',
         campos: 'num,nome,rg,cpf',
-        where: 'condominio/' + unidadecorrente.condominio +
-            '|bloco/' + unidadecorrente.bloco +
-            '|andar/' + unidadecorrente.andar +
-            '|unidadecorrente/' + unidadecorrente.pk_unidade,
+        where: 'condominio/' + admunidade.condominio +
+            '|bloco/' + admunidade.bloco +
+            '|andar/' + admunidade.andar +
+            '|admunidade/' + admunidade.pk_unidade,
         orderby:'num',
         usecheckbox: 'false',
         usedecimal:'nome',

@@ -84,10 +84,10 @@ function moradores() {
                         action: 'delete',
                         origem: 'condominio.moradores',
                         returnkey: 'num',
-                        condominio: unidadecorrente.condominio,
-                        bloco: unidadecorrente.bloco,
-                        andar: unidadecorrente.andar,
-                        unidade: unidadecorrente.pk_unidade
+                        condominio: admunidade.condominio,
+                        bloco: admunidade.bloco,
+                        andar: admunidade.andar,
+                        unidade: admunidade.pk_unidade
                     };
 
                     sys.FormAction(
@@ -132,7 +132,7 @@ function moradores() {
                 return;
             }
 
-            new ReservadeEspaco({unidade: unidadecorrente, nome:formMoradores.getItemValue('nome'), autenticacao:formMoradores.getItemValue('autenticacao')}).Exibir();
+            new ReservadeEspaco({unidade: admunidade, nome:formMoradores.getItemValue('nome'), autenticacao:formMoradores.getItemValue('autenticacao')}).Exibir();
         }
 
 
@@ -151,10 +151,10 @@ function moradores() {
             action: 'insert',
             origem: 'condominio.moradores',
             returnkey: 'num',
-            condominio: unidadecorrente.condominio,
-            bloco: unidadecorrente.bloco,
-            andar: unidadecorrente.andar,
-            unidade: unidadecorrente.pk_unidade,
+            condominio: admunidade.condominio,
+            bloco: admunidade.bloco,
+            andar: admunidade.andar,
+            unidade: admunidade.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
             lastuser: informacoesdousuario.uidins
@@ -179,10 +179,10 @@ function moradores() {
             contenttype: 'xml',
             action: 'directjson',
             origem: 'condominio.moradores_info',
-            where: 'condominio/' + unidadecorrente.condominio +
-            '|bloco/' + unidadecorrente.bloco +
-            '|andar/' + unidadecorrente.andar +
-            '|unidadecorrente/' + unidadecorrente.pk_unidade +
+            where: 'condominio/' + admunidade.condominio +
+            '|bloco/' + admunidade.bloco +
+            '|andar/' + admunidade.andar +
+            '|admunidade/' + admunidade.pk_unidade +
             '|num/' + id,
             chave: 'num'
         };
@@ -222,8 +222,8 @@ function ResultFormMoradores(http) {
         cn: 'as',
         process: 'condominio.ativa_registro',
         params: JSON.stringify({
-            'bloco': unidadecorrente.bloco,
-            'unidade': unidadecorrente.pk_unidade,
+            'bloco': admunidade.bloco,
+            'unidade': admunidade.pk_unidade,
             'registro': out.registro
         })
     }, function (http) {
@@ -251,10 +251,10 @@ function LoadFormMoradores(http) {
     }
 
 
-    formMoradores.setItemValue('nome_condominio', unidadecorrente.nome_condominio);
-    formMoradores.setItemValue('nome_bloco', unidadecorrente.nome_bloco);
-    formMoradores.setItemValue('nome_andar', unidadecorrente.nome_andar);
-    formMoradores.setItemValue('nome_unidade', unidadecorrente.unidade);
+    formMoradores.setItemValue('nome_condominio', admunidade.nome_condominio);
+    formMoradores.setItemValue('nome_bloco', admunidade.nome_bloco);
+    formMoradores.setItemValue('nome_andar', admunidade.nome_andar);
+    formMoradores.setItemValue('nome_unidade', admunidade.unidade);
 
     var fotocadastro = formMoradores.getContainer("foto_morador");
     fotocadastro.innerHTML = '';
@@ -283,7 +283,7 @@ function LoadFormMoradores(http) {
 
 function gridLoadMoradores() {
 
-    if (unidadecorrente === undefined)
+    if (admunidade === undefined)
         return;
 
     var gridSourceMoradores;
@@ -292,10 +292,10 @@ function gridLoadMoradores() {
         action: 'dhtmlxgrid',
         origem: 'condominio.moradores_info',
         campos: 'num,nome,nascimento',
-        where: 'condominio/' + unidadecorrente.condominio +
-        '|bloco/' + unidadecorrente.bloco +
-        '|andar/' + unidadecorrente.andar +
-        '|unidadecorrente/' + unidadecorrente.pk_unidade,
+        where: 'condominio/' + admunidade.condominio +
+        '|bloco/' + admunidade.bloco +
+        '|andar/' + admunidade.andar +
+        '|admunidade/' + admunidade.pk_unidade,
         orderby: 'num',
         usecheckbox: 'false',
         usedecimal: 'nome',

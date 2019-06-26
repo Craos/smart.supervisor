@@ -39,7 +39,7 @@
 
     <script src="../smart/lib/liteapi/info.js"></script>
     <script src="../smart/lib/liteapi/usuarios/usuarios.js"></script>
-    <script src="../smart/lib/liteapi/unidade/unidade.js"></script>
+    <script src="../smart/lib/liteapi/unidade/AdmUnidade.js"></script>
 
 
     <script src="controles/main/screencast.js" type="text/javascript"></script>

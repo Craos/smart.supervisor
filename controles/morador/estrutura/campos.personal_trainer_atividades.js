@@ -20,7 +20,7 @@ var campos_personal_trainer_atividades = [
             {type: "block", list: [
                 {type: "input", name: "bloco", label: "Torre", offsetLeft: "0", offsetTop: "4", inputWidth: 45, style: "font-weight:bold;"},
                 {type: "newcolumn"},
-                {type: "input", name: "unidadecorrente", label: "Unidade", offsetLeft: "4", offsetTop: "4", inputWidth: 45, style: "font-weight:bold;"},
+                {type: "input", name: "admunidade", label: "Unidade", offsetLeft: "4", offsetTop: "4", inputWidth: 45, style: "font-weight:bold;"},
                 {type: "newcolumn"},
                 {type: "combo", name: "nome_aluno", label: "Aluno", required: true, inputWidth: 350, style: "font-weight:bold;"},
                 {type: "newcolumn"},

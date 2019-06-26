@@ -15,7 +15,7 @@ var campos_termo = [
         {type: "fieldset", name: "instrucoes", label: "Instru&ccedil;&otilde;es", width: 280, list: [
             { type: "block", list: [
                 {type: "template", name: "texto_instrucoes1", value: 'Clique em &ldquo;Visualizar dados cadastrados&rdquo; para visualizar o resumo de todos os dados cadastrados e para a possibilidade de imprimi-lo para sua confer&ecirc;ncia pessoal.', style: "color: #137da1; height: 80px;"},
-                {type: "template", name: "texto_instrucoes2", value: 'Leia com aten&ccedil;&atilde;o o &ldquo;Termo de responsabilidade e aceite&rdquo;, disponibilizado ao lado. Ele ser&aacute; impresso pela Administra&ccedil;&atilde;o, juntamente com o resumo cadastral, e dever&aacute; ser assinado pelo morador respons&aacute;vel pela unidadecorrente no ato da valida&ccedil;&atilde;o.', style: "color: #137da1; height: 150px;"}
+                {type: "template", name: "texto_instrucoes2", value: 'Leia com aten&ccedil;&atilde;o o &ldquo;Termo de responsabilidade e aceite&rdquo;, disponibilizado ao lado. Ele ser&aacute; impresso pela Administra&ccedil;&atilde;o, juntamente com o resumo cadastral, e dever&aacute; ser assinado pelo morador respons&aacute;vel pela admunidade no ato da valida&ccedil;&atilde;o.', style: "color: #137da1; height: 150px;"}
             ]}
         ]}
     ]}

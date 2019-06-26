@@ -48,7 +48,7 @@ function unidade() {
         {
             type: "fieldset",
             name: "informacoes_unidade",
-            label: "Informa&ccedil;&otilde;es da unidadecorrente",
+            label: "Informa&ccedil;&otilde;es da admunidade",
             inputWidth: 955,
             list: [
                 {type: "block", offsetTop: "0", list: [
@@ -216,7 +216,7 @@ function unidade() {
 
     var tabnotificacoes = tabbarUnidade.cells('tabNotificacoes');
 
-    sessionStorage.recursocorrente = 'unidadecorrente()';
+    sessionStorage.recursocorrente = 'admunidade()';
 
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
@@ -268,7 +268,7 @@ function unidade() {
             where: 'condominio/' + unidade.condominio +
             '|bloco/' + unidade.bloco +
             '|andar/' + unidade.andar +
-            '|unidadecorrente/' + unidade.pk_unidade,
+            '|admunidade/' + unidade.pk_unidade,
             num: unidade.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
@@ -535,7 +535,7 @@ function CarregaInformacoes(CarregaNotificacoes) {
                         where: 'condominio/' + unidade.condominio +
                         '|bloco/' + unidade.bloco +
                         '|andar/' + unidade.andar +
-                        '|unidadecorrente/' + unidade.pk_unidade
+                        '|admunidade/' + unidade.pk_unidade
                     }), function (http) {
 
                         var out = JSON.parse(http.responseText);
@@ -604,7 +604,7 @@ function MudancanaUnidade() {
     windowMudanca = new dhtmlXWindows();
     windowMudanca.setSkin('dhx_terrace');
 
-    var titulo = 'Registro de atividades na unidadecorrente';
+    var titulo = 'Registro de atividades na admunidade';
     var windowID = 'unidadeAtividade';
 
     var windowUnidadeAtv = windowMudanca.createWindow(windowID, 0, 0, 400, 400);
@@ -634,7 +634,7 @@ function MudancanaUnidade() {
                 {type: "newcolumn"},
                 {type: "input", name: "ativacao_hora", label: "Horário", inputWidth: 80, style: "font-weight:bold;"},
                 {type: "newcolumn"},
-                {type: "button", offsetTop: 14, name: "ativar", value: "Ativar unidadecorrente"}
+                {type: "button", offsetTop: 14, name: "ativar", value: "Ativar admunidade"}
             ]},
             {type: "label", offsetTop: 12, label: "Entrada no condomínio", width: 955, list: [
                 {type: "input", name: "entrada_data_inicial", label: "Data inicial",  inputWidth: 80, style: "font-weight:bold;"},
@@ -657,11 +657,11 @@ function MudancanaUnidade() {
         if (name === 'ativar') {
 
             if (formAlteracao.getItemValue('ativacao_data') === '' || formAlteracao.getItemValue('ativacao_hora') === '') {
-                alert('Informe a data e o horário para ativação da unidadecorrente');
+                alert('Informe a data e o horário para ativação da admunidade');
                 return;
             }
 
-            dhtmlx.confirm("Aten&ccedil;&atilde;o. Ao executar esta opera&ccedil;&atilde;o todas as informa&ccedil;&otilde;es desta unidadecorrente ser&atilde;o expurgadas! voc&ecirc; confirma esta opera&ccedil;&atilde;o?", function (result) {
+            dhtmlx.confirm("Aten&ccedil;&atilde;o. Ao executar esta opera&ccedil;&atilde;o todas as informa&ccedil;&otilde;es desta admunidade ser&atilde;o expurgadas! voc&ecirc; confirma esta opera&ccedil;&atilde;o?", function (result) {
                 if (result === true) {
 
                     var dados = JSON.stringify({

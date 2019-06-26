@@ -35,7 +35,7 @@ $torres = Array(
 );
 if (isset($_SESSION['checkauth']['bloco']) && in_array($_SESSION['checkauth']['bloco'], $torres)) {
     $torre = $torres[$_SESSION['checkauth']['bloco']];
-    $unidade = $_SESSION['checkauth']['unidadecorrente'];
+    $unidade = $_SESSION['checkauth']['admunidade'];
 }
 
 

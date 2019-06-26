@@ -29,7 +29,7 @@ var Image = {
         windowAtualizarDadosFoto.button('minmax1').hide();
 
         formCadastroFoto = windowAtualizarDadosFoto.attachForm(campos_foto);
-        unidadecorrente = JSON.parse(docCookies.getItem('unidadecorrente'));
+        admunidade = JSON.parse(docCookies.getItem('admunidade'));
 
         formCadastroFoto.attachEvent("onButtonClick", function (name) {
             if (name == 'salvar') {

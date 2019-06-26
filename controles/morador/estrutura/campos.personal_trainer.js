@@ -75,7 +75,7 @@ var campos_personal_trainer = [
             {type: "newcolumn"},
             {type: "input", name: "bloco", disabled:"true", label: "Torre", offsetLeft: "4", offsetTop: "10", inputWidth: 45, style: "font-weight:bold;"},
             {type: "newcolumn"},
-            {type: "input", name: "unidadecorrente", disabled:"true", label: "Unidade", offsetLeft: "4", offsetTop: "10", inputWidth: 45, style: "font-weight:bold;"}
+            {type: "input", name: "admunidade", disabled:"true", label: "Unidade", offsetLeft: "4", offsetTop: "10", inputWidth: 45, style: "font-weight:bold;"}
         ]}
     ]},
     { type: "block", list: [

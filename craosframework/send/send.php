@@ -43,7 +43,7 @@ while($lista = pg_fetch_object($server_web->Resource)) {
     $mail->Subject = utf8_decode('Cadastro Ânima. Envio de material');
 
     $mensagem = str_replace('|torre', $lista->torre, $mensagem);
-    $mensagem = str_replace('|unidadecorrente', $lista->unidade, $mensagem);
+    $mensagem = str_replace('|admunidade', $lista->unidade, $mensagem);
     $mensagem = str_replace('|usuario', $lista->login, $mensagem);
     $mensagem = str_replace('|senha', $lista->senha, $mensagem);
 

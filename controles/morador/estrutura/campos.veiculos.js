@@ -4,7 +4,7 @@
 
 var campos_veiculos = [
     {type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "2", position: "label-top"},
-    {type: "template", name: "titulo", value: "Cadastro de todos os ve&iacute;culos da unidadecorrente", style: "font-weight:bold;"},
+    {type: "template", name: "titulo", value: "Cadastro de todos os ve&iacute;culos da admunidade", style: "font-weight:bold;"},
     {type: "block", list: [
         {type: "fieldset", name: "opcoes", label: "Opera&ccedil;&otilde;es", width: 955, list: [
             {type: "button", name: "novo", value: "1. Cadastrar novo"},
@@ -97,7 +97,7 @@ var campos_veiculos = [
             ]}
         ]},
         {type: "newcolumn"},
-        {type: "fieldset", name: "transferencia", label: "Transfer&ecirc;ncia de unidadecorrente", width: 180, list: [
+        {type: "fieldset", name: "transferencia", label: "Transfer&ecirc;ncia de admunidade", width: 180, list: [
             {type: "block", list: [
                 {type: "input", name: "nova_torre", label: "Torre", inputWidth: 140, style: "font-weight:bold;",
                     tooltip: "Indique a nova localiza&ccedil;&atilde;o",
@@ -106,8 +106,8 @@ var campos_veiculos = [
             ]},
             {type: "block", list: [
                 {type: "input", name: "nova_unidade", label: "Unidade", inputWidth: 140, style: "font-weight:bold;",
-                    tooltip: "Indique a nova unidadecorrente",
-                    info: true, note: {text: "Indique a nova unidadecorrente"}
+                    tooltip: "Indique a nova admunidade",
+                    info: true, note: {text: "Indique a nova admunidade"}
                 }
             ]}
         ]}
@@ -129,7 +129,7 @@ var campos_veiculos = [
 
 var campos_veiculos_excluidos = [
     {type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "2", position: "label-top"},
-    {type: "template", name: "titulo", value: "Registro de ve&iacute;culos exclu&iacute;dos da unidadecorrente", style: "font-weight:bold;"},
+    {type: "template", name: "titulo", value: "Registro de ve&iacute;culos exclu&iacute;dos da admunidade", style: "font-weight:bold;"},
     {type: "block", list: [
         {type: "fieldset", name: "informacoes_registro", label: "Registro do ve&iacute;culo", width: 955, list: [
             {type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "2", offsetTop: "2", position: "label-top"},

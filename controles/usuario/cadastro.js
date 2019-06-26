@@ -19,20 +19,17 @@ function cadastro() {
 
     var formCadastroUsuario = windowAtualizarDadosUsuario.attachForm(campos_cadastro);
 
-    if (unidadecorrente.info !== undefined) {
-        unidadecorrente.Usuario(function (response) {
-            console.debug(response);
+    if (admunidade !== undefined) {
+        admunidade.Usuario(function (response) {
             formCadastroUsuario.setFormData(response);
-
         });
     }
-
 
     formCadastroUsuario.attachEvent("onButtonClick", function (name) {
 
         formCadastroUsuario.validate();
         if (formCadastroUsuario.getItemValue('password') !== formCadastroUsuario.getItemValue('repassword')) {
-            alert('A senha enviada n�o est� igual a sua confirma��o');
+            alert('A senha informada não está igual a confirmação');
             return;
         }
 
@@ -40,8 +37,8 @@ function cadastro() {
             contenttype: 'xml',
             action: 'update',
             origem: 'portal.usuario',
-            where: 'pk_unidade/' + unidadecorrente.unidade,
-            pk_unidade: unidadecorrente.unidade,
+            where: 'pk_unidade/' + admunidade.unidade,
+            pk_unidade: admunidade.unidade,
             login: formCadastroUsuario.getItemValue('login'),
             password: base64_encode(formCadastroUsuario.getItemValue('password'))
         };

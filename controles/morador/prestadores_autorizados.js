@@ -67,10 +67,10 @@ function prestadores_autorizados() {
                         action: 'delete',
                         origem: 'condominio.prestadores',
                         returnkey: 'num',
-                        condominio: unidadecorrente.condominio,
-                        bloco: unidadecorrente.bloco,
-                        andar: unidadecorrente.andar,
-                        unidade: unidadecorrente.pk_unidade
+                        condominio: admunidade.condominio,
+                        bloco: admunidade.bloco,
+                        andar: admunidade.andar,
+                        unidade: admunidade.pk_unidade
                     };
 
                     sys.FormAction(
@@ -83,10 +83,10 @@ function prestadores_autorizados() {
                                 action: 'delete',
                                 origem: 'expurgo.prestadores',
                                 returnkey: 'num',
-                                condominio: unidadecorrente.condominio,
-                                bloco: unidadecorrente.bloco,
-                                andar: unidadecorrente.andar,
-                                unidade: unidadecorrente.pk_unidade
+                                condominio: admunidade.condominio,
+                                bloco: admunidade.bloco,
+                                andar: admunidade.andar,
+                                unidade: admunidade.pk_unidade
                             };
 
                             sys.FormAction(
@@ -150,7 +150,7 @@ function prestadores_autorizados() {
         var today = new Date();
 
         if (formRegistroAcesso.getItemValue('cadastro_origem') == 'condominio.empregados')
-            formRegistroAcesso.setItemValue('unidadecorrente', unidadecorrente.pk_unidade);
+            formRegistroAcesso.setItemValue('admunidade', admunidade.pk_unidade);
 
         paramPrestador = {
             contenttype: 'xml',
@@ -175,11 +175,11 @@ function prestadores_autorizados() {
         var data_inicial = new Date(formRegistroAcessoHist.getItemValue('data_inicial'));
         var data_final = new Date(formRegistroAcessoHist.getItemValue('data_final'));
         var torre = formRegistroAcessoHist.getItemValue('bloco');
-        var unidade = formRegistroAcessoHist.getItemValue('unidadecorrente');
+        var unidade = formRegistroAcessoHist.getItemValue('admunidade');
 
         var local = '';
         if ((torre != null && torre.length > 0) && (unidade != null && unidade.length > 0)) {
-            local = "bloco::varchar = '" + torre + "' and unidadecorrente::varchar = '" + unidade;
+            local = "bloco::varchar = '" + torre + "' and admunidade::varchar = '" + unidade;
         }
 
         var datas = '';
@@ -204,7 +204,7 @@ function prestadores_autorizados() {
         gridSource = {
             contenttype: 'xml',
             action: 'dhtmlxgrid',
-            campos: 'num,data,bloco,unidadecorrente,nome,tipoacesso as "Tipo de Acesso"',
+            campos: 'num,data,bloco,admunidade,nome,tipoacesso as "Tipo de Acesso"',
             origem: 'acesso.historico_registro_acesso',
             where: where,
             orderby: 'num',
@@ -258,10 +258,10 @@ function prestadores_autorizados() {
             contenttype: 'xml',
             action: 'directjson',
             origem: 'condominio.empregados',
-            where: 'condominio/' + unidadecorrente.condominio +
-            '|bloco/' + unidadecorrente.bloco +
-            '|andar/' + unidadecorrente.andar +
-            '|unidadecorrente/' + unidadecorrente.pk_unidade +
+            where: 'condominio/' + admunidade.condominio +
+            '|bloco/' + admunidade.bloco +
+            '|andar/' + admunidade.andar +
+            '|admunidade/' + admunidade.pk_unidade +
             '|num/' + id,
             chave: 'num'
         };
@@ -294,11 +294,11 @@ function LoadFormEmpregadoParaRegistro(http) {
         }
     }
 
-    formRegistroAcesso.setItemValue('unidadecorrente', unidadecorrente.unidade);
-    formRegistroAcesso.setItemValue('nome_condominio', unidadecorrente.nome_condominio);
-    formRegistroAcesso.setItemValue('nome_bloco', unidadecorrente.nome_bloco);
-    formRegistroAcesso.setItemValue('nome_andar', unidadecorrente.nome_andar);
-    formRegistroAcesso.setItemValue('nome_unidade', unidadecorrente.unidade);
+    formRegistroAcesso.setItemValue('admunidade', admunidade.unidade);
+    formRegistroAcesso.setItemValue('nome_condominio', admunidade.nome_condominio);
+    formRegistroAcesso.setItemValue('nome_bloco', admunidade.nome_bloco);
+    formRegistroAcesso.setItemValue('nome_andar', admunidade.nome_andar);
+    formRegistroAcesso.setItemValue('nome_unidade', admunidade.unidade);
     formRegistroAcesso.setItemValue('cadastro_origem', 'condominio.empregados');
 
 
@@ -307,7 +307,7 @@ function LoadFormEmpregadoParaRegistro(http) {
 
 function gridCarregaEmpregadoParaRegistro() {
 
-    if (unidadecorrente === undefined)
+    if (admunidade === undefined)
         return;
 
     var gridSourceEmpregados;
@@ -316,10 +316,10 @@ function gridCarregaEmpregadoParaRegistro() {
         action: 'dhtmlxgrid',
         origem: 'condominio.empregados',
         campos: 'num,nome,servico_prestado',
-        where: 'condominio/' + unidadecorrente.condominio +
-        '|bloco/' + unidadecorrente.bloco +
-        '|andar/' + unidadecorrente.andar +
-        '|unidadecorrente/' + unidadecorrente.pk_unidade,
+        where: 'condominio/' + admunidade.condominio +
+        '|bloco/' + admunidade.bloco +
+        '|andar/' + admunidade.andar +
+        '|admunidade/' + admunidade.pk_unidade,
         orderby: 'num',
         usecheckbox: 'false',
         usedecimal: 'nome',
@@ -343,8 +343,8 @@ function RegistraPassagemdoPrestador() {
             return;
         }
 
-        if (formRegistroAcesso.getItemValue('unidadecorrente') == '') {
-            alert('Informe a unidadecorrente no controle de acesso');
+        if (formRegistroAcesso.getItemValue('admunidade') == '') {
+            alert('Informe a admunidade no controle de acesso');
             return;
         }
     }
@@ -365,7 +365,7 @@ function RegistraPassagemdoPrestador() {
         nome: formRegistroAcesso.getItemValue('nome'),
         autenticacao: autenticacaoprestador,
         bloco: formRegistroAcesso.getItemValue('bloco'),
-        unidade: formRegistroAcesso.getItemValue('unidadecorrente'),
+        unidade: formRegistroAcesso.getItemValue('admunidade'),
         placa_letras: formRegistroAcesso.getItemValue('placa_letras'),
         placa_numeros: formRegistroAcesso.getItemValue('placa_numeros'),
         sentido: sentidoprestador
@@ -436,7 +436,7 @@ function ResultFormPrestadores(http) {
     if (out.registro !== undefined && out.registro.length > 0) {
         formRegistroAcesso.setItemValue('situacao', out.situacao);
         formRegistroAcesso.setItemValue('num', out.registro);
-        formRegistroAcesso.setItemValue('unidadecorrente', unidadecorrente.unidade);
+        formRegistroAcesso.setItemValue('admunidade', admunidade.unidade);
 
     } else {
         alert('Houve um erro ao enviar os dados. Por favor aguarde um instante!');
@@ -552,7 +552,7 @@ function Impressao_Acesso(num, bloco, unidade, placa_letras, placa_numeros, desc
     var left = 99;
     var top = 99;
 
-    window.open('./controles/portaria/estrutura/visitante.php?registro=' + num + '&bloco=' + bloco + '&unidadecorrente=' + unidade + '&placa_letras=' + placa_letras + '&placa_numeros=' + placa_numeros + '&descricao=' + descricao, 'acesso', 'width=' + width + ', height=' + height + ', top=' + top + ', left=' + left + ', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+    window.open('./controles/portaria/estrutura/visitante.php?registro=' + num + '&bloco=' + bloco + '&admunidade=' + unidade + '&placa_letras=' + placa_letras + '&placa_numeros=' + placa_numeros + '&descricao=' + descricao, 'acesso', 'width=' + width + ', height=' + height + ', top=' + top + ', left=' + left + ', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
 
 }
 

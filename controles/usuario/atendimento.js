@@ -28,10 +28,10 @@ function atendimento() {
             contenttype: 'xml',
             action: 'insert',
             origem: 'portal.atendimento',
-            condominio: unidadecorrente.condominio,
-            bloco: unidadecorrente.bloco,
-            andar: unidadecorrente.andar,
-            unidade: unidadecorrente.unidade,
+            condominio: admunidade.condominio,
+            bloco: admunidade.bloco,
+            andar: admunidade.andar,
+            unidade: admunidade.unidade,
             assunto: formCadastroAtendimento.getItemValue('assunto'),
             solicitacao: formCadastroAtendimento.getItemValue('solicitacao')
         };
@@ -56,7 +56,7 @@ function ResultFormCadastroAtendimento(http) {
             smtpmessage: 'antendimento',
             assunto: formCadastroAtendimento.getItemValue('assunto'),
             solicitacao: formCadastroAtendimento.getItemValue('solicitacao'),
-            where: 'email/' + unidadecorrente.email
+            where: 'email/' + admunidade.email
         };
 
         sys.FormAction(sys.setParameters(paramSendSolicitacao), resultemailAtendimento);

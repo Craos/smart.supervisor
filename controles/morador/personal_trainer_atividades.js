@@ -50,10 +50,10 @@ function personal_trainer_atividades(numpersonal) {
                         action: 'delete',
                         origem: 'condominio.personal_atividades',
                         returnkey: 'num',
-                        condominio: unidadecorrente.condominio,
-                        bloco: unidadecorrente.bloco,
-                        andar: unidadecorrente.andar,
-                        unidade: unidadecorrente.pk_unidade
+                        condominio: admunidade.condominio,
+                        bloco: admunidade.bloco,
+                        andar: admunidade.andar,
+                        unidade: admunidade.pk_unidade
                     };
 
                     sys.FormAction(
@@ -67,7 +67,7 @@ function personal_trainer_atividades(numpersonal) {
     });
 
     formPersonalAtividades.attachEvent("onKeyUp",function(inp, ev, name, value){
-        if (inp.name = 'unidadecorrente' && ev.code == 'Enter') {
+        if (inp.name = 'admunidade' && ev.code == 'Enter') {
 
             var bindcombomordores = {
                 parametros: true,
@@ -77,9 +77,9 @@ function personal_trainer_atividades(numpersonal) {
                 orderby: 'num',
                 campos: "condominio || '|' || andar || '|' || autenticacao as num, initcap(nome) as tipo",
                 origem: 'condominio.morador_info',
-                where: 'condominio/' + unidadecorrente.condominio +
+                where: 'condominio/' + admunidade.condominio +
                 '|bloco/' + formPersonalAtividades.getItemValue('bloco') +
-                '|unidadecorrente/' + formPersonalAtividades.getItemValue('unidadecorrente')
+                '|admunidade/' + formPersonalAtividades.getItemValue('admunidade')
             };
 
             sys.FormAction(sys.setParameters(bindcombomordores), ResultBindcomboMoradores);
@@ -161,7 +161,7 @@ function loadgridAtividadesPersonal(numpersonal) {
         contenttype: 'xml',
         action: 'dhtmlxgrid',
         origem: 'condominio.personal_atividades_info',
-        campos: 'num, bloco, unidadecorrente, nome, tipo_aula',
+        campos: 'num, bloco, admunidade, nome, tipo_aula',
         where: 'personal/' + numpersonal,
         usecheckbox: 'false',
         chave: 'num',

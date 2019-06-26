@@ -47,7 +47,7 @@ var campos_registro_acesso_geral = [
                     {value: "2", text: "Fornecedor"},
                     {value: "3", text: "Visitante"},
                     {value: "4", text: "Diarista"},
-                    {value: "5", text: "Funcionário da unidadecorrente"}
+                    {value: "5", text: "Funcionário da admunidade"}
                 ]}
             ]},
             { type: "block", list: [
@@ -80,7 +80,7 @@ var campos_registro_acesso_geral = [
             { type: "block", list: [
                 {type: "input", name: "bloco", label: "Torre", inputWidth: 45, style: "font-weight:bold;"},
                 {type: "newcolumn"},
-                {type: "input", name: "unidadecorrente", label: "Unidade", inputWidth: 45, style: "font-weight:bold;"},
+                {type: "input", name: "admunidade", label: "Unidade", inputWidth: 45, style: "font-weight:bold;"},
                 {type: "newcolumn"},
                 {type: "input", name: "placa_letras", label: "Placa", offsetLeft: "10", inputWidth: "35", maxLength: "3", style: "font-weight:bold;"},
                 {type: "newcolumn"},
@@ -107,7 +107,7 @@ var campos_historico_registro_acesso_geral = [
         {type: "fieldset", name: "opcoes", label: "Opera&ccedil;&otilde;es", width: 955, list: [
             {type: "input", name: "bloco", label: "Torre", inputWidth: 45, style: "font-weight:bold;"},
             {type: "newcolumn"},
-            {type: "input", name: "unidadecorrente", label: "Unidade", inputWidth: 45, style: "font-weight:bold;"},
+            {type: "input", name: "admunidade", label: "Unidade", inputWidth: 45, style: "font-weight:bold;"},
             {type: "newcolumn"},
             {type: "calendar", name: "data_inicial", label: "Data", enableTime: true, enableTodayButton: true, dateFormat: "%d/%m/%Y", calendarPosition: "right", inputWidth: 80, style: "font-weight:bold;"},
             {type: "newcolumn"},

@@ -20,7 +20,7 @@ var menu_lateral;
 var informacoesdousuario;
 
 let sys = new SystemCraos();
-let unidadecorrente = new Unidade();
+let admunidade = new AdmUnidade();
 
 function main() {
 
@@ -111,15 +111,11 @@ function main() {
             return;
 
         if (ev.keyCode === 13) {
-            statselect();
+            topSelecionarRegistro();
         }
     });
 
     eval(sessionStorage.recursocorrente);
-}
-
-function statselect() {
-    topSelecionarRegistro();
 }
 
 function isFunction(x) {
@@ -156,8 +152,9 @@ function reInformacoesUsuario(name, value) {
 
 function topSelecionarRegistro() {
 
-    console.debug(unidadecorrente);
-    unidadecorrente.Identificar(
+    admunidade = new AdmUnidade();
+
+    admunidade.Identificar(
         formTopLayoutPrincipalTop.getItemValue('left_bloco'),
         formTopLayoutPrincipalTop.getItemValue('left_unidade'),
         function () {
@@ -200,7 +197,6 @@ function logout() {
 
     let user = JSON.parse(sessionStorage.auth).user;
     new Usuarios().Logout(user.login, 'Supervisor', function() {
-        console.debug('teste');
         sessionStorage.auth = undefined;
         sessionStorage.clear();
         main();

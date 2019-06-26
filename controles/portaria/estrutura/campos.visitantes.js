@@ -61,7 +61,7 @@ var campos_historico_visitante = [
             {type: "newcolumn"},
             {type: "template", name: "lbunidade", value: "Unidade:", inputWidth: 60, style: "font-weight:bold;"},
             {type: "newcolumn"},
-            {type: "template", name: "unidadecorrente", inputWidth: 30, style: "color: gray"}
+            {type: "template", name: "admunidade", inputWidth: 30, style: "color: gray"}
         ]},
         {type: "newcolumn"},
         {type: "fieldset", label: "Informa��es da autoriza��o", width: 700, list: [

@@ -87,10 +87,10 @@ function veiculos() {
 						action: 'delete',
 						origem: 'condominio.veiculos',
 						returnkey: 'num',
-						condominio: unidadecorrente.condominio,
-						bloco: unidadecorrente.bloco,
-						andar: unidadecorrente.andar,
-						unidade: unidadecorrente.pk_unidade
+						condominio: admunidade.condominio,
+						bloco: admunidade.bloco,
+						andar: admunidade.andar,
+						unidade: admunidade.pk_unidade
 					};
 
 					sys.FormAction(
@@ -107,11 +107,11 @@ function veiculos() {
 				dados: 'teste',
 				contenttype: 'xml',
 				action: 'directjson',
-				campos: 'num,condominio,bloco,andar,unidadecorrente',
+				campos: 'num,condominio,bloco,andar,admunidade',
 				origem: 'condominio.unidades',
-				where: 'condominio/' + unidadecorrente.condominio +
+				where: 'condominio/' + admunidade.condominio +
 				'|bloco/' + formVeiculos.getItemValue('nova_torre') +
-				'|unidadecorrente/' + formVeiculos.getItemValue('nova_unidade'),
+				'|admunidade/' + formVeiculos.getItemValue('nova_unidade'),
 				chave: 'num'
 			};
 
@@ -137,10 +137,10 @@ function veiculos() {
 			action: 'insert',
 			origem: 'condominio.veiculos',
 			returnkey: 'num',
-			condominio: unidadecorrente.condominio,
-			bloco: unidadecorrente.bloco,
-			andar: unidadecorrente.andar,
-			unidade: unidadecorrente.pk_unidade,
+			condominio: admunidade.condominio,
+			bloco: admunidade.bloco,
+			andar: admunidade.andar,
+			unidade: admunidade.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
             lastuser: informacoesdousuario.uidins
@@ -164,10 +164,10 @@ function veiculos() {
 			contenttype: 'xml',
 			action: 'directjson',
 			origem: 'condominio.veiculos_info',
-			where: 'condominio/' + unidadecorrente.condominio +
-			'|bloco/' + unidadecorrente.bloco +
-			'|andar/' + unidadecorrente.andar +
-			'|unidadecorrente/' + unidadecorrente.pk_unidade +
+			where: 'condominio/' + admunidade.condominio +
+			'|bloco/' + admunidade.bloco +
+			'|andar/' + admunidade.andar +
+			'|admunidade/' + admunidade.pk_unidade +
 			'|num/' + id,
 			chave: 'num'
 		};
@@ -190,10 +190,10 @@ function veiculos() {
 			contenttype: 'xml',
 			action: 'directjson',
 			origem: 'expurgo.veiculos_info',
-			where: 'condominio/' + unidadecorrente.condominio +
-			'|bloco/' + unidadecorrente.bloco +
-			'|andar/' + unidadecorrente.andar +
-			'|unidadecorrente/' + unidadecorrente.pk_unidade +
+			where: 'condominio/' + admunidade.condominio +
+			'|bloco/' + admunidade.bloco +
+			'|andar/' + admunidade.andar +
+			'|admunidade/' + admunidade.pk_unidade +
 			'|num/' + id,
 			chave: 'num'
 		};
@@ -216,9 +216,9 @@ function veiculos() {
             contenttype: 'xml',
             action: 'directjson',
             origem: 'acesso.historico_veicular_unidade',
-            where: 'condominio/' + unidadecorrente.condominio +
-            '|bloco/' + unidadecorrente.bloco +
-            '|pk_unidade/' + unidadecorrente.pk_unidade +
+            where: 'condominio/' + admunidade.condominio +
+            '|bloco/' + admunidade.bloco +
+            '|pk_unidade/' + admunidade.pk_unidade +
             '|num/' + id,
             chave: 'num'
         };
@@ -261,10 +261,10 @@ function LoadFormVeiculos(http) {
 		formVeiculos.setItemValue('situacao_estacionamento', false);
 	}
 
-	formVeiculos.setItemValue('nome_condominio', unidadecorrente.nome_condominio);
-	formVeiculos.setItemValue('nome_bloco', unidadecorrente.nome_bloco);
-	formVeiculos.setItemValue('nome_andar', unidadecorrente.nome_andar);
-	formVeiculos.setItemValue('nome_unidade', unidadecorrente.unidade);
+	formVeiculos.setItemValue('nome_condominio', admunidade.nome_condominio);
+	formVeiculos.setItemValue('nome_bloco', admunidade.nome_bloco);
+	formVeiculos.setItemValue('nome_andar', admunidade.nome_andar);
+	formVeiculos.setItemValue('nome_unidade', admunidade.unidade);
 	//formVeiculos.setItemValue('filedate', sys.obtemDataEntradaFormatada(itens['filedate']));
 
 	var bindcombobloqueios = {
@@ -339,10 +339,10 @@ function ResultNovaLocalizacao(http) {
 		bloco: bloco,
 		andar: andar,
 		unidade: num,
-		where: 'condominio/' + unidadecorrente.condominio +
-		'|bloco/' + unidadecorrente.bloco +
-		'|andar/' + unidadecorrente.andar +
-		'|unidadecorrente/' + unidadecorrente.pk_unidade
+		where: 'condominio/' + admunidade.condominio +
+		'|bloco/' + admunidade.bloco +
+		'|andar/' + admunidade.andar +
+		'|admunidade/' + admunidade.pk_unidade
 	};
 
 	sys.FormAction(
@@ -369,7 +369,7 @@ function ResultTransferenciaVeiculo(http) {
 
 function gridLoadVeiculos() {
 
-	if (unidadecorrente === undefined)
+	if (admunidade === undefined)
 		return;
 
 	var gridSourceVeiculos;
@@ -378,10 +378,10 @@ function gridLoadVeiculos() {
 		action: 'dhtmlxgrid',
 		origem: 'condominio.veiculos',
 		campos: 'num,modelo,marca,cor',
-		where: 'condominio/' + unidadecorrente.condominio +
-		'|bloco/' + unidadecorrente.bloco +
-		'|andar/' + unidadecorrente.andar +
-		'|unidadecorrente/' + unidadecorrente.pk_unidade,
+		where: 'condominio/' + admunidade.condominio +
+		'|bloco/' + admunidade.bloco +
+		'|andar/' + admunidade.andar +
+		'|admunidade/' + admunidade.pk_unidade,
 		orderby: 'num',
 		usecheckbox: 'false',
 		usedecimal: 'modelo',
@@ -394,7 +394,7 @@ function gridLoadVeiculos() {
 
 function gridLoadVeiculosExcluidos() {
 
-	if (unidadecorrente === undefined)
+	if (admunidade === undefined)
 		return;
 
 	var gridSourceVeiculos;
@@ -403,10 +403,10 @@ function gridLoadVeiculosExcluidos() {
 		action: 'dhtmlxgrid',
 		origem: 'expurgo.veiculos',
 		campos: 'num,modelo,marca,cor',
-		where: 'condominio/' + unidadecorrente.condominio +
-		'|bloco/' + unidadecorrente.bloco +
-		'|andar/' + unidadecorrente.andar +
-		'|unidadecorrente/' + unidadecorrente.pk_unidade,
+		where: 'condominio/' + admunidade.condominio +
+		'|bloco/' + admunidade.bloco +
+		'|andar/' + admunidade.andar +
+		'|admunidade/' + admunidade.pk_unidade,
 		orderby: 'num',
 		usecheckbox: 'false',
 		usedecimal: 'modelo',
@@ -438,7 +438,7 @@ function buscaInformacoes(tipo) {
 	data_final = yyyy + '-' + mm + '-' + dd;
 
 	var torre = unidade.bloco;
-	var unidade = unidadecorrente.pk_unidade.trim();
+	var unidade = admunidade.pk_unidade.trim();
 	var placa = formVeiculosPassagens.getItemValue('buscar_placa').toUpperCase();
 	var busca_localizacao = '';
 

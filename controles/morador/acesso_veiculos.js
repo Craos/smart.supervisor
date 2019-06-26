@@ -16,7 +16,7 @@ function acesso_veiculos() {
 
 function gridLoadacesso_veiculos() {
 
-    if (unidadecorrente === undefined)
+    if (admunidade === undefined)
         return;
 
     var gridSourceacesso_veiculos;
@@ -25,10 +25,10 @@ function gridLoadacesso_veiculos() {
         action: 'dhtmlxgrid',
         origem: 'acesso.historico_passagem_veiculo',
         campos: 'filedate as data, timerg as horário, bloqueio, nome_local, situcacao, sentido, modelo, cor, placa_letras || placa_numeros as placa',
-        where: 'condominio/' + unidadecorrente.condominio +
-        '|bloco/' + unidadecorrente.bloco +
-        '|andar/' + unidadecorrente.andar +
-        '|unidadecorrente/' + unidadecorrente.pk_unidade,
+        where: 'condominio/' + admunidade.condominio +
+        '|bloco/' + admunidade.bloco +
+        '|andar/' + admunidade.andar +
+        '|admunidade/' + admunidade.pk_unidade,
         orderby: '1 desc, 2 desc',
         usecheckbox: 'false',
         usedecimal: 'nome',

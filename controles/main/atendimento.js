@@ -24,11 +24,11 @@ function atendimento() {
         contenttype: 'xml',
         action: 'dhtmlxform',
         origem: 'portal.usuario',
-        where: 'condominio/' + unidadecorrente.condominio +
-            '|bloco/' + unidadecorrente.bloco +
-            '|andar/' + unidadecorrente.andar +
-            '|unidadecorrente/' + unidadecorrente.unidade +
-            '|num/' + unidadecorrente.num,
+        where: 'condominio/' + admunidade.condominio +
+            '|bloco/' + admunidade.bloco +
+            '|andar/' + admunidade.andar +
+            '|admunidade/' + admunidade.unidade +
+            '|num/' + admunidade.num,
         chave: 'num'
     };
     formCadastroUsuario.load(sys.setParameters(formSourceCadastroUsuario));
@@ -45,12 +45,12 @@ function atendimento() {
             contenttype: 'xml',
             action: 'update',
             origem: 'portal.usuario',
-            where: 'condominio/' + unidadecorrente.condominio +
-                '|bloco/' + unidadecorrente.bloco +
-                '|andar/' + unidadecorrente.andar +
-                '|unidadecorrente/' + unidadecorrente.unidade +
-                '|num/' + unidadecorrente.num,
-            num: unidadecorrente.num,
+            where: 'condominio/' + admunidade.condominio +
+                '|bloco/' + admunidade.bloco +
+                '|andar/' + admunidade.andar +
+                '|admunidade/' + admunidade.unidade +
+                '|num/' + admunidade.num,
+            num: admunidade.num,
             login: formCadastroUsuario.getItemValue('login'),
             password: base64_encode(formCadastroUsuario.getItemValue('password'))
         };

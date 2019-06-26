@@ -35,7 +35,7 @@
         $conteudopagina = str_replace('#DATA_INICIAL#', $_REQUEST['data_inicial'], $conteudopagina);
         $conteudopagina = str_replace('#DATA_FINAL#', $_REQUEST['data_final'], $conteudopagina);
         $conteudopagina = str_replace('#TORRE#', $_REQUEST['torre'], $conteudopagina);
-        $conteudopagina = str_replace('#UNIDADE#', $_REQUEST['unidadecorrente'], $conteudopagina);
+        $conteudopagina = str_replace('#UNIDADE#', $_REQUEST['admunidade'], $conteudopagina);
         $conteudopagina = str_replace('#PLACA#', (isset($_REQUEST['placa'])) ? $_REQUEST['placa'] : 'Todos', $conteudopagina);
 
         $paginas .= $conteudopagina;

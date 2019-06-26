@@ -10,15 +10,15 @@ var campos_main = [
                     <div class='opcao'>\
                         <img src='controles/main/img/main/user.png' alt='Conta do usu&aacute;rio'>\
                         <p>Conta do usu&aacute;rio</p>\
-                        <span>Resgate de senha e altera&ccedil;&otilde;es de acesso do usu&aacute;rio respons&aacute;vel pela unidadecorrente</span>\
+                        <span>Resgate de senha e altera&ccedil;&otilde;es de acesso do usu&aacute;rio respons&aacute;vel pela admunidade</span>\
                     </div>\
                 </a>"
             },
             {type: "newcolumn"},
-            {type: "template", name:"unidadecorrente", value: "<a style='text-decoration: none' href='#' onclick='unidadecorrente();'>\
+            {type: "template", name:"admunidade", value: "<a style='text-decoration: none' href='#' onclick='admunidade();'>\
                     <div class='opcao'>\
-                        <img src='controles/main/img/main/unidadecorrente.png' alt='Minha Unidade'>\
-                        <p>Minha unidadecorrente</p>\
+                        <img src='controles/main/img/main/admunidade.png' alt='Minha Unidade'>\
+                        <p>Minha admunidade</p>\
                         <span>Forne&ccedil;a informa&ccedil;&otilde;es gerais a respeito do seu apartamento</span>\
                     </div>\
                 </a>"
@@ -27,8 +27,8 @@ var campos_main = [
             {type: "template", name:"moradores", value: "<a style='text-decoration: none' href='#' onclick='moradores();'>\
                     <div class='opcao'>\
                         <img src='controles/main/img/main/familiares.png' alt='Meus Familiares'>\
-                        <p>Moradores da unidadecorrente</p>\
-                        <span>Cadastre as pessoas que moram nesta unidadecorrente</span>\
+                        <p>Moradores da admunidade</p>\
+                        <span>Cadastre as pessoas que moram nesta admunidade</span>\
                     </div>\
                 </a>"
             },
@@ -37,7 +37,7 @@ var campos_main = [
                     <div class='opcao'>\
                         <img src='controles/main/img/main/carro.png' alt='Veículos'>\
                         <p>Ve&iacute;culos</p>\
-                        <span>Cadastro de ve&iacute;culos da unidadecorrente</span>\
+                        <span>Cadastro de ve&iacute;culos da admunidade</span>\
                     </div>\
                 </a>"
             },
@@ -47,7 +47,7 @@ var campos_main = [
                     <div class='opcao'>\
                         <img src='controles/main/img/main/empregados.png' alt='Empregados'>\
                         <p>Funcion&aacute;rios</p>\
-                        <span>Registro de pessoas que trabalham para sua unidadecorrente</span>\
+                        <span>Registro de pessoas que trabalham para sua admunidade</span>\
                     </div>\
                 </a>"
 	        },*/
@@ -74,7 +74,7 @@ var campos_main = [
                     <div class='opcao'>\
                         <img src='controles/main/img/main/animais.png' alt='Meus Familiares'>\
                         <p>Animais dom&eacute;sticos</p>\
-                        <span>Informe os detalhes dos animais dom&eacute;sticos da unidadecorrente</span>\
+                        <span>Informe os detalhes dos animais dom&eacute;sticos da admunidade</span>\
                     </div>\
                 </a>"
             },

@@ -4,7 +4,7 @@
 
 var campos_cadastro_portaria = [
 	{ type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "2", position: "label-top"},
-	{type: "template", name: "titulo", value: "Cadastro de todos os cadastro da unidadecorrente", style: "font-weight:bold; border: 0;"},
+	{type: "template", name: "titulo", value: "Cadastro de todos os cadastro da admunidade", style: "font-weight:bold; border: 0;"},
 	{type: "block", list: [
 		{ type: "block", list: [
 			{type: "fieldset", name: "opcoes", label: "Opera&ccedil;&otilde;es", width: 755, list: [
@@ -49,7 +49,7 @@ var campos_cadastro_portaria = [
 				]}
 			]},
 			{ type: "block", list: [
-				{type: "fieldset", name: "opcoes", label: "cadastro cadastrados na unidadecorrente", width: 750, list: [
+				{type: "fieldset", name: "opcoes", label: "cadastro cadastrados na admunidade", width: 750, list: [
 					{type: "container", name: "gridfamiliares", inputWidth: 730, inputHeight: 400}
 				]}
 			]}

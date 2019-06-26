@@ -56,10 +56,10 @@ function empregados() {
 				        action: 'delete',
 				        origem: 'condominio.empregados',
 				        returnkey: 'num',
-				        condominio: unidadecorrente.condominio,
-				        bloco: unidadecorrente.bloco,
-				        andar: unidadecorrente.andar,
-				        unidade: unidadecorrente.pk_unidade
+				        condominio: admunidade.condominio,
+				        bloco: admunidade.bloco,
+				        andar: admunidade.andar,
+				        unidade: admunidade.pk_unidade
 			        };
 
 			        sys.FormAction(
@@ -85,10 +85,10 @@ function empregados() {
             action: 'insert',
             origem: 'condominio.empregados',
             returnkey: 'num',
-            condominio: unidadecorrente.condominio,
-            bloco: unidadecorrente.bloco,
-            andar: unidadecorrente.andar,
-            unidade: unidadecorrente.pk_unidade,
+            condominio: admunidade.condominio,
+            bloco: admunidade.bloco,
+            andar: admunidade.andar,
+            unidade: admunidade.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
             lastuser: informacoesdousuario.uidins
@@ -113,10 +113,10 @@ function empregados() {
             contenttype: 'xml',
             action: 'directjson',
             origem: 'condominio.empregados',
-            where: 'condominio/' + unidadecorrente.condominio +
-                '|bloco/' + unidadecorrente.bloco +
-                '|andar/' + unidadecorrente.andar +
-                '|unidadecorrente/' + unidadecorrente.pk_unidade +
+            where: 'condominio/' + admunidade.condominio +
+                '|bloco/' + admunidade.bloco +
+                '|andar/' + admunidade.andar +
+                '|admunidade/' + admunidade.pk_unidade +
                 '|num/' + id,
             chave: 'num'
         };
@@ -153,16 +153,16 @@ function LoadFormEmpregados(http) {
         if (itens.hasOwnProperty(key))
             formEmpregados.setItemValue(key,  itens[key]);
 
-    formEmpregados.setItemValue('nome_condominio', unidadecorrente.nome_condominio);
-    formEmpregados.setItemValue('nome_bloco', unidadecorrente.nome_bloco);
-    formEmpregados.setItemValue('nome_andar', unidadecorrente.nome_andar);
-    formEmpregados.setItemValue('nome_unidade', unidadecorrente.unidade);
+    formEmpregados.setItemValue('nome_condominio', admunidade.nome_condominio);
+    formEmpregados.setItemValue('nome_bloco', admunidade.nome_bloco);
+    formEmpregados.setItemValue('nome_andar', admunidade.nome_andar);
+    formEmpregados.setItemValue('nome_unidade', admunidade.unidade);
 
 }
 
 function gridLoadEmpregados() {
 
-    if (unidadecorrente === undefined)
+    if (admunidade === undefined)
         return;
 
     var gridSourceEmpregados;
@@ -171,10 +171,10 @@ function gridLoadEmpregados() {
         action: 'dhtmlxgrid',
         origem: 'condominio.empregados',
         campos: 'num,nome,servico_prestado',
-        where: 'condominio/' + unidadecorrente.condominio +
-            '|bloco/' + unidadecorrente.bloco +
-            '|andar/' + unidadecorrente.andar +
-            '|unidadecorrente/' + unidadecorrente.pk_unidade,
+        where: 'condominio/' + admunidade.condominio +
+            '|bloco/' + admunidade.bloco +
+            '|andar/' + admunidade.andar +
+            '|admunidade/' + admunidade.pk_unidade,
         orderby:'num',
         usecheckbox: 'false',
         usedecimal:'nome',

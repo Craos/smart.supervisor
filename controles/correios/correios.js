@@ -68,10 +68,10 @@ function correios() {
             action: 'insert',
             origem: 'condominio.mensagens',
             returnkey: 'num',
-            condominio: unidadecorrente.condominio,
-            bloco: unidadecorrente.bloco,
-            andar: unidadecorrente.andar,
-            unidade: unidadecorrente.pk_unidade,
+            condominio: admunidade.condominio,
+            bloco: admunidade.bloco,
+            andar: admunidade.andar,
+            unidade: admunidade.pk_unidade,
             destinatarios: destinatarios.substring(0, destinatarios.length-1),
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
@@ -114,10 +114,10 @@ function correios() {
             contenttype: 'xml',
             action: 'directjson',
             origem: 'condominio.mensagens',
-            where: 'condominio/' + unidadecorrente.condominio +
-                '|bloco/' + unidadecorrente.bloco +
-                '|andar/' + unidadecorrente.andar +
-                '|unidadecorrente/' + unidadecorrente.pk_unidade +
+            where: 'condominio/' + admunidade.condominio +
+                '|bloco/' + admunidade.bloco +
+                '|andar/' + admunidade.andar +
+                '|admunidade/' + admunidade.pk_unidade +
                 '|num/' + id,
             chave: 'num'
         };
@@ -230,7 +230,7 @@ function LoadFormFromModelo(http) {
 
 function gridLoadCorreios() {
 
-    if (unidadecorrente === undefined)
+    if (admunidade === undefined)
         return;
 
     var gridSourceCorreios;
@@ -239,10 +239,10 @@ function gridLoadCorreios() {
         action: 'dhtmlxgrid',
         origem: 'condominio.listagem_emails_enviados',
         campos: 'registro, titulo, codigo_rastreamento as "Código de rastreamento", destinatarios as "Destinatários"',
-        where: 'condominio/' + unidadecorrente.condominio +
-            '|bloco/' + unidadecorrente.bloco +
-            '|andar/' + unidadecorrente.andar +
-            '|unidadecorrente/' + unidadecorrente.pk_unidade,
+        where: 'condominio/' + admunidade.condominio +
+            '|bloco/' + admunidade.bloco +
+            '|andar/' + admunidade.andar +
+            '|admunidade/' + admunidade.pk_unidade,
         orderby:'num desc',
         usecheckbox: 'false',
         usedecimal:'num',
@@ -255,7 +255,7 @@ function gridLoadCorreios() {
 
 function gridLoadEmails() {
 
-    if (unidadecorrente === undefined)
+    if (admunidade === undefined)
         return;
 
     var gridSourceEmails;
@@ -264,9 +264,9 @@ function gridLoadEmails() {
         action: 'dhtmlxgrid',
         campos: 'num as "Tipo de email", tipo as "Email", email as "   "',
         origem: 'condominio.lista_emails_unidade',
-        where: 'condominio/' + unidadecorrente.condominio +
-            '|bloco/' + unidadecorrente.bloco +
-            '|unidadecorrente/' + unidadecorrente.unidade,
+        where: 'condominio/' + admunidade.condominio +
+            '|bloco/' + admunidade.bloco +
+            '|admunidade/' + admunidade.unidade,
         usecheckbox: 'true',
         chave: 'num',
         displaychave: 'false'
