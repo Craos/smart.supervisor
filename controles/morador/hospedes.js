@@ -16,7 +16,7 @@ function hospedes() {
 	formHospedes = tabCadastroHospede.attachForm(campos_hospedes);
 	tabbarHospedes.setTabActive('tabCadastroHospede');
 
-	tabbarHospedes.addTab('tabHistoricoHospedeUnidade','Histórico da unidade','');
+	tabbarHospedes.addTab('tabHistoricoHospedeUnidade','Histórico da unidadecorrente','');
 	var tabHistoricoHospedeUnidade = tabbarHospedes.cells('tabHistoricoHospedeUnidade');
 	formHospedesHistorico = tabHistoricoHospedeUnidade.attachForm(campos_hospedes_historico_cadastro);
 
@@ -89,10 +89,10 @@ function hospedes() {
 						action: 'delete',
 						origem: 'condominio.hospedes',
 						returnkey: 'num',
-						condominio: userinfo.condominio,
-						bloco: userinfo.bloco,
-						andar: userinfo.andar,
-						unidade: userinfo.pk_unidade
+						condominio: unidadecorrente.condominio,
+						bloco: unidadecorrente.bloco,
+						andar: unidadecorrente.andar,
+						unidade: unidadecorrente.pk_unidade
 					};
 
 					sys.FormAction(
@@ -122,14 +122,14 @@ function hospedes() {
 				returnkey: 'num',
 				num: formHospedes.getItemValue('num'),
 				data_entrada: obtemDataEntradaHospede(),
-				condominio: userinfo.condominio,
-				bloco: userinfo.bloco,
-				andar: userinfo.andar,
-				unidade: userinfo.pk_unidade,
-				where: 'condominio/' + userinfo.condominio +
-				'|bloco/' + userinfo.bloco +
-				'|andar/' + userinfo.andar +
-				'|unidade/' + userinfo.pk_unidade +
+				condominio: unidadecorrente.condominio,
+				bloco: unidadecorrente.bloco,
+				andar: unidadecorrente.andar,
+				unidade: unidadecorrente.pk_unidade,
+				where: 'condominio/' + unidadecorrente.condominio +
+				'|bloco/' + unidadecorrente.bloco +
+				'|andar/' + unidadecorrente.andar +
+				'|unidadecorrente/' + unidadecorrente.pk_unidade +
 				'|num/' + formHospedes.getItemValue('num')
 			};
 
@@ -153,10 +153,10 @@ function hospedes() {
 			action: 'insert',
 			origem: 'condominio.hospedes',
 			returnkey: 'num',
-			condominio: userinfo.condominio,
-			bloco: userinfo.bloco,
-			andar: userinfo.andar,
-			unidade: userinfo.pk_unidade,
+			condominio: unidadecorrente.condominio,
+			bloco: unidadecorrente.bloco,
+			andar: unidadecorrente.andar,
+			unidade: unidadecorrente.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
             lastuser: informacoesdousuario.uidins
@@ -181,10 +181,10 @@ function hospedes() {
 			contenttype: 'xml',
 			action: 'directjson',
 			origem: 'condominio.hospedes_info',
-			where: 'condominio/' + userinfo.condominio +
-			'|bloco/' + userinfo.bloco +
-			'|andar/' + userinfo.andar +
-			'|unidade/' + userinfo.pk_unidade +
+			where: 'condominio/' + unidadecorrente.condominio +
+			'|bloco/' + unidadecorrente.bloco +
+			'|andar/' + unidadecorrente.andar +
+			'|unidadecorrente/' + unidadecorrente.pk_unidade +
 			'|num/' + id,
 			chave: 'num'
 		};
@@ -206,10 +206,10 @@ function hospedes() {
 			contenttype: 'xml',
 			action: 'directjson',
 			origem: 'expurgo.hospedes_info',
-			where: 'condominio/' + userinfo.condominio +
-			'|bloco/' + userinfo.bloco +
-			'|andar/' + userinfo.andar +
-			'|unidade/' + userinfo.pk_unidade +
+			where: 'condominio/' + unidadecorrente.condominio +
+			'|bloco/' + unidadecorrente.bloco +
+			'|andar/' + unidadecorrente.andar +
+			'|unidadecorrente/' + unidadecorrente.pk_unidade +
 			'|num/' + id,
 			chave: 'num'
 		};
@@ -259,10 +259,10 @@ function LoadFormHospedes(http) {
 		if (itens.hasOwnProperty(key))
 			formHospedes.setItemValue(key, itens[key]);
 
-	formHospedes.setItemValue('nome_condominio', userinfo.nome_condominio);
-	formHospedes.setItemValue('nome_bloco', userinfo.nome_bloco);
-	formHospedes.setItemValue('nome_andar', userinfo.nome_andar);
-	formHospedes.setItemValue('nome_unidade', userinfo.unidade);
+	formHospedes.setItemValue('nome_condominio', unidadecorrente.nome_condominio);
+	formHospedes.setItemValue('nome_bloco', unidadecorrente.nome_bloco);
+	formHospedes.setItemValue('nome_andar', unidadecorrente.nome_andar);
+	formHospedes.setItemValue('nome_unidade', unidadecorrente.unidade);
 
 	var fotocadastro = formHospedes.getContainer("foto_hospede");
 	fotocadastro.innerHTML = '';
@@ -309,7 +309,7 @@ function LoadFormHospedesHistoricoCadastro(http) {
 
 function gridLoadHospedes() {
 
-	if (userinfo === undefined)
+	if (unidadecorrente === undefined)
 		return;
 
 	var gridSourceHospedes;
@@ -318,10 +318,10 @@ function gridLoadHospedes() {
 		action: 'dhtmlxgrid',
 		origem: 'condominio.hospedes_info',
 		campos: 'num,nome,filedate as entrada,nascimento as "Data de nascimento",situacao_hospede as situacao',
-		where: 'condominio/' + userinfo.condominio +
-		'|bloco/' + userinfo.bloco +
-		'|andar/' + userinfo.andar +
-		'|unidade/' + userinfo.pk_unidade,
+		where: 'condominio/' + unidadecorrente.condominio +
+		'|bloco/' + unidadecorrente.bloco +
+		'|andar/' + unidadecorrente.andar +
+		'|unidadecorrente/' + unidadecorrente.pk_unidade,
 		orderby: 'num',
 		usecheckbox: 'false',
 		usedecimal: 'nome',
@@ -334,7 +334,7 @@ function gridLoadHospedes() {
 
 function gridLoadHospedesHistoricoCadastro() {
 
-	if (userinfo === undefined)
+	if (unidadecorrente === undefined)
 		return;
 
 	var gridSourceHospedesHistoricoCadastro;
@@ -343,10 +343,10 @@ function gridLoadHospedesHistoricoCadastro() {
 		action: 'dhtmlxgrid',
 		origem: 'expurgo.hospedes_info',
 		campos: 'num,nome,filedate as entrada,nascimento as "Data de nascimento",situacao_hospede as situacao',
-		where: 'condominio/' + userinfo.condominio +
-		'|bloco/' + userinfo.bloco +
-		'|andar/' + userinfo.andar +
-		'|unidade/' + userinfo.pk_unidade,
+		where: 'condominio/' + unidadecorrente.condominio +
+		'|bloco/' + unidadecorrente.bloco +
+		'|andar/' + unidadecorrente.andar +
+		'|unidadecorrente/' + unidadecorrente.pk_unidade,
 		orderby: 'num',
 		usecheckbox: 'false',
 		usedecimal: 'nome',

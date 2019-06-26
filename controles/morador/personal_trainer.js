@@ -66,10 +66,10 @@ function personal_trainer() {
                         action: 'delete',
                         origem: 'condominio.personal',
                         returnkey: 'num',
-                        condominio: userinfo.condominio,
-                        bloco: userinfo.bloco,
-                        andar: userinfo.andar,
-                        unidade: userinfo.pk_unidade
+                        condominio: unidadecorrente.condominio,
+                        bloco: unidadecorrente.bloco,
+                        andar: unidadecorrente.andar,
+                        unidade: unidadecorrente.pk_unidade
                     };
 
                     sys.FormAction(
@@ -118,12 +118,12 @@ function personal_trainer() {
         if (name == 'situacao') {
             if (state == true) {
                 formPersonal.enableItem('bloco');
-                formPersonal.enableItem('unidade');
+                formPersonal.enableItem('unidadecorrente');
             } else {
                 formPersonal.setItemValue('bloco', null);
-                formPersonal.setItemValue('unidade', null);
+                formPersonal.setItemValue('unidadecorrente', null);
                 formPersonal.disableItem('bloco');
-                formPersonal.disableItem('unidade');
+                formPersonal.disableItem('unidadecorrente');
             }
         }
     });
@@ -137,9 +137,9 @@ function personal_trainer() {
 
         if (isChecked == true) {
             var bloco = formPersonal.getItemValue('bloco');
-            var unidade = formPersonal.getItemValue('unidade');
+            var unidade = formPersonal.getItemValue('unidadecorrente');
             if ((bloco == undefined || bloco == '') || (unidade == undefined || unidade == '')) {
-                alert('Informe corretamente a torre e unidade');
+                alert('Informe corretamente a torre e unidadecorrente');
                 return;
             }
         }
@@ -248,7 +248,7 @@ function LoadFormPersonal(http) {
 
     if (isChecked == true) {
         formPersonal.enableItem('bloco');
-        formPersonal.enableItem('unidade');
+        formPersonal.enableItem('unidadecorrente');
     }
 
         autenticacaopersonal = formPersonal.getItemValue('autenticacao');

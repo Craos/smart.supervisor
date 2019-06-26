@@ -16,7 +16,7 @@ function acesso_morador() {
 
 function gridLoadacesso_moradores() {
 
-    if (userinfo === undefined)
+    if (unidadecorrente === undefined)
         return;
 
     var gridSourceacesso_moradores;
@@ -25,10 +25,10 @@ function gridLoadacesso_moradores() {
         action: 'dhtmlxgrid',
         origem: 'acesso.historico_passagem_morador',
         campos: 'filedate as data, timerg as horário, bloqueio, nome_local, situcacao, sentido, nome',
-        where: 'condominio/' + userinfo.condominio +
-        '|bloco/' + userinfo.bloco +
-        '|andar/' + userinfo.andar +
-        '|unidade/' + userinfo.pk_unidade,
+        where: 'condominio/' + unidadecorrente.condominio +
+        '|bloco/' + unidadecorrente.bloco +
+        '|andar/' + unidadecorrente.andar +
+        '|unidadecorrente/' + unidadecorrente.pk_unidade,
         orderby: '1 desc, 2 desc',
         usecheckbox: 'false',
         usedecimal: 'num',

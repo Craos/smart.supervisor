@@ -4,7 +4,7 @@
 
 var campos_animais = [
     { type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "2", position: "label-top"},
-    {type: "template", name: "titulo", value: "Cadastro dos animais dom&eacute;sticos da unidade", style: "font-weight:bold; color: #003366;"},
+    {type: "template", name: "titulo", value: "Cadastro dos animais dom&eacute;sticos da unidadecorrente", style: "font-weight:bold; color: #003366;"},
 	{type: "hidden", name: "num"},
     { type: "block", list: [
         {type: "fieldset", name: "opcoes", label: "Opera&ccedil;&otilde;es", width: 955, list: [

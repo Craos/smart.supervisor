@@ -48,10 +48,10 @@ function animais() {
 				        action: 'delete',
 				        origem: 'condominio.animais',
 				        returnkey: 'num',
-				        condominio: userinfo.condominio,
-				        bloco: userinfo.bloco,
-				        andar: userinfo.andar,
-				        unidade: userinfo.pk_unidade
+				        condominio: unidadecorrente.condominio,
+				        bloco: unidadecorrente.bloco,
+				        andar: unidadecorrente.andar,
+				        unidade: unidadecorrente.pk_unidade
 			        };
 
 			        sys.FormAction(
@@ -78,10 +78,10 @@ function animais() {
             action: 'insert',
             origem: 'condominio.animais',
             returnkey: 'num',
-            condominio: userinfo.condominio,
-            bloco: userinfo.bloco,
-            andar: userinfo.andar,
-            unidade: userinfo.pk_unidade,
+            condominio: unidadecorrente.condominio,
+            bloco: unidadecorrente.bloco,
+            andar: unidadecorrente.andar,
+            unidade: unidadecorrente.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
             lastuser: informacoesdousuario.uidins
@@ -106,10 +106,10 @@ function animais() {
             contenttype: 'xml',
             action: 'directjson',
             origem: 'condominio.animais',
-            where: 'condominio/' + userinfo.condominio +
-                '|bloco/' + userinfo.bloco +
-                '|andar/' + userinfo.andar +
-                '|unidade/' + userinfo.pk_unidade +
+            where: 'condominio/' + unidadecorrente.condominio +
+                '|bloco/' + unidadecorrente.bloco +
+                '|andar/' + unidadecorrente.andar +
+                '|unidadecorrente/' + unidadecorrente.pk_unidade +
                 '|num/' + id,
             chave: 'num'
         };
@@ -146,16 +146,16 @@ function LoadFormAnimais(http) {
         if (itens.hasOwnProperty(key))
             formAnimais.setItemValue(key,  itens[key]);
 
-    formAnimais.setItemValue('nome_condominio', userinfo.nome_condominio);
-    formAnimais.setItemValue('nome_bloco', userinfo.nome_bloco);
-    formAnimais.setItemValue('nome_andar', userinfo.nome_andar);
-    formAnimais.setItemValue('nome_unidade', userinfo.unidade);
+    formAnimais.setItemValue('nome_condominio', unidadecorrente.nome_condominio);
+    formAnimais.setItemValue('nome_bloco', unidadecorrente.nome_bloco);
+    formAnimais.setItemValue('nome_andar', unidadecorrente.nome_andar);
+    formAnimais.setItemValue('nome_unidade', unidadecorrente.unidade);
 
 }
 
 function gridLoadAnimais() {
 
-    if (userinfo === undefined)
+    if (unidadecorrente === undefined)
         return;
 
     var gridSourceAnimais;
@@ -164,10 +164,10 @@ function gridLoadAnimais() {
         action: 'dhtmlxgrid',
         origem: 'condominio.animais',
         campos: 'num,nome,especie,raca',
-        where: 'condominio/' + userinfo.condominio +
-            '|bloco/' + userinfo.bloco +
-            '|andar/' + userinfo.andar +
-            '|unidade/' + userinfo.pk_unidade,
+        where: 'condominio/' + unidadecorrente.condominio +
+            '|bloco/' + unidadecorrente.bloco +
+            '|andar/' + unidadecorrente.andar +
+            '|unidadecorrente/' + unidadecorrente.pk_unidade,
         orderby:'num',
         usecheckbox: 'false',
         usedecimal:'nome',

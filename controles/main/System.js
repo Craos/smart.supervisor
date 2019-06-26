@@ -309,10 +309,10 @@ SystemCraos = function () {
             action: 'delete',
             origem: this.CurrentTable,
             returnkey: 'num',
-            condominio: userinfo.condominio,
-            bloco: userinfo.bloco,
-            andar: userinfo.andar,
-            unidade: userinfo.pk_unidade
+            condominio: unidadecorrente.condominio,
+            bloco: unidadecorrente.bloco,
+            andar: unidadecorrente.andar,
+            unidade: unidadecorrente.pk_unidade
         };
 
         sys.FormAction(
@@ -330,10 +330,10 @@ SystemCraos = function () {
             action: 'dhtmlxgrid',
             origem: this.CurrentTable,
             campos: campos,
-            where: 'condominio/' + userinfo.condominio +
-                '|bloco/' + userinfo.bloco +
-                '|andar/' + userinfo.andar +
-                '|unidade/' + userinfo.pk_unidade,
+            where: 'condominio/' + unidadecorrente.condominio +
+                '|bloco/' + unidadecorrente.bloco +
+                '|andar/' + unidadecorrente.andar +
+                '|unidadecorrente/' + unidadecorrente.pk_unidade,
             orderby: 'num',
             usecheckbox: 'false',
             usedecimal: 'nome',
@@ -352,10 +352,10 @@ SystemCraos = function () {
             contenttype: 'xml',
             action: 'directjson',
             origem: this.CurrentTable,
-            where: 'condominio/' + userinfo.condominio +
-                '|bloco/' + userinfo.bloco +
-                '|andar/' + userinfo.andar +
-                '|unidade/' + userinfo.pk_unidade +
+            where: 'condominio/' + unidadecorrente.condominio +
+                '|bloco/' + unidadecorrente.bloco +
+                '|andar/' + unidadecorrente.andar +
+                '|unidadecorrente/' + unidadecorrente.pk_unidade +
                 '|num/' + registro,
             chave: 'num'
         };
@@ -380,10 +380,10 @@ SystemCraos = function () {
             lastdate: lastdate,
             lasttime: lasttime,
             lastuser: originalUserInfo.uidins,
-            condominio: userinfo.condominio,
-            bloco: userinfo.bloco,
-            andar: userinfo.andar,
-            unidade: userinfo.pk_unidade
+            condominio: unidadecorrente.condominio,
+            bloco: unidadecorrente.bloco,
+            andar: unidadecorrente.andar,
+            unidade: unidadecorrente.pk_unidade
         };
 
         sys.FormAction(

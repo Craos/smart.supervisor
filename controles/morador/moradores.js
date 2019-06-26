@@ -84,10 +84,10 @@ function moradores() {
                         action: 'delete',
                         origem: 'condominio.moradores',
                         returnkey: 'num',
-                        condominio: userinfo.condominio,
-                        bloco: userinfo.bloco,
-                        andar: userinfo.andar,
-                        unidade: userinfo.pk_unidade
+                        condominio: unidadecorrente.condominio,
+                        bloco: unidadecorrente.bloco,
+                        andar: unidadecorrente.andar,
+                        unidade: unidadecorrente.pk_unidade
                     };
 
                     sys.FormAction(
@@ -132,12 +132,12 @@ function moradores() {
                 return;
             }
 
-            new ReservadeEspaco({unidade: userinfo, nome:formMoradores.getItemValue('nome'), autenticacao:formMoradores.getItemValue('autenticacao')}).Exibir();
+            new ReservadeEspaco({unidade: unidadecorrente, nome:formMoradores.getItemValue('nome'), autenticacao:formMoradores.getItemValue('autenticacao')}).Exibir();
         }
-        
-        
-        
-        
+
+
+
+
     });
 
     formMoradores.attachEvent("onAfterValidate", function (status) {
@@ -151,10 +151,10 @@ function moradores() {
             action: 'insert',
             origem: 'condominio.moradores',
             returnkey: 'num',
-            condominio: userinfo.condominio,
-            bloco: userinfo.bloco,
-            andar: userinfo.andar,
-            unidade: userinfo.pk_unidade,
+            condominio: unidadecorrente.condominio,
+            bloco: unidadecorrente.bloco,
+            andar: unidadecorrente.andar,
+            unidade: unidadecorrente.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
             lastuser: informacoesdousuario.uidins
@@ -179,10 +179,10 @@ function moradores() {
             contenttype: 'xml',
             action: 'directjson',
             origem: 'condominio.moradores_info',
-            where: 'condominio/' + userinfo.condominio +
-            '|bloco/' + userinfo.bloco +
-            '|andar/' + userinfo.andar +
-            '|unidade/' + userinfo.pk_unidade +
+            where: 'condominio/' + unidadecorrente.condominio +
+            '|bloco/' + unidadecorrente.bloco +
+            '|andar/' + unidadecorrente.andar +
+            '|unidadecorrente/' + unidadecorrente.pk_unidade +
             '|num/' + id,
             chave: 'num'
         };
@@ -222,8 +222,8 @@ function ResultFormMoradores(http) {
         cn: 'as',
         process: 'condominio.ativa_registro',
         params: JSON.stringify({
-            'bloco': userinfo.bloco,
-            'unidade': userinfo.pk_unidade,
+            'bloco': unidadecorrente.bloco,
+            'unidade': unidadecorrente.pk_unidade,
             'registro': out.registro
         })
     }, function (http) {
@@ -251,10 +251,10 @@ function LoadFormMoradores(http) {
     }
 
 
-    formMoradores.setItemValue('nome_condominio', userinfo.nome_condominio);
-    formMoradores.setItemValue('nome_bloco', userinfo.nome_bloco);
-    formMoradores.setItemValue('nome_andar', userinfo.nome_andar);
-    formMoradores.setItemValue('nome_unidade', userinfo.unidade);
+    formMoradores.setItemValue('nome_condominio', unidadecorrente.nome_condominio);
+    formMoradores.setItemValue('nome_bloco', unidadecorrente.nome_bloco);
+    formMoradores.setItemValue('nome_andar', unidadecorrente.nome_andar);
+    formMoradores.setItemValue('nome_unidade', unidadecorrente.unidade);
 
     var fotocadastro = formMoradores.getContainer("foto_morador");
     fotocadastro.innerHTML = '';
@@ -283,7 +283,7 @@ function LoadFormMoradores(http) {
 
 function gridLoadMoradores() {
 
-    if (userinfo === undefined)
+    if (unidadecorrente === undefined)
         return;
 
     var gridSourceMoradores;
@@ -292,10 +292,10 @@ function gridLoadMoradores() {
         action: 'dhtmlxgrid',
         origem: 'condominio.moradores_info',
         campos: 'num,nome,nascimento',
-        where: 'condominio/' + userinfo.condominio +
-        '|bloco/' + userinfo.bloco +
-        '|andar/' + userinfo.andar +
-        '|unidade/' + userinfo.pk_unidade,
+        where: 'condominio/' + unidadecorrente.condominio +
+        '|bloco/' + unidadecorrente.bloco +
+        '|andar/' + unidadecorrente.andar +
+        '|unidadecorrente/' + unidadecorrente.pk_unidade,
         orderby: 'num',
         usecheckbox: 'false',
         usedecimal: 'nome',

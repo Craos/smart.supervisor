@@ -34,7 +34,7 @@ $condominio = $dados['condominio'];
 $nome_bloco = $torres[$dados['bloco']];
 $bloco = $dados['bloco'];
 $andar = $dados['andar'];
-$unidade = $dados['unidade'];
+$unidade = $dados['unidadecorrente'];
 $pk_unidade = $dados['pk_unidade'];
 $num = $dados['num'];
 $email_usuario = $dados['email'];
@@ -44,7 +44,7 @@ $email_usuario = $dados['email'];
 $server_web->Execute("
   SELECT *
     FROM condominio.unidades
-   WHERE condominio = $condominio and bloco = $bloco and andar = $andar and unidade = $unidade
+   WHERE condominio = $condominio and bloco = $bloco and andar = $andar and unidadecorrente = $unidade
 ");
 $dados_unidade = @pg_fetch_object($server_web->Resource);
 
@@ -60,7 +60,7 @@ $server_web->Execute("SELECT moradores.nome, genero.descricao AS genero, morador
    FROM condominio.moradores
    LEFT JOIN condominio.genero ON moradores.genero::text = genero.id::text
    LEFT JOIN condominio.parentesco ON moradores.parentesco = parentesco.id::numeric
-   WHERE moradores.condominio = $condominio and moradores.bloco = $bloco and moradores.andar = $andar and moradores.unidade = $pk_unidade
+   WHERE moradores.condominio = $condominio and moradores.bloco = $bloco and moradores.andar = $andar and moradores.unidadecorrente = $pk_unidade
    ORDER BY moradores.num
 ");
 
@@ -68,7 +68,7 @@ echo  "SELECT moradores.nome, genero.descricao AS genero, moradores.cpf, morador
    FROM condominio.moradores
    LEFT JOIN condominio.genero ON moradores.genero::text = genero.id::text
    LEFT JOIN condominio.parentesco ON moradores.parentesco = parentesco.id::numeric
-   WHERE moradores.condominio = $condominio and moradores.bloco = $bloco and moradores.andar = $andar and moradores.unidade = $pk_unidade
+   WHERE moradores.condominio = $condominio and moradores.bloco = $bloco and moradores.andar = $andar and moradores.unidadecorrente = $pk_unidade
    ORDER BY moradores.num
 ";
 
@@ -126,7 +126,7 @@ HTML;
 $server_web->Execute("
   SELECT *
     FROM condominio.veiculos
-   WHERE condominio = $condominio and bloco = $bloco and andar = $andar and unidade = $pk_unidade
+   WHERE condominio = $condominio and bloco = $bloco and andar = $andar and unidadecorrente = $pk_unidade
 ");
 
 
@@ -169,7 +169,7 @@ HTML;
 $server_web->Execute("
 SELECT *
 FROM condominio.empregados
-   WHERE condominio = $condominio and bloco = $bloco and andar = $andar and unidade = $pk_unidade
+   WHERE condominio = $condominio and bloco = $bloco and andar = $andar and unidadecorrente = $pk_unidade
 ");
 
 $linha_empregados = '';
@@ -268,7 +268,7 @@ HTML;
 $server_web->Execute("
 SELECT *
 FROM condominio.visitantes
-   WHERE condominio = $condominio and bloco = $bloco and andar = $andar and unidade = $pk_unidade
+   WHERE condominio = $condominio and bloco = $bloco and andar = $andar and unidadecorrente = $pk_unidade
 ");
 
 $linha_visitantes = '';
@@ -367,7 +367,7 @@ HTML;
 $server_web->Execute("
 SELECT *
 FROM condominio.animais
-   WHERE condominio = $condominio and bloco = $bloco and andar = $andar and unidade = $pk_unidade
+   WHERE condominio = $condominio and bloco = $bloco and andar = $andar and unidadecorrente = $pk_unidade
 ");
 
 $linha_animais = '';

@@ -64,10 +64,10 @@ function prestadores() {
 						action: 'delete',
 						origem: 'portaria.cadastro',
 						returnkey: 'num',
-						condominio: userinfo.condominio,
-						bloco: userinfo.bloco,
-						andar: userinfo.andar,
-						unidade: userinfo.pk_unidade
+						condominio: unidadecorrente.condominio,
+						bloco: unidadecorrente.bloco,
+						andar: unidadecorrente.andar,
+						unidade: unidadecorrente.pk_unidade
 					};
 
 					sys.FormAction(
@@ -99,10 +99,10 @@ function prestadores() {
 				action: 'insert',
 				origem: 'acesso.passagem',
 				returnkey: 'num',
-				condominio: userinfo.condominio,
-				bloco: userinfo.bloco,
-				andar: userinfo.andar,
-				unidade: userinfo.pk_unidade,
+				condominio: unidadecorrente.condominio,
+				bloco: unidadecorrente.bloco,
+				andar: unidadecorrente.andar,
+				unidade: unidadecorrente.pk_unidade,
 				autenticacao: formcadastro.getItemValue('num'),
 				portaid: 1,
 				sistema: 3,
@@ -136,10 +136,10 @@ function prestadores() {
 				action: 'insert',
 				origem: 'acesso.passagem',
 				returnkey: 'num',
-				condominio: userinfo.condominio,
-				bloco: userinfo.bloco,
-				andar: userinfo.andar,
-				unidade: userinfo.pk_unidade,
+				condominio: unidadecorrente.condominio,
+				bloco: unidadecorrente.bloco,
+				andar: unidadecorrente.andar,
+				unidade: unidadecorrente.pk_unidade,
 				autenticacao: formcadastro.getItemValue('num'),
 				observacoes: formcadastro.getItemValue('observacoes_porteiro'),
 				portaid: 1,
@@ -171,10 +171,10 @@ function prestadores() {
 			action: 'insert',
 			origem: 'portaria.cadastro',
 			returnkey: 'num',
-			condominio: userinfo.condominio,
-			bloco: userinfo.bloco,
-			andar: userinfo.andar,
-			unidade: userinfo.pk_unidade,
+			condominio: unidadecorrente.condominio,
+			bloco: unidadecorrente.bloco,
+			andar: unidadecorrente.andar,
+			unidade: unidadecorrente.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
             lastuser: informacoesdousuario.uidins
@@ -251,10 +251,10 @@ function LoadFormcadastro(http) {
 		if (itens.hasOwnProperty(key))
 			formcadastro.setItemValue(key, itens[key]);
 
-	formcadastro.setItemValue('nome_condominio', userinfo.nome_condominio);
-	formcadastro.setItemValue('nome_bloco', userinfo.nome_bloco);
-	formcadastro.setItemValue('nome_andar', userinfo.nome_andar);
-	formcadastro.setItemValue('nome_unidade', userinfo.unidade);
+	formcadastro.setItemValue('nome_condominio', unidadecorrente.nome_condominio);
+	formcadastro.setItemValue('nome_bloco', unidadecorrente.nome_bloco);
+	formcadastro.setItemValue('nome_andar', unidadecorrente.nome_andar);
+	formcadastro.setItemValue('nome_unidade', unidadecorrente.unidade);
 
 	var fotocadastro = formcadastro.getContainer("foto_cadastro");
 	fotocadastro.innerHTML = '';
@@ -268,7 +268,7 @@ function LoadFormcadastro(http) {
 
 function gridLoadcadastro() {
 
-	if (userinfo === undefined)
+	if (unidadecorrente === undefined)
 		return;
 
 	var gridSourcecadastro;

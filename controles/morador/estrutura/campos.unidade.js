@@ -4,11 +4,11 @@
 
 var campos_unidade = [
     { type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "8", position: "label-top"},
-    {type: "template", name: "titulo", value: "Cadastro de informa&ccedil;&otilde;es gerais da unidade", style: "font-weight:bold; color: #003366;"},
+    {type: "template", name: "titulo", value: "Cadastro de informa&ccedil;&otilde;es gerais da unidadecorrente", style: "font-weight:bold; color: #003366;"},
         {type: "fieldset", name: "opcoes", label: "Opera&ccedil;&otilde;es", width: 955, list: [
             {type: "button", name: "finalizar", value: "Atualizar"}
         ]},
-    {type: "fieldset", name: "informacoes_unidade", label: "Informa&ccedil;&otilde;es da unidade", inputWidth: 955, list: [
+    {type: "fieldset", name: "informacoes_unidade", label: "Informa&ccedil;&otilde;es da unidadecorrente", inputWidth: 955, list: [
         {type: "block", offsetTop: "0", list: [
             {type: "input", name: "num", readonly:true,  label: "Registro", inputWidth: 50, style: "font-weight:bold; color:red"},
             {type: "newcolumn"},
@@ -18,7 +18,7 @@ var campos_unidade = [
             {type: "newcolumn"},
             {type: "input", name: "andar",  readonly:true, label: "Andar", inputWidth: 100, style: "font-weight:bold; color:red"},
             {type: "newcolumn"},
-            {type: "input", name: "unidade", readonly:true,  label: "Unidade", inputWidth: 100, style: "font-weight:bold; color:red"}
+            {type: "input", name: "unidadecorrente", readonly:true,  label: "Unidade", inputWidth: 100, style: "font-weight:bold; color:red"}
         ]},
         {type: "block", offsetTop: "0", list: [
             {type: "input", name: "email_correspondencias", label: "Endereços de e-mail para setor de correspond&ecirc;ncias", inputWidth: 350, style: "font-weight:bold;"}

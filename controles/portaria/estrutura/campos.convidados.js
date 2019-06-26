@@ -42,7 +42,7 @@ var campos_convidados = [
             {type: "block", list: [
                 {type: "template", name: "bloco", label: "Bloco", inputWidth: 100, style: "color: #137DA1;"},
                 {type: "newcolumn"},
-                {type: "template", name: "unidade", label: "Unidade", inputWidth: 100, style: "color: #137DA1;"},
+                {type: "template", name: "unidadecorrente", label: "Unidade", inputWidth: 100, style: "color: #137DA1;"},
                 {type: "newcolumn"},
                 {type: "template", name: "nome", label: "Convidado",  inputWidth: 400, style: "color: #137DA1;"},
 	            {type: "newcolumn"},

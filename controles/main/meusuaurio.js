@@ -25,14 +25,14 @@ function meusuaurio() {
         contenttype: 'xml',
         action: 'dhtmlxform',
         origem: 'portal.usuario_info',
-        where: 'condominio/' + userinfo.condominio +
-            '|bloco/' + userinfo.bloco +
-            '|andar/' + userinfo.andar +
-            '|unidade/' + userinfo.unidade +
-            '|num/' + userinfo.num,
+        where: 'condominio/' + unidadecorrente.condominio +
+            '|bloco/' + unidadecorrente.bloco +
+            '|andar/' + unidadecorrente.andar +
+            '|unidadecorrente/' + unidadecorrente.unidade +
+            '|num/' + unidadecorrente.num,
         chave: 'num'
     };
-    
+
     formMeuUsuario.load(sys.setParameters(formSourceCadastroUsuario), function() {
 	    var senha = base64_decode(formMeuUsuario.getItemValue('lbsenha'));
 	    formMeuUsuario.setItemValue('lbsenha', senha);
@@ -51,12 +51,12 @@ function meusuaurio() {
             contenttype: 'xml',
             action: 'update',
             origem: 'portal.usuario',
-            where: 'condominio/' + userinfo.condominio +
-                '|bloco/' + userinfo.bloco +
-                '|andar/' + userinfo.andar +
-                '|unidade/' + userinfo.unidade +
-                '|num/' + userinfo.num,
-            num: userinfo.num,
+            where: 'condominio/' + unidadecorrente.condominio +
+                '|bloco/' + unidadecorrente.bloco +
+                '|andar/' + unidadecorrente.andar +
+                '|unidadecorrente/' + unidadecorrente.unidade +
+                '|num/' + unidadecorrente.num,
+            num: unidadecorrente.num,
             login: formMeuUsuario.getItemValue('login'),
             password: base64_encode(formMeuUsuario.getItemValue('password'))
         };

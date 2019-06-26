@@ -4,7 +4,7 @@
 
 var campos_hospedes = [
     {type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "2", position: "label-top"},
-    {type: "template", offsetLeft: "20", offsetTop: "20", name: "titulo", value: "Cadastro de todos os hospedes da unidade", style: "font-weight:bold; border: 0;"},
+    {type: "template", offsetLeft: "20", offsetTop: "20", name: "titulo", value: "Cadastro de todos os hospedes da unidadecorrente", style: "font-weight:bold; border: 0;"},
     { type: "block", list: [
         {type: "fieldset", name: "opcoes", label: "Opera&ccedil;&otilde;es", width: 955, list: [
             {type: "button", name: "novo", value: "1. Cadastrar novo"},
@@ -77,7 +77,7 @@ var campos_hospedes = [
             ]}
         ]},
         { type: "block", list: [
-        {type: "fieldset", name: "opcoes", label: "H&oacute;spedes cadastrados na unidade", width: 955, list: [
+        {type: "fieldset", name: "opcoes", label: "H&oacute;spedes cadastrados na unidadecorrente", width: 955, list: [
             {type: "container", name: "gridfamiliares", inputWidth: 930, inputHeight: 180}
         ]}
     ]}
@@ -85,7 +85,7 @@ var campos_hospedes = [
 
 var campos_hospedes_historico_cadastro = [
     {type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "2", position: "label-top"},
-    {type: "template", offsetLeft: "20", offsetTop: "20", name: "titulo", value: "Hist&oacute;rico de cadastro nesta unidade", style: "font-weight:bold; border: 0;"},
+    {type: "template", offsetLeft: "20", offsetTop: "20", name: "titulo", value: "Hist&oacute;rico de cadastro nesta unidadecorrente", style: "font-weight:bold; border: 0;"},
     {type: "hidden", name: "num"},
         {type: "block", list: [
             {type: "fieldset", name: "opcoes", label: "Informa&ccedil;&otilde;es do h&oacute;spede", width: 955, list: [
@@ -116,7 +116,7 @@ var campos_hospedes_historico_cadastro = [
             ]}
         ]},
     { type: "block", list: [
-        {type: "fieldset", name: "opcoes", label: "Hist&oacute;rico de registros da unidade", width: 955, list: [
+        {type: "fieldset", name: "opcoes", label: "Hist&oacute;rico de registros da unidadecorrente", width: 955, list: [
             {type: "container", name: "hist_gridfamiliares", inputWidth: 930, inputHeight: 180}
         ]}
     ]}

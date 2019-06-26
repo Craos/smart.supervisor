@@ -13,11 +13,11 @@ function termo() {
         contenttype: 'xml',
         action: 'directjson',
         origem: 'portal.usuario',
-        where: 'condominio/' + userinfo.condominio +
-            '|bloco/' + userinfo.bloco +
-            '|andar/' + userinfo.andar +
-            '|unidade/' + userinfo.pk_unidade +
-            '|num/' + userinfo.num,
+        where: 'condominio/' + unidadecorrente.condominio +
+            '|bloco/' + unidadecorrente.bloco +
+            '|andar/' + unidadecorrente.andar +
+            '|unidadecorrente/' + unidadecorrente.pk_unidade +
+            '|num/' + unidadecorrente.num,
         chave: 'num'
     };
 
@@ -41,13 +41,13 @@ function termo() {
 function ResultFormTermo() {
 
         var params = '';
-        params += '&condominio=' + userinfo.condominio;
-        params += '&bloco=' + userinfo.bloco;
-        params += '&andar=' + userinfo.andar;
-        params += '&unidade=' + userinfo.unidade;
-        params += '&pk_unidade=' + userinfo.pk_unidade;
-        params += '&num=' + userinfo.num;
-        params += '&email=' + userinfo.email;
+        params += '&condominio=' + unidadecorrente.condominio;
+        params += '&bloco=' + unidadecorrente.bloco;
+        params += '&andar=' + unidadecorrente.andar;
+        params += '&unidadecorrente=' + unidadecorrente.unidade;
+        params += '&pk_unidade=' + unidadecorrente.pk_unidade;
+        params += '&num=' + unidadecorrente.num;
+        params += '&email=' + unidadecorrente.email;
 
         var win = window.open('controles/main/controls/formularios/termo.php?i=' + base64_encode(params), '_blank');
         win.focus();

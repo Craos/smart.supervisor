@@ -42,10 +42,10 @@ function convidados() {
 			action: 'insert',
 			origem: 'condominio.convidado',
 			returnkey: 'num',
-			condominio: userinfo.condominio,
-			bloco: userinfo.bloco,
-			andar: userinfo.andar,
-			unidade: userinfo.pk_unidade,
+			condominio: unidadecorrente.condominio,
+			bloco: unidadecorrente.bloco,
+			andar: unidadecorrente.andar,
+			unidade: unidadecorrente.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
             lastuser: informacoesdousuario.uidins
@@ -62,7 +62,7 @@ function convidados() {
 		var morador_bloco = docCookies.getItem('morador_bloco');
 		var morador_unidade = docCookies.getItem('morador_unidade');
 
-		window.open('./controles/portaria/estrutura/convidado.php?registro=' + userinfo.pk_unidade + '&bloco=' + morador_bloco + '&unidade=' + morador_unidade + '&placa_letras=' + placa_letras + '&placa_numeros=' + placa_numeros + '&descricao=' + descricao, 'acesso', 'width=' + width + ', height=' + height + ', top=' + top + ', left=' + left + ', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+		window.open('./controles/portaria/estrutura/convidado.php?registro=' + unidadecorrente.pk_unidade + '&bloco=' + morador_bloco + '&unidadecorrente=' + morador_unidade + '&placa_letras=' + placa_letras + '&placa_numeros=' + placa_numeros + '&descricao=' + descricao, 'acesso', 'width=' + width + ', height=' + height + ', top=' + top + ', left=' + left + ', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
 
 		sys.FormAction(
 			sys.setParameters(
@@ -111,16 +111,16 @@ function LoadFormConvidado(http) {
 		if (itens.hasOwnProperty(key))
 			formConvidado.setItemValue(key, itens[key]);
 
-	formConvidado.setItemValue('nome_condominio', userinfo.nome_condominio);
-	formConvidado.setItemValue('nome_bloco', userinfo.nome_bloco);
-	formConvidado.setItemValue('nome_andar', userinfo.nome_andar);
-	formConvidado.setItemValue('nome_unidade', userinfo.unidade);
+	formConvidado.setItemValue('nome_condominio', unidadecorrente.nome_condominio);
+	formConvidado.setItemValue('nome_bloco', unidadecorrente.nome_bloco);
+	formConvidado.setItemValue('nome_andar', unidadecorrente.nome_andar);
+	formConvidado.setItemValue('nome_unidade', unidadecorrente.unidade);
 
 }
 
 function gridLoadHistoricoConvidados() {
 
-	if (userinfo === undefined)
+	if (unidadecorrente === undefined)
 		return;
 
 	var gridSourceHistoricoConvidados;
@@ -129,7 +129,7 @@ function gridLoadHistoricoConvidados() {
 		contenttype: 'xml',
 		action: 'dhtmlxgrid',
 		usecheckbox: 'false',
-		campos:'num, bloco as Bloco, unidade, nome',
+		campos:'num, bloco as Bloco, unidadecorrente, nome',
 		chave: 'num',
 		origem: 'condominio.eventos_info'
 	};

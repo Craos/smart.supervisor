@@ -4,14 +4,14 @@
 
 var campos_seletor = [
     { type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "8", position: "label-top"},
-    {type: "fieldset", name: "info", label: "Informa&ccedil;&otilde;es da unidade", width: 400, list: [
+    {type: "fieldset", name: "info", label: "Informa&ccedil;&otilde;es da unidadecorrente", width: 400, list: [
         {type: "block", list: [
             {type: "combo", name: "condominio", required: true, label: "Condom&iacute;nio", inputWidth: "350", style: "font-weight:bold;"}
         ]},
         {type: "block", list: [
             {type: "combo", name: "bloco", required: true, label: "Bloco/Torre", inputWidth: "185", style: "font-weight:bold;"},
             {type: "newcolumn"},
-            {type: "combo", name: "unidade", required: true, label: "Unidade", inputWidth: "160", style: "font-weight:bold;"}
+            {type: "combo", name: "unidadecorrente", required: true, label: "Unidade", inputWidth: "160", style: "font-weight:bold;"}
         ]},
         {type: "block", list: [
             {type: "input", name: "nome", label: "Nome", inputWidth: "350", style: "font-weight:bold;"}

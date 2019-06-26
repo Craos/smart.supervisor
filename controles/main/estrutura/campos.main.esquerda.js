@@ -15,9 +15,9 @@ var campos_main_esquerda = [
                 </a>"
         },
         {
-            type: "template", name: "unidade", value: "<a style='text-decoration: none' href='#' onclick='unidade();'>\
+            type: "template", name: "unidadecorrente", value: "<a style='text-decoration: none' href='#' onclick='unidadecorrente();'>\
                     <div class='item_esquerda'>\
-                        <img src='controles/main/img/main/unidade.png' alt='Minha Unidade'>\
+                        <img src='controles/main/img/main/unidadecorrente.png' alt='Minha Unidade'>\
                         <p>Informa&ccedil;&otilde;es gerais</p>\
                     </div>\
                 </a>"
@@ -26,7 +26,7 @@ var campos_main_esquerda = [
             type: "template", name: "moradores", value: "<a style='text-decoration: none' href='#' onclick='moradores();'>\
                     <div class='item_esquerda'>\
                         <img src='controles/main/img/main/familiares.png' alt='Meus Familiares'>\
-                        <p>Moradores da unidade</p>\
+                        <p>Moradores da unidadecorrente</p>\
                     </div>\
                 </a>"
         },
@@ -42,7 +42,7 @@ var campos_main_esquerda = [
 		    type: "template", name: "empregados", value: "<a style='text-decoration: none' href='#' onclick='empregados();'> \
                     <div class='item_esquerda'>\
                         <img src='controles/main/img/main/empregados.png' alt='Empregados'>\
-                        <p>Funcion&aacute;rios da unidade</p>\
+                        <p>Funcion&aacute;rios da unidadecorrente</p>\
                     </div>\
                 </a>"
 	    },

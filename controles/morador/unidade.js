@@ -48,7 +48,7 @@ function unidade() {
         {
             type: "fieldset",
             name: "informacoes_unidade",
-            label: "Informa&ccedil;&otilde;es da unidade",
+            label: "Informa&ccedil;&otilde;es da unidadecorrente",
             inputWidth: 955,
             list: [
                 {type: "block", offsetTop: "0", list: [
@@ -216,7 +216,7 @@ function unidade() {
 
     var tabnotificacoes = tabbarUnidade.cells('tabNotificacoes');
 
-    sessionStorage.recursocorrente = 'unidade()';
+    sessionStorage.recursocorrente = 'unidadecorrente()';
 
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
@@ -265,11 +265,11 @@ function unidade() {
             action: 'update',
             origem: 'condominio.unidades',
             returnkey: 'num',
-            where: 'condominio/' + userinfo.condominio +
-            '|bloco/' + userinfo.bloco +
-            '|andar/' + userinfo.andar +
-            '|unidade/' + userinfo.pk_unidade,
-            num: userinfo.pk_unidade,
+            where: 'condominio/' + unidade.condominio +
+            '|bloco/' + unidade.bloco +
+            '|andar/' + unidade.andar +
+            '|unidadecorrente/' + unidade.pk_unidade,
+            num: unidade.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
             lastuser: informacoesdousuario.uidins
@@ -300,12 +300,12 @@ function unidade() {
 
     sys.FormClear(formUnidade, null, false, null);
 
-    if (userinfo !== undefined) {
+    if (unidade !== undefined) {
 
-        objformUnidade.setItemValue('nome_condominio', userinfo.nome_condominio);
-        objformUnidade.setItemValue('nome_bloco', userinfo.nome_bloco);
-        objformUnidade.setItemValue('nome_andar', userinfo.nome_andar);
-        objformUnidade.setItemValue('nome_unidade', userinfo.unidade);
+        objformUnidade.setItemValue('nome_condominio', unidade.nome_condominio);
+        objformUnidade.setItemValue('nome_bloco', unidade.nome_bloco);
+        objformUnidade.setItemValue('nome_andar', unidade.nome_andar);
+        objformUnidade.setItemValue('nome_unidade', unidade.unidade);
 
     }
 
@@ -423,10 +423,10 @@ function unidade() {
                                 action: 'delete',
                                 origem: 'condominio.notificacoes',
                                 returnkey: 'num',
-                                condominio: userinfo.condominio,
-                                bloco: userinfo.bloco,
-                                andar: userinfo.andar,
-                                unidade: userinfo.pk_unidade
+                                condominio: unidade.condominio,
+                                bloco: unidade.bloco,
+                                andar: unidade.andar,
+                                unidade: unidade.pk_unidade
                             }, formnotificacoes.getFormData())
                         ), Resultformnotificacoes
                     );
@@ -448,10 +448,10 @@ function unidade() {
                     action: 'insert',
                     origem: 'condominio.notificacoes',
                     returnkey: 'num',
-                    condominio: userinfo.condominio,
-                    bloco: userinfo.bloco,
-                    andar: userinfo.andar,
-                    unidade: userinfo.pk_unidade,
+                    condominio: unidade.condominio,
+                    bloco: unidade.bloco,
+                    andar: unidade.andar,
+                    unidade: unidade.pk_unidade,
                     lastdate: today.format("yyyy-mm-dd"),
                     lasttime: today.format("HH:MM:ss"),
                     lastuser: informacoesdousuario.uidins
@@ -476,7 +476,7 @@ function unidade() {
         CarregaNotificacao(id);
     });
 
-    if (userinfo !== undefined)
+    if (unidade !== undefined)
         CarregaInformacoes(true);
 
 }
@@ -486,7 +486,7 @@ function Resultformnotificacoes(http) {
     out = {registro: '', situacao: ''};
     out = JSON.parse(http.responseText);
 
-    if (userinfo !== undefined && out.registro !== undefined && out.registro.length > 0) {
+    if (unidade !== undefined && out.registro !== undefined && out.registro.length > 0) {
         CarregaInformacoes(true);
         formnotificacoes.clear();
         alert(out.situacao);
@@ -504,10 +504,10 @@ function CarregaInformacoes(CarregaNotificacoes) {
             contenttype: 'xml',
             action: 'directjson',
             origem: 'condominio.unidades',
-            where: 'condominio/' + userinfo.condominio +
-            '|bloco/' + userinfo.bloco +
-            '|andar/' + userinfo.andar +
-            '|num/' + userinfo.pk_unidade,
+            where: 'condominio/' + unidade.condominio +
+            '|bloco/' + unidade.bloco +
+            '|andar/' + unidade.andar +
+            '|num/' + unidade.pk_unidade,
             chave: 'num'
         }), function (http) {
             var out;
@@ -532,10 +532,10 @@ function CarregaInformacoes(CarregaNotificacoes) {
                         contenttype: 'xml',
                         action: 'directjson',
                         origem: 'condominio.lista_notificacoes',
-                        where: 'condominio/' + userinfo.condominio +
-                        '|bloco/' + userinfo.bloco +
-                        '|andar/' + userinfo.andar +
-                        '|unidade/' + userinfo.pk_unidade
+                        where: 'condominio/' + unidade.condominio +
+                        '|bloco/' + unidade.bloco +
+                        '|andar/' + unidade.andar +
+                        '|unidadecorrente/' + unidade.pk_unidade
                     }), function (http) {
 
                         var out = JSON.parse(http.responseText);
@@ -604,7 +604,7 @@ function MudancanaUnidade() {
     windowMudanca = new dhtmlXWindows();
     windowMudanca.setSkin('dhx_terrace');
 
-    var titulo = 'Registro de atividades na unidade';
+    var titulo = 'Registro de atividades na unidadecorrente';
     var windowID = 'unidadeAtividade';
 
     var windowUnidadeAtv = windowMudanca.createWindow(windowID, 0, 0, 400, 400);
@@ -634,7 +634,7 @@ function MudancanaUnidade() {
                 {type: "newcolumn"},
                 {type: "input", name: "ativacao_hora", label: "Horário", inputWidth: 80, style: "font-weight:bold;"},
                 {type: "newcolumn"},
-                {type: "button", offsetTop: 14, name: "ativar", value: "Ativar unidade"}
+                {type: "button", offsetTop: 14, name: "ativar", value: "Ativar unidadecorrente"}
             ]},
             {type: "label", offsetTop: 12, label: "Entrada no condomínio", width: 955, list: [
                 {type: "input", name: "entrada_data_inicial", label: "Data inicial",  inputWidth: 80, style: "font-weight:bold;"},
@@ -657,19 +657,19 @@ function MudancanaUnidade() {
         if (name === 'ativar') {
 
             if (formAlteracao.getItemValue('ativacao_data') === '' || formAlteracao.getItemValue('ativacao_hora') === '') {
-                alert('Informe a data e o horário para ativação da unidade');
+                alert('Informe a data e o horário para ativação da unidadecorrente');
                 return;
             }
 
-            dhtmlx.confirm("Aten&ccedil;&atilde;o. Ao executar esta opera&ccedil;&atilde;o todas as informa&ccedil;&otilde;es desta unidade ser&atilde;o expurgadas! voc&ecirc; confirma esta opera&ccedil;&atilde;o?", function (result) {
+            dhtmlx.confirm("Aten&ccedil;&atilde;o. Ao executar esta opera&ccedil;&atilde;o todas as informa&ccedil;&otilde;es desta unidadecorrente ser&atilde;o expurgadas! voc&ecirc; confirma esta opera&ccedil;&atilde;o?", function (result) {
                 if (result === true) {
 
                     var dados = JSON.stringify({
-                        'condominio': userinfo.condominio,
-                        'bloco': userinfo.bloco,
-                        'andar': userinfo.andar,
-                        'unidade': userinfo.unidade,
-                        'pkunidade': userinfo.pk_unidade,
+                        'condominio': unidade.condominio,
+                        'bloco': unidade.bloco,
+                        'andar': unidade.andar,
+                        'unidade': unidade.unidade,
+                        'pkunidade': unidade.pk_unidade,
                         'usuario':JSON.parse(sessionStorage.auth).login,
                         'ativacao_data':formAlteracao.getItemValue('ativacao_data'),
                         'ativacao_hora':formAlteracao.getItemValue('ativacao_hora')
@@ -707,7 +707,7 @@ function MudancanaUnidade() {
                         entrada_data_final: formAlteracao.getItemValue('entrada_data_final')
                     },
                     from: 'condominio.unidades',
-                    where: "bloco=" + userinfo.bloco + " and num =" + userinfo.pk_unidade,
+                    where: "bloco=" + unidade.bloco + " and num =" + unidade.pk_unidade,
                     returning: 'num'
                 })
             }, function (http) {
@@ -734,7 +734,7 @@ function MudancanaUnidade() {
                         saida_data_final: formAlteracao.getItemValue('saida_data_final')
                     },
                     from: 'condominio.unidades',
-                    where: "bloco=" + userinfo.bloco + " and num =" + userinfo.pk_unidade,
+                    where: "bloco=" + unidade.bloco + " and num =" + unidade.pk_unidade,
                     returning: 'num'
                 })
             }, function (http) {
@@ -786,7 +786,7 @@ function MudancanaUnidade() {
                         reforma_data_final: formAlteracao.getItemValue('reforma_data_final')
                     },
                     from: 'condominio.unidades',
-                    where: "bloco=" + userinfo.bloco + " and num =" + userinfo.pk_unidade,
+                    where: "bloco=" + unidade.bloco + " and num =" + unidade.pk_unidade,
                     returning: 'num'
                 })
             }, function (http) {
@@ -805,7 +805,7 @@ function MudancanaUnidade() {
             command: 'select',
             fields: '*',
             from: 'condominio.unidade_alteracao',
-            where: "bloco=" + userinfo.bloco + " and num =" + userinfo.pk_unidade
+            where: "bloco=" + unidade.bloco + " and num =" + unidade.pk_unidade
         })
     }, function (http) {
 

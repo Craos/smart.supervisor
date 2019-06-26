@@ -93,7 +93,7 @@ function LoadFormVisitante(http) {
 
 function gridLoadHistoricoVisitas() {
 
-	if (userinfo === undefined)
+	if (unidadecorrente === undefined)
 		return;
 
 	var gridSourceHistoricoVisitas;
@@ -137,7 +137,7 @@ function carregaHistoricoAutoricacoes() {
 	var busca_localizacao = '';
 
 	if (torre != undefined && torre != null && torre != '' && unidade != undefined && unidade != null && unidade != '')
-		busca_localizacao += "' and bloco = '" + torre +"' and unidade = '" + unidade +" ";
+		busca_localizacao += "' and bloco = '" + torre +"' and unidadecorrente = '" + unidade +" ";
 
 	if (placa != undefined && placa != null && placa != '')
 		busca_localizacao += "' and upper(placa) = '" + placa +" ";
@@ -148,7 +148,7 @@ function carregaHistoricoAutoricacoes() {
 		contenttype: 'xml',
 		action: 'dhtmlxgrid',
 		usecheckbox: 'false',
-		campos:"registro, data, horario, bloco, unidade, nome, placa",
+		campos:"registro, data, horario, bloco, unidadecorrente, nome, placa",
 		chave: 'registro',
 		origem: 'visitante.visitante_hist',
         where: "filedate between '"+data_inicial+"' and '"+data_final + busca_localizacao

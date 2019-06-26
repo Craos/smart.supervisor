@@ -43,7 +43,7 @@ $ss->isHTML(SMTPISHTML);
 
 $instrucao_fila = /** @lang PostgreSQL */
     <<<TAG
-    SELECT bloco, unidade, to_char(enviado, 'DD/MM/YYYY HH24:MI:ss') AS data, emails.mensagem, LPAD(correspondencias.num::TEXT, 7, '0')::VARCHAR AS num, correspondencias.num AS sequencia
+    SELECT bloco, unidadecorrente, to_char(enviado, 'DD/MM/YYYY HH24:MI:ss') AS data, emails.mensagem, LPAD(correspondencias.num::TEXT, 7, '0')::VARCHAR AS num, correspondencias.num AS sequencia
       FROM condominio.correspondencias
       JOIN condominio.emails ON correspondencias.mensagem = emails.num
      WHERE situacao = 5
@@ -56,7 +56,7 @@ while ($dados = pg_fetch_object($lista_unidades)) {
     $instrucao_enderecos = <<<EMAILS
         SELECT email AS endereco
           FROM condominio.lista_emails_unidade
-         WHERE bloco = $dados->bloco AND unidade = $dados->unidade
+         WHERE bloco = $dados->bloco AND unidadecorrente = $dados->unidade
          GROUP BY email
 EMAILS;
 

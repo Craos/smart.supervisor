@@ -4,7 +4,7 @@
 
 var campos_moradores = [
     { type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "2", position: "label-top"},
-    {type: "template", name: "titulo", value: "Cadastro de todos os moradores da unidade", style: "font-weight:bold; border: 0;"},
+    {type: "template", name: "titulo", value: "Cadastro de todos os moradores da unidadecorrente", style: "font-weight:bold; border: 0;"},
     {type: "block", list: [
             {type: "fieldset", name: "opcoes", label: "Opera&ccedil;&otilde;es", width: 955, list: [
                     {type: "button", name: "novo", value: "1. Cadastrar novo"},
@@ -100,7 +100,7 @@ var campos_moradores = [
             ]}
         ]},
         {type: "block", list: [
-            {type: "fieldset", name: "opcoes", label: "Moradores cadastrados na unidade", width: 945, list: [
+            {type: "fieldset", name: "opcoes", label: "Moradores cadastrados na unidadecorrente", width: 945, list: [
                 {type: "container", name: "gridfamiliares", inputWidth: 920, inputHeight: 180}
             ]}
         ]}

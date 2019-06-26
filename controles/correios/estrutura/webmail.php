@@ -31,7 +31,7 @@ $instrucao =<<<SQL
        SET situacao = 8
      WHERE codigo = '$sequencia'::VARCHAR;
 
-    SELECT bloco, unidade, to_char(enviado, 'DD/MM/YYYY HH24:MI:ss') as data, emails.mensagem, correspondencias.codigo as sequencia
+    SELECT bloco, unidadecorrente, to_char(enviado, 'DD/MM/YYYY HH24:MI:ss') as data, emails.mensagem, correspondencias.codigo as sequencia
       FROM correios.correspondencias
       JOIN correios.emails ON correspondencias.mensagem = emails.num
      WHERE correspondencias.codigo = '$sequencia'::VARCHAR

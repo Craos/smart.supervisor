@@ -1183,7 +1183,7 @@ Calibri;color:black'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='mso-yfti-cnfc:4'><span style='mso-bookmark:_MailAutoSig'><b><span
     style='font-size:12.0pt;mso-bidi-font-size:11.0pt;mso-fareast-font-family:
     "Times New Roman";mso-fareast-theme-font:minor-fareast;mso-fareast-language:
-    PT-BR;mso-no-proof:yes'>Moradores da unidade</span></b></span><span
+    PT-BR;mso-no-proof:yes'>Moradores da unidadecorrente</span></b></span><span
     style='mso-bookmark:_MailAutoSig'><b><span style='font-size:9.0pt;
     mso-bidi-font-size:11.0pt;mso-fareast-font-family:"Times New Roman";
     mso-fareast-theme-font:minor-fareast;mso-fareast-language:PT-BR;mso-no-proof:
@@ -1413,7 +1413,7 @@ Calibri;color:black'><o:p>&nbsp;</o:p></span></p>
     style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;
     mso-bidi-font-size:11.0pt;mso-fareast-font-family:"Times New Roman";
     mso-fareast-theme-font:minor-fareast;mso-fareast-language:PT-BR;mso-no-proof:
-    yes'>Funcion&aacute;rios da unidade<span style='mso-bidi-font-weight:bold'><o:p></o:p></span></span></b></span></p>
+    yes'>Funcion&aacute;rios da unidadecorrente<span style='mso-bidi-font-weight:bold'><o:p></o:p></span></span></b></span></p>
     </td>
     <span style='mso-bookmark:_MailAutoSig'></span>
    </tr>

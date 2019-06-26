@@ -87,10 +87,10 @@ function veiculos() {
 						action: 'delete',
 						origem: 'condominio.veiculos',
 						returnkey: 'num',
-						condominio: userinfo.condominio,
-						bloco: userinfo.bloco,
-						andar: userinfo.andar,
-						unidade: userinfo.pk_unidade
+						condominio: unidadecorrente.condominio,
+						bloco: unidadecorrente.bloco,
+						andar: unidadecorrente.andar,
+						unidade: unidadecorrente.pk_unidade
 					};
 
 					sys.FormAction(
@@ -107,11 +107,11 @@ function veiculos() {
 				dados: 'teste',
 				contenttype: 'xml',
 				action: 'directjson',
-				campos: 'num,condominio,bloco,andar,unidade',
+				campos: 'num,condominio,bloco,andar,unidadecorrente',
 				origem: 'condominio.unidades',
-				where: 'condominio/' + userinfo.condominio +
+				where: 'condominio/' + unidadecorrente.condominio +
 				'|bloco/' + formVeiculos.getItemValue('nova_torre') +
-				'|unidade/' + formVeiculos.getItemValue('nova_unidade'),
+				'|unidadecorrente/' + formVeiculos.getItemValue('nova_unidade'),
 				chave: 'num'
 			};
 
@@ -137,10 +137,10 @@ function veiculos() {
 			action: 'insert',
 			origem: 'condominio.veiculos',
 			returnkey: 'num',
-			condominio: userinfo.condominio,
-			bloco: userinfo.bloco,
-			andar: userinfo.andar,
-			unidade: userinfo.pk_unidade,
+			condominio: unidadecorrente.condominio,
+			bloco: unidadecorrente.bloco,
+			andar: unidadecorrente.andar,
+			unidade: unidadecorrente.pk_unidade,
             lastdate: today.format("yyyy-mm-dd"),
             lasttime: today.format("HH:MM:ss"),
             lastuser: informacoesdousuario.uidins
@@ -164,10 +164,10 @@ function veiculos() {
 			contenttype: 'xml',
 			action: 'directjson',
 			origem: 'condominio.veiculos_info',
-			where: 'condominio/' + userinfo.condominio +
-			'|bloco/' + userinfo.bloco +
-			'|andar/' + userinfo.andar +
-			'|unidade/' + userinfo.pk_unidade +
+			where: 'condominio/' + unidadecorrente.condominio +
+			'|bloco/' + unidadecorrente.bloco +
+			'|andar/' + unidadecorrente.andar +
+			'|unidadecorrente/' + unidadecorrente.pk_unidade +
 			'|num/' + id,
 			chave: 'num'
 		};
@@ -190,10 +190,10 @@ function veiculos() {
 			contenttype: 'xml',
 			action: 'directjson',
 			origem: 'expurgo.veiculos_info',
-			where: 'condominio/' + userinfo.condominio +
-			'|bloco/' + userinfo.bloco +
-			'|andar/' + userinfo.andar +
-			'|unidade/' + userinfo.pk_unidade +
+			where: 'condominio/' + unidadecorrente.condominio +
+			'|bloco/' + unidadecorrente.bloco +
+			'|andar/' + unidadecorrente.andar +
+			'|unidadecorrente/' + unidadecorrente.pk_unidade +
 			'|num/' + id,
 			chave: 'num'
 		};
@@ -216,9 +216,9 @@ function veiculos() {
             contenttype: 'xml',
             action: 'directjson',
             origem: 'acesso.historico_veicular_unidade',
-            where: 'condominio/' + userinfo.condominio +
-            '|bloco/' + userinfo.bloco +
-            '|pk_unidade/' + userinfo.pk_unidade +
+            where: 'condominio/' + unidadecorrente.condominio +
+            '|bloco/' + unidadecorrente.bloco +
+            '|pk_unidade/' + unidadecorrente.pk_unidade +
             '|num/' + id,
             chave: 'num'
         };
@@ -261,10 +261,10 @@ function LoadFormVeiculos(http) {
 		formVeiculos.setItemValue('situacao_estacionamento', false);
 	}
 
-	formVeiculos.setItemValue('nome_condominio', userinfo.nome_condominio);
-	formVeiculos.setItemValue('nome_bloco', userinfo.nome_bloco);
-	formVeiculos.setItemValue('nome_andar', userinfo.nome_andar);
-	formVeiculos.setItemValue('nome_unidade', userinfo.unidade);
+	formVeiculos.setItemValue('nome_condominio', unidadecorrente.nome_condominio);
+	formVeiculos.setItemValue('nome_bloco', unidadecorrente.nome_bloco);
+	formVeiculos.setItemValue('nome_andar', unidadecorrente.nome_andar);
+	formVeiculos.setItemValue('nome_unidade', unidadecorrente.unidade);
 	//formVeiculos.setItemValue('filedate', sys.obtemDataEntradaFormatada(itens['filedate']));
 
 	var bindcombobloqueios = {
@@ -339,10 +339,10 @@ function ResultNovaLocalizacao(http) {
 		bloco: bloco,
 		andar: andar,
 		unidade: num,
-		where: 'condominio/' + userinfo.condominio +
-		'|bloco/' + userinfo.bloco +
-		'|andar/' + userinfo.andar +
-		'|unidade/' + userinfo.pk_unidade
+		where: 'condominio/' + unidadecorrente.condominio +
+		'|bloco/' + unidadecorrente.bloco +
+		'|andar/' + unidadecorrente.andar +
+		'|unidadecorrente/' + unidadecorrente.pk_unidade
 	};
 
 	sys.FormAction(
@@ -369,7 +369,7 @@ function ResultTransferenciaVeiculo(http) {
 
 function gridLoadVeiculos() {
 
-	if (userinfo === undefined)
+	if (unidadecorrente === undefined)
 		return;
 
 	var gridSourceVeiculos;
@@ -378,10 +378,10 @@ function gridLoadVeiculos() {
 		action: 'dhtmlxgrid',
 		origem: 'condominio.veiculos',
 		campos: 'num,modelo,marca,cor',
-		where: 'condominio/' + userinfo.condominio +
-		'|bloco/' + userinfo.bloco +
-		'|andar/' + userinfo.andar +
-		'|unidade/' + userinfo.pk_unidade,
+		where: 'condominio/' + unidadecorrente.condominio +
+		'|bloco/' + unidadecorrente.bloco +
+		'|andar/' + unidadecorrente.andar +
+		'|unidadecorrente/' + unidadecorrente.pk_unidade,
 		orderby: 'num',
 		usecheckbox: 'false',
 		usedecimal: 'modelo',
@@ -394,7 +394,7 @@ function gridLoadVeiculos() {
 
 function gridLoadVeiculosExcluidos() {
 
-	if (userinfo === undefined)
+	if (unidadecorrente === undefined)
 		return;
 
 	var gridSourceVeiculos;
@@ -403,10 +403,10 @@ function gridLoadVeiculosExcluidos() {
 		action: 'dhtmlxgrid',
 		origem: 'expurgo.veiculos',
 		campos: 'num,modelo,marca,cor',
-		where: 'condominio/' + userinfo.condominio +
-		'|bloco/' + userinfo.bloco +
-		'|andar/' + userinfo.andar +
-		'|unidade/' + userinfo.pk_unidade,
+		where: 'condominio/' + unidadecorrente.condominio +
+		'|bloco/' + unidadecorrente.bloco +
+		'|andar/' + unidadecorrente.andar +
+		'|unidadecorrente/' + unidadecorrente.pk_unidade,
 		orderby: 'num',
 		usecheckbox: 'false',
 		usedecimal: 'modelo',
@@ -419,7 +419,7 @@ function gridLoadVeiculosExcluidos() {
 
 function buscaInformacoes(tipo) {
 
-	if (userinfo === undefined)
+	if (unidade === undefined)
 		return;
 
 	var data_inicial = new Date(formVeiculosPassagens.getItemValue('data_inicial'));
@@ -437,8 +437,8 @@ function buscaInformacoes(tipo) {
 
 	data_final = yyyy + '-' + mm + '-' + dd;
 
-	var torre = userinfo.bloco;
-	var unidade = userinfo.pk_unidade.trim();
+	var torre = unidade.bloco;
+	var unidade = unidadecorrente.pk_unidade.trim();
 	var placa = formVeiculosPassagens.getItemValue('buscar_placa').toUpperCase();
 	var busca_localizacao = '';
 
@@ -490,8 +490,8 @@ function buscaInformacoes(tipo) {
 			whereexp: "filedate::date between '"+data_inicial+"' and '"+data_final + busca_localizacao + "'",
 			data_inicial: formVeiculosPassagens.getCalendar('data_inicial').getFormatedDate("%d/%m/%Y"),
 			data_final: formVeiculosPassagens.getCalendar('data_final').getFormatedDate("%d/%m/%Y"),
-			torre:userinfo.bloco,
-			unidade:userinfo.unidade,
+			torre:unidade.bloco,
+			unidade:unidade.unidade,
 			placa:formVeiculosPassagens.getItemValue('buscar_placa').toUpperCase()
 		};
 

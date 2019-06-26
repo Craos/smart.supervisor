@@ -3,10 +3,10 @@
  */
 var campos_historico_visitante = [
     {type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "2", position: "label-top"},
-    {type: "template", name: "titulo", value: "Histórico de acesso", offsetLeft: 20, offsetTop: 20, style: "font-weight:bold;"},
+    {type: "template", name: "titulo", value: "Histï¿½rico de acesso", offsetLeft: 20, offsetTop: 20, style: "font-weight:bold;"},
 	{type: "hidden", name: "num"},
     {type: "block", list: [
-        {type: "fieldset", label: "Parâmetros para licalização do histórico", width: 955, list: [
+        {type: "fieldset", label: "Parï¿½metros para licalizaï¿½ï¿½o do histï¿½rico", width: 955, list: [
             {type:"calendar", dateFormat:"%d/%m/%Y", name:"data_inicial", label:"Data inicial", enableTime:false, inputWidth: 70},
             {type: "newcolumn"},
             {type:"calendar", dateFormat:"%d/%m/%Y", name:"data_final", label:"Data final", enableTime:false, inputWidth: 70},
@@ -17,7 +17,7 @@ var campos_historico_visitante = [
             {type: "newcolumn"},
             {type: "input", name: "buscar_placa", label: "Placa", offsetLeft: "10", inputWidth: 100, maxLength: "8", style: "font-weight:bold;"},
             {type: "newcolumn"},
-            {type: "button", name: "buscar", offsetLeft: 30, offsetTop: 15, value: "Listar autorizações"}
+            {type: "button", name: "buscar", offsetLeft: 30, offsetTop: 15, value: "Listar autorizaï¿½ï¿½es"}
         ]}
     ]},
     {type: "block", list: [
@@ -31,17 +31,17 @@ var campos_historico_visitante = [
                 {type: "newcolumn"},
                 {type: "template", name: "filedate", inputWidth: 90, style: "color: gray"},
                 {type: "newcolumn"},
-                {type: "template", name: "lbtimerg", value: "Horário:", inputWidth: 60, style: "font-weight:bold;"},
+                {type: "template", name: "lbtimerg", value: "Horï¿½rio:", inputWidth: 60, style: "font-weight:bold;"},
                 {type: "newcolumn"},
                 {type: "template", name: "timerg", inputWidth: 90, style: "color: gray"}
         ]},
         {type: "newcolumn"},
-        {type: "fieldset", name: "data_saida", label: "Saída", width: 170, list: [
+        {type: "fieldset", name: "data_saida", label: "Saï¿½da", width: 170, list: [
                 {type: "template", name: "lbdata_saida", value: "Data:", inputWidth: 60, style: "font-weight:bold;"},
                 {type: "newcolumn"},
                 {type: "template", name: "exitdate", inputWidth: 90, style: "color: gray"},
                 {type: "newcolumn"},
-                {type: "template", name: "lbhorario_saida", value: "Horário:", inputWidth: 60, style: "font-weight:bold;"},
+                {type: "template", name: "lbhorario_saida", value: "Horï¿½rio:", inputWidth: 60, style: "font-weight:bold;"},
                 {type: "newcolumn"},
                 {type: "template", name: "exittime", inputWidth: 90, style: "color: gray"}
         ]},
@@ -51,7 +51,7 @@ var campos_historico_visitante = [
             {type: "newcolumn"},
             {type: "template", name: "nome", inputWidth: 230, style: "color: gray"},
             {type: "newcolumn"},
-            {type: "template", name: "lbacesso", value: "Acesso Nº:", inputWidth: 70, style: "font-weight:bold;"},
+            {type: "template", name: "lbacesso", value: "Acesso Nï¿½:", inputWidth: 70, style: "font-weight:bold;"},
             {type: "newcolumn"},
             {type: "template", name: "cadastro", inputWidth: 80, style: "color: gray"},
             {type: "newcolumn"},
@@ -61,10 +61,10 @@ var campos_historico_visitante = [
             {type: "newcolumn"},
             {type: "template", name: "lbunidade", value: "Unidade:", inputWidth: 60, style: "font-weight:bold;"},
             {type: "newcolumn"},
-            {type: "template", name: "unidade", inputWidth: 30, style: "color: gray"}
+            {type: "template", name: "unidadecorrente", inputWidth: 30, style: "color: gray"}
         ]},
         {type: "newcolumn"},
-        {type: "fieldset", label: "Informações da autorização", width: 700, list: [
+        {type: "fieldset", label: "Informaï¿½ï¿½es da autorizaï¿½ï¿½o", width: 700, list: [
             {type: "block", list: [
                 {type: "template", name: "lbtipoacesso", value: "Tipo de acesso:", inputWidth: 110, style: "font-weight:bold;"},
                 {type: "newcolumn"},

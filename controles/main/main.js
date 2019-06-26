@@ -10,8 +10,6 @@ var navlayout;
 var body;
 var header;
 var menu_esquerda;
-
-
 var formtop;
 var nav_layout_principal;
 var layout_principal_top;
@@ -22,7 +20,7 @@ var menu_lateral;
 var informacoesdousuario;
 
 let sys = new SystemCraos();
-let userinfo;
+let unidadecorrente;
 
 function main() {
 
@@ -90,10 +88,10 @@ function main() {
 
     if (userprofile != null) {
         menu_lateral.forEachItem(function (name) {
-            if (menu_lateral.getItemType(name) == 'template') {
+            if (menu_lateral.getItemType(name) === 'template') {
                 var resultObject = search(name, userprofile);
-                if (resultObject != undefined) {
-                    if (resultObject.acesso == '1') {
+                if (resultObject !== undefined) {
+                    if (resultObject.acesso === '1') {
                     } else {
                         menu_lateral.hideItem(name);
                         formPrincipal.hideItem(name);
@@ -106,13 +104,9 @@ function main() {
         });
     }
 
-    formtop.setItemLabel('condominio', sessionStorage.morador_condominio);
-    formtop.setItemLabel('bloco', sessionStorage.morador_bloco);
-    formtop.setItemLabel('andar', sessionStorage.morador_andar);
-    formtop.setItemLabel('unidade', sessionStorage.morador_unidade);
-    formtop.setItemLabel('responsavel', sessionStorage.morador_corrente);
+    ExibeUnidade();
 
-    formTopLayoutPrincipalTop.attachEvent("onKeyUp", function (inp, ev, name, value) {
+    formTopLayoutPrincipalTop.attachEvent("onKeyUp", function (inp, ev) {
         if (formTopLayoutPrincipalTop.getItemValue('left_bloco') == null && formTopLayoutPrincipalTop.getItemValue('left_unidade') == null)
             return;
 
@@ -126,13 +120,6 @@ function main() {
 
 function statselect() {
     topSelecionarRegistro();
-}
-
-function replaceAll(string, token, newtoken) {
-    while (string.indexOf(token) !== -1) {
-        string = string.replace(token, newtoken);
-    }
-    return string;
 }
 
 function isFunction(x) {
@@ -169,60 +156,53 @@ function reInformacoesUsuario(name, value) {
 
 function topSelecionarRegistro() {
 
-    var numbloco = formTopLayoutPrincipalTop.getItemValue('left_bloco');
-    var numunidade = formTopLayoutPrincipalTop.getItemValue('left_unidade');
+    $.ajax({
+        url: 'http://anima.craos.net/smart/public/anima/condominio/supervisor_unidade_info',
+        type: 'GET',
+        dataType: 'json',
+        data: JSON.stringify({
+            filter:{
+                bloco:formTopLayoutPrincipalTop.getItemValue('left_bloco'),
+                unidade:formTopLayoutPrincipalTop.getItemValue('left_unidade')
+            }
+        }),
+        success: function (response) {
 
+            unidadecorrente = response.dados[0];
+            sessionStorage.unidadecorrente = JSON.stringify(unidadecorrente);
+            ExibeUnidade();
 
-    var buscamorador = {
-        parametros: true,
-        contenttype: 'xml',
-        action: 'directjson',
-        origem: 'condominio.supervisor_unidade_info',
-        where: 'condominio/1' +
-        '|bloco/' + numbloco +
-        '|unidade/' + numunidade
-    };
+            if (wgridSeletor !== undefined)
+                try {
+                    wgridSeletor.close();
+                }
+                catch(err) {
+                    // Handle error(s) here
+                }
 
-    sys.FormAction(sys.setParameters(buscamorador), topResultBuscaMorador);
-
+            eval(sessionStorage.recursocorrente);
+        },
+        error: function (request, status, error) {
+            alert('Sem acesso para esta unidadecorrente');
+        }
+    });
 }
 
-function topResultBuscaMorador(http) {
+function ExibeUnidade() {
 
-    var out;
-    out = JSON.parse(http.responseText);
-
-    if (out[0] == undefined || out.length == 0) {
-        alert('Sem acesso para esta unidade');
+    if (sessionStorage.unidadecorrente === undefined)
         return;
+
+    unidadecorrente = JSON.parse(sessionStorage.unidadecorrente);
+
+    let identificacao = 'Bloco: #nome_bloco# - Unidade:#unidade#  Responsável:#nome#';
+
+    for (let k in unidadecorrente) {
+        if (unidadecorrente.hasOwnProperty(k)) {
+            identificacao = identificacao.replace('#'+k+'#', unidadecorrente[k]);
+        }
     }
 
-    sessionStorage.morador_condominio = null;
-    sessionStorage.morador_bloco = null;
-    sessionStorage.morador_andar = null;
-    sessionStorage.morador_unidade = null;
-    sessionStorage.morador_corrente = null;
-
-    sessionStorage.morador_condominio = "Condom&iacute;nio:" + out[0].nome_condominio;
-    sessionStorage.morador_bloco = "Torre:" + out[0].nome_bloco;
-    sessionStorage.morador_andar = "Andar:" + out[0].nome_andar;
-    sessionStorage.morador_unidade = "Unidade:" + out[0].unidade;
-    sessionStorage.morador_corrente = "Respons&aacute;vel: " + out[0].nome;
-
-    formtop.setItemLabel('condominio', sessionStorage.morador_condominio);
-    formtop.setItemLabel('bloco', sessionStorage.morador_bloco);
-    formtop.setItemLabel('andar', sessionStorage.morador_andar);
-    formtop.setItemLabel('unidade', sessionStorage.morador_unidade);
-    formtop.setItemLabel('responsavel', sessionStorage.morador_corrente);
-
-    if (wgridSeletor != undefined)
-        try {
-            wgridSeletor.close();
-        }
-        catch(err) {
-            // Handle error(s) here
-        }
-
-    eval(sessionStorage.recursocorrente);
+    formtop.setItemLabel('identificacao', identificacao);
 
 }

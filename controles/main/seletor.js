@@ -80,7 +80,7 @@ function seletor() {
 		action: 'select_combo',
 		grava_sessao: 'true',
 		nome_sessao: 'combo_unidades',
-		campos: 'unidade as num, unidade as tipo',
+		campos: 'unidadecorrente as num, unidadecorrente as tipo',
 		origem: 'condominio.unidades',
 		groupby: '1, 2',
 		orderby: '1'
@@ -118,7 +118,7 @@ function ResultBindcomboBlocos(http) {
 }
 
 function ResultBindcomboUnidades(http) {
-	var unidades = formCadastroSeletor.getCombo('unidade');
+	var unidades = formCadastroSeletor.getCombo('unidadecorrente');
 	unidades.loadXMLString(http.responseText);
 }
 
@@ -126,7 +126,7 @@ function selecionarregistro(form) {
 
 	var condominio = (form.getCombo('condominio') == undefined) ? 1 : form.getCombo('condominio');
 	var bloco = form.getCombo('bloco');
-	var unidade = form.getCombo('unidade');
+	var unidade = form.getCombo('unidadecorrente');
 
 	var buscamorador = {
 		parametros: true,
@@ -135,7 +135,7 @@ function selecionarregistro(form) {
 		origem: 'condominio.unidade_info',
 		where: 'condominio/' + condominio.getSelectedValue() +
 		'|bloco/' + bloco.getSelectedValue() +
-		'|unidade/' + unidade.getSelectedValue()
+		'|unidadecorrente/' + unidade.getSelectedValue()
 	};
 
 	sys.FormAction(sys.setParameters(buscamorador), ResultBuscaMorador);
@@ -178,7 +178,7 @@ function localizaMorador() {
 		contenttype: 'xml',
 		action: 'dhtmlxgrid',
 		origem: 'condominio.morador_info',
-		campos: 'num, condominio, bloco, unidade,nome',
+		campos: 'num, condominio, bloco, unidadecorrente,nome',
 		where: criterios,
 		orderby: 'num',
 		usecheckbox: 'false',

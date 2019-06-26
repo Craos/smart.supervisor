@@ -50,7 +50,7 @@ var campos_monitor_pedestre = [
                 { type: "block", list: [
                     {type: "input", name: "bloco", label: "Torre/Bloco", inputWidth: 125, style: "font-weight:bold;", note: {text: "Local de moradia"}},
                     {type: "newcolumn"},
-                    {type: "input", name: "unidade", label: "Unidade", inputWidth: 125, style: "font-weight:bold;", note: {text: "Numero do apartamento"}},
+                    {type: "input", name: "unidadecorrente", label: "Unidade", inputWidth: 125, style: "font-weight:bold;", note: {text: "Numero do apartamento"}},
                     {type: "newcolumn"},
                     {type: "input", name: "sentido", label: "Sentido", inputWidth: 125, style: "font-weight:bold;", note: {text: "Sentido de passagem"}},
                     {type: "newcolumn"},
@@ -105,9 +105,9 @@ var campos_monitor_pedestre = [
         ]},
         {type: "fieldset", name: "instrucoes", label: "Instru&ccedil;&otilde;es", width: 280, list: [
             { type: "block", list: [
-                {type: "template", name: "texto_instrucoes1", value: 'Cadastre primeiro o morador respons�vel pela unidade, desconsiderando o campo "Parentesco�, e feche esse cadastro clicando em "Salvar dados do morador�.', style: "color: #137da1; height: 80px;"},
-                {type: "template", name: "texto_instrucoes2", value: 'Para todos os demais moradores, clique em "Cadastrar novo morador� e continue preenchendo e salvando, de modo que todos apare�am no bloco "Moradores cadastrados da unidade�.', style: "color: #137da1; height: 100px;"},
-                {type: "template", name: "texto_instrucoes3", value: 'Depois do cadastro de todos os moradores da unidade, clique em "Finalizar este cadastro�, para passar para outra p�gina.', style: "color: #137da1; height: 70px;"}
+                {type: "template", name: "texto_instrucoes1", value: 'Cadastre primeiro o morador respons�vel pela unidadecorrente, desconsiderando o campo "Parentesco�, e feche esse cadastro clicando em "Salvar dados do morador�.', style: "color: #137da1; height: 80px;"},
+                {type: "template", name: "texto_instrucoes2", value: 'Para todos os demais moradores, clique em "Cadastrar novo morador� e continue preenchendo e salvando, de modo que todos apare�am no bloco "Moradores cadastrados da unidadecorrente�.', style: "color: #137da1; height: 100px;"},
+                {type: "template", name: "texto_instrucoes3", value: 'Depois do cadastro de todos os moradores da unidadecorrente, clique em "Finalizar este cadastro�, para passar para outra p�gina.', style: "color: #137da1; height: 70px;"}
             ]}
         ]}
     ]},

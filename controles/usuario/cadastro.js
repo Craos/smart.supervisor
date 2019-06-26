@@ -20,14 +20,14 @@ function cadastro() {
     var formCadastroUsuario = windowAtualizarDadosUsuario.attachForm(campos_cadastro);
 
 
-    if (userinfo !== undefined) {
+    if (unidadecorrente !== undefined) {
 
         var formSourceCadastroUsuario;
         formSourceCadastroUsuario = {
             contenttype: 'xml',
             action: 'dhtmlxform',
             origem: 'portal.usuario_info',
-            where: 'pk_unidade/' + userinfo.unidade,
+            where: 'pk_unidade/' + unidadecorrente.unidade,
             chave: 'num'
         };
 
@@ -51,8 +51,8 @@ function cadastro() {
             contenttype: 'xml',
             action: 'update',
             origem: 'portal.usuario',
-            where: 'pk_unidade/' + userinfo.unidade,
-            pk_unidade: userinfo.unidade,
+            where: 'pk_unidade/' + unidadecorrente.unidade,
+            pk_unidade: unidadecorrente.unidade,
             login: formCadastroUsuario.getItemValue('login'),
             password: base64_encode(formCadastroUsuario.getItemValue('password'))
         };

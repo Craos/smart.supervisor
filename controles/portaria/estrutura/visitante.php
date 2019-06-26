@@ -69,7 +69,7 @@ function obtemdataehora(objetoalvo) {
 <p>AUTORIZADO</p>
 <p id="datahora"><script type="application/javascript">obtemdataehora('datahora');</script></p>
 <p><?php echo $_REQUEST['bloco']; ?></p>
-<p><?php echo $_REQUEST['unidade']; ?></p>
+<p><?php echo $_REQUEST['unidadecorrente']; ?></p>
 <p>Placa:<?php echo $_REQUEST['placa_letras'] . '-' . $_REQUEST['placa_numeros']; ?></p>
 <p><?php echo $_REQUEST['descricao']; ?></p>
 <p style="font-size: 80%">Guarde esta autoriza&ccedil;&atilde;o. <br>Esta ser&aacute; solicitada na sa&iacute;da.</p>

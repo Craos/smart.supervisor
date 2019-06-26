@@ -17,7 +17,7 @@ function monitor_veiculo() {
 
 function gridLoadacesso_veiculos() {
 
-    if (userinfo === undefined)
+    if (unidadecorrente === undefined)
         return;
 
     var gridSourceacesso_veiculos;
