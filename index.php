@@ -70,8 +70,8 @@
     <!-- usuario -->
     <script src="controles/usuario/atendimento.js" type="text/javascript"></script>
 
-    <script src="controles/unidade/usuario.js" type="text/javascript"></script>
-    <script src="controles/unidade/moradores.js" type="text/javascript"></script>
+    <script src="js/unidade/usuario.js" type="text/javascript"></script>
+    <script src="js/unidade/moradores.js" type="text/javascript"></script>
 
     <script src="controles/usuario/estrutura/campos.atendimento.js" type="text/javascript"></script>
     <script src="controles/usuario/estrutura/campos.cadastro.js" type="text/javascript"></script>
