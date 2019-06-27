@@ -55,15 +55,12 @@
     <script src="controles/main/estrutura/campos.main.js" type="text/javascript"></script>
     <script src="controles/main/estrutura/campos.main.esquerda.js" type="text/javascript"></script>
     <script src="controles/main/estrutura/campos.recupera.js" type="text/javascript"></script>
-    <script src="controles/main/estrutura/campos.main.top.js" type="text/javascript"></script>
     <script src="controles/main/estrutura/campos.meu.usuario.js" type="text/javascript"></script>
-    <script src="controles/main/estrutura/campos.main.layout_top.js" type="text/javascript"></script>
-    <script src="controles/main/estrutura/campos.seletor.js" type="text/javascript"></script>
     <script src="controles/main/estrutura/campos.seletor_new.js" type="text/javascript"></script>
     <script src ="controles/main/agradecimento.js" type="text/javascript"></script>
     <script src="controles/main/main.js" type="text/javascript"></script>
     <script src="controles/main/recupera.js" type="text/javascript"></script>
-    <script src="controles/main/seletor.js" type="text/javascript"></script>
+    <script src="js/supervisor/pesquisa_avancada.js" type="text/javascript"></script>
     <script src="controles/main/seletor_grid.js" type="text/javascript"></script>
     <script src="controles/main/meusuaurio.js" type="text/javascript"></script>
 

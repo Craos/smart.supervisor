@@ -147,7 +147,7 @@ function reSelecionar(name, value) {
 
 function reLocalizar(name, value) {
     var f = this.getForm();
-    return '<a href="#" onclick="seletor();" style="text-decoration:none; color: #555; font-size: 13px"><img src="controles/main/img/main/localizar.png" style="width: 16px; margin-top: -0px; margin-right: 5px; float: left" /><b style="margin-top: -16px">Pesquisa avan&ccedil;ada</b></a>';
+    return '<a href="#" onclick="pesquisa_avancada();" style="text-decoration:none; color: #555; font-size: 13px"><img src="controles/main/img/main/localizar.png" style="width: 16px; margin-top: -0px; margin-right: 5px; float: left" /><b style="margin-top: -16px">Pesquisa avan&ccedil;ada</b></a>';
 }
 
 function search(nameKey, myArray) {
