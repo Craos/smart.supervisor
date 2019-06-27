@@ -229,3 +229,14 @@ var campos_top = [
     {type: "newcolumn"},
     {type: "template", name: "informacoesUsuario",  offsetTop: "33",  format: "reInformacoesUsuario"}
 ];
+
+var campos_main_layout_top = [
+    {type: "settings", labelAlign: "left", offsetLeft: "1", offsetTop: "0", position: "label-top"},
+    {type: "input", name: "left_bloco", label: "Torre", offsetLeft: "4", offsetTop: "10", inputWidth: 45, style: "font-weight:bold;"},
+    {type: "newcolumn"},
+    {type: "input", name: "left_unidade", label: "Unidade", offsetLeft: "4", offsetTop: "10", inputWidth: 45, style: "font-weight:bold;"},
+    {type: "newcolumn"},
+    {type: "template", name: "selecionar", offsetTop: "33", offsetLeft: "10", format: "reSelecionar"},
+    {type: "newcolumn"},
+    {type: "template", name: "localizar", offsetTop: "33", offsetLeft: "40", format: "reLocalizar"}
+];

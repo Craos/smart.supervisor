@@ -15,7 +15,7 @@ var campos_main_esquerda = [
                 </a>"
         },
         {
-            type: "template", name: "admunidade", value: "<a style='text-decoration: none' href='#' onclick='admunidade();'>\
+            type: "template", name: "admunidade", value: "<a style='text-decoration: none' href='#' onclick='unidade_cadastro();'>\
                     <div class='item_esquerda'>\
                         <img src='controles/main/img/main/admunidade.png' alt='Minha Unidade'>\
                         <p>Informa&ccedil;&otilde;es gerais</p>\

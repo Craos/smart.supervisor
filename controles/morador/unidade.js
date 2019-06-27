@@ -8,7 +8,7 @@ var formnotificacoes;
 var data_ocorrencia;
 var data_retirada;
 
-function unidade() {
+function unidade_cadastro() {
 
     var formSourceUnidade;
     var formUnidade;
