@@ -40,8 +40,8 @@ function seletor_grid(parametros) {
 		    where: 'pk_unidade/' +rId
 	    };
 
-	    if (windowAtualizarDadosSeletor != undefined)
-		    windowAtualizarDadosSeletor.close();
+	    if (winpesquisaavancada != undefined)
+		    winpesquisaavancada.close();
 
 	    sys.FormAction(sys.setParameters(buscamorador), topResultBuscaMorador);
 

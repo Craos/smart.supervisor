@@ -2,297 +2,56 @@
  * Created by Oberdan on 06/06/14.
  */
 
-var windowAtualizarDadosSeletor;
-var formCadastroSeletor;
-var windowIDSeletor;
-var lasthttpResponse;
-
 function pesquisa_avancada() {
 
-	windowIDSeletor = 'windowAtualizarDadosSeletor';
-	var windowsClientInfo;
-	windowsClientInfo = new dhtmlXWindows();
-	windowsClientInfo.setSkin('dhx_terrace');
+	let win;
+	win = new dhtmlXWindows();
 
-	windowAtualizarDadosSeletor = windowsClientInfo.createWindow(windowIDSeletor, 0, 0, 860, 600);
-	windowAtualizarDadosSeletor.setText('Selecionar registro');
-	windowAtualizarDadosSeletor.denyResize();
-	windowAtualizarDadosSeletor.centerOnScreen();
-	windowAtualizarDadosSeletor.button('park').hide();
-	windowAtualizarDadosSeletor.button('minmax1').hide();
+	let winpesquisa = win.createWindow('pesquisa', 0, 0, 1000, 600);
+	winpesquisa.setText('Selecionar registro');
+	winpesquisa.centerOnScreen();
 
-	formCadastroSeletor = windowAtualizarDadosSeletor.attachForm(campos_seletor);
-	formCadastroSeletor.attachEvent("onButtonClick", function (name) {
+	let layout = winpesquisa.attachLayout('2E');
+	let top = layout.cells('a');
+	top.hideHeader();
+	top.setHeight('120');
 
-		switch (name) {
-			case 'selecionar':
-				selecionarregistro(formCadastroSeletor);
-				break;
+	let form = top.attachForm([
+		{type: "settings", labelAlign: "left", position: "label-top", inputWidth: 450},
+		{type: 'block', list:[
+			{type: "input", name: "valor", label: "Nome da pessoa, documento, modelo do veículo, placa"}
+		]},
+		{type: 'label', label:'Tipo de pesquisa', offsetTop: 12, list:[
+			{type: "settings", labelAlign: "left", position: "label-left", offsetLeft: 30},
+			{type:"radio", name:"tipo", value:"pessoa", label:"Pessoa", checked:true},
+			{type: "newcolumn"},
+			{type:"radio", name:"tipo", value:"veiculo", label:"Veículo"},
+			{type: "newcolumn"},
+			{type:"radio", name:"tipo", value:"pet", label:"Pet"}
+		]},
+		{type: "newcolumn", offset: 20},
+		{type: "button", name: "iniciar", offsetLeft:20, offsetTop: 12, value: "Pesquisar"}
+	]);
 
-			case 'confirmar':
-				topResultBuscaMorador(lasthttpResponse);
-				windowAtualizarDadosSeletor.close();
-				break;
+	let botton = layout.cells('b');
+	botton.hideHeader();
+	let grid = botton.attachGrid();
+	grid.setIconsPath('./codebase/imgs/');
+	grid.setHeader("Id,Torre,Unidade,Cadastro,Identificação,Documento");
+	grid.setColumnIds("id,torre,unidade,cadastro,identificacao,documento");
+	grid.enableAutoWidth(true);
+	grid.init();
 
-			case 'localizar_morador':
-				localizaMorador();
-				break;
 
-			case 'localizar_veiculo':
-				localizaVeiculo();
-				break;
-
-			default:
-				break;
-
-		}
-
+	form.attachEvent("onButtonClick", function () {
+		let data = form.getFormData();
+		admunidade.Executar({
+			tipo: data.tipo,
+			valor: data.valor,
+			callback: function (response) {
+				console.debug(response);
+			}
+		})
 	});
 
-	var bindcombocondominios = {
-		parametros: true,
-		contenttype: 'xml',
-		action: 'select_combo',
-		grava_sessao: 'true',
-		nome_sessao: 'combo_condominios',
-		campos: 'num, nome as tipo',
-		origem: 'condominio.condominios'
-	};
-
-	sys.FormAction(sys.setParameters(bindcombocondominios), ResultBindcomboCondominios);
-
-	var bindcomboblocos = {
-		parametros: true,
-		contenttype: 'xml',
-		action: 'select_combo',
-		grava_sessao: 'true',
-		nome_sessao: 'combo_blocos',
-		orderby: 'num',
-		campos: 'num, nome as tipo',
-		origem: 'condominio.blocos'
-	};
-
-	sys.FormAction(sys.setParameters(bindcomboblocos), ResultBindcomboBlocos);
-
-	var bindcombounidades = {
-		parametros: true,
-		contenttype: 'xml',
-		action: 'select_combo',
-		grava_sessao: 'true',
-		nome_sessao: 'combo_unidades',
-		campos: 'admunidade as num, admunidade as tipo',
-		origem: 'condominio.unidades',
-		groupby: '1, 2',
-		orderby: '1'
-	};
-
-	sys.FormAction(sys.setParameters(bindcombounidades), ResultBindcomboUnidades);
-
 }
-
-function ResultBuscaMorador(http) {
-
-	var out;
-	out = JSON.parse(http.responseText);
-
-	var itens = out[0];
-	for (var key in itens)
-		if (itens.hasOwnProperty(key))
-			formCadastroSeletor.setItemValue(key, itens[key]);
-
-	if (wgridSeletor != undefined)
-		wgridSeletor.close();
-
-	lasthttpResponse = http;
-}
-
-function ResultBindcomboCondominios(http) {
-	var condominios = formCadastroSeletor.getCombo('condominio');
-	condominios.loadXMLString(http.responseText);
-	condominios.setComboValue(1);
-}
-
-function ResultBindcomboBlocos(http) {
-	var blocos = formCadastroSeletor.getCombo('bloco');
-	blocos.loadXMLString(http.responseText);
-}
-
-function ResultBindcomboUnidades(http) {
-	var unidades = formCadastroSeletor.getCombo('admunidade');
-	unidades.loadXMLString(http.responseText);
-}
-
-function selecionarregistro(form) {
-
-	var condominio = (form.getCombo('condominio') == undefined) ? 1 : form.getCombo('condominio');
-	var bloco = form.getCombo('bloco');
-	var unidade = form.getCombo('admunidade');
-
-	var buscamorador = {
-		parametros: true,
-		contenttype: 'xml',
-		action: 'directjson',
-		origem: 'condominio.unidade_info',
-		where: 'condominio/' + condominio.getSelectedValue() +
-		'|bloco/' + bloco.getSelectedValue() +
-		'|admunidade/' + unidade.getSelectedValue()
-	};
-
-	sys.FormAction(sys.setParameters(buscamorador), ResultBuscaMorador);
-
-}
-
-function localizaMorador() {
-
-	var nome = formCadastroSeletor.getItemValue('nome_morador').toLowerCase();
-	var rg = formCadastroSeletor.getItemValue('documento').toLowerCase().replace(/[^a-z0-9]/gi, '');
-	var cpf = formCadastroSeletor.getItemValue('documento').toLowerCase().replace(/[^a-z0-9]/gi, '');
-	var autenticacao = formCadastroSeletor.getItemValue('autenticacao_pessoa').toLowerCase().replace(/[^a-z0-9]/gi, '');
-
-	var criterios = "";
-	var operador = "";
-
-	if (nome.length > 0)
-		criterios = " nome like '" + nome + "%";
-
-	if (rg.length > 0) {
-		if (criterios.length > 0)
-			operador = " OR ";
-		criterios += operador + "lower(regexp_replace(rg, '[^0-9a-zA-Z ]', '', 'g')) like '" + rg + "%'";
-	}
-
-	if (cpf.length > 0) {
-		if (criterios.length > 0)
-			operador = " OR ";
-		criterios += operador + "lower(regexp_replace(cpf, '[^0-9a-zA-Z ]', '', 'g')) like '" + cpf + "%";
-	}
-
-	if (autenticacao.length > 0) {
-		if (criterios.length > 0)
-			operador = " OR ";
-		criterios += operador + "lower(regexp_replace(autenticacao, '[^0-9a-zA-Z ]', '', 'g')) like '" + autenticacao + "%";
-	}
-
-	var gridSourceMoradores;
-	gridSourceMoradores = {
-		contenttype: 'xml',
-		action: 'dhtmlxgrid',
-		origem: 'condominio.morador_info',
-		campos: 'num, condominio, bloco, admunidade,nome',
-		where: criterios,
-		orderby: 'num',
-		usecheckbox: 'false',
-		chave: 'num',
-		displaychave: 'false'
-	};
-	seletor_grid(gridSourceMoradores);
-
-}
-
-function localizaVeiculo() {
-
-	var marca = formCadastroSeletor.getItemValue('marca').toLowerCase();
-	var modelo = formCadastroSeletor.getItemValue('modelo').toLowerCase();
-	var placa_letras = formCadastroSeletor.getItemValue('placa_letras').toLowerCase();
-	var placa_numeros = formCadastroSeletor.getItemValue('placa_numeros').toLowerCase().replace(/[^a-z0-9]/gi, '');
-	var autenticacao = formCadastroSeletor.getItemValue('autenticacao_carro').toLowerCase().replace(/[^a-z0-9]/gi, '');
-
-	var criterios = "";
-	var operador = "";
-
-	if (marca.length > 0)
-		criterios = " marca like '" + marca + "%";
-
-	if (modelo.length > 0) {
-		if (criterios.length > 0)
-			operador = " OR ";
-		criterios += operador + "modelo like '" + modelo + "%";
-	}
-
-	if (placa_letras.length > 0) {
-		if (criterios.length > 0)
-			operador = " OR ";
-		criterios += operador + "placa_letras like '" + placa_letras + "%";
-	}
-
-	if (placa_numeros.length > 0) {
-		if (criterios.length > 0)
-			operador = " OR ";
-		criterios += operador + "lower(regexp_replace(placa_numeros, '[^0-9a-zA-Z ]', '', 'g')) like '" + placa_numeros + "%";
-	}
-
-	if (autenticacao.length > 0) {
-		if (criterios.length > 0)
-			operador = " OR ";
-		criterios += operador + "lower(regexp_replace(autenticacao, '[^0-9a-zA-Z ]', '', 'g')) like '" + autenticacao + "%";
-	}
-
-	var gridSourceVeiculos;
-	gridSourceVeiculos = {
-		contenttype: 'xml',
-		action: 'dhtmlxgrid',
-		origem: 'condominio.veiculo_info',
-		campos: 'num, nome_proprietario, marca, modelo, placa_letras, placa_numeros',
-		where: criterios,
-		orderby: 'num',
-		usecheckbox: 'false',
-		chave: 'num',
-		displaychave: 'false'
-	};
-	seletor_grid(gridSourceVeiculos);
-
-}
-
-var campos_seletor = [
-	{ type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "8", position: "label-top"},
-	{type: "fieldset", name: "info", label: "Informa&ccedil;&otilde;es da admunidade", width: 400, list: [
-			{type: "block", list: [
-					{type: "combo", name: "condominio", required: true, label: "Condom&iacute;nio", inputWidth: "350", style: "font-weight:bold;"}
-				]},
-			{type: "block", list: [
-					{type: "combo", name: "bloco", required: true, label: "Bloco/Torre", inputWidth: "185", style: "font-weight:bold;"},
-					{type: "newcolumn"},
-					{type: "combo", name: "admunidade", required: true, label: "Unidade", inputWidth: "160", style: "font-weight:bold;"}
-				]},
-			{type: "block", list: [
-					{type: "input", name: "nome", label: "Nome", inputWidth: "350", style: "font-weight:bold;"}
-				]},
-			{type: "block", list: [
-					{type: "button", name: "selecionar", value: "Selecionar"},
-					{type: "newcolumn"},
-					{type: "button", name: "confirmar", value: "Confirmar"}
-				]}
-		]},
-	{type: "newcolumn"},
-	{type: "fieldset", name: "localizar_morador", label: "Localizar registro", width: 400, list: [
-			{type: "block", list: [
-					{type: "input", name: "nome_morador", label: "Nome", inputWidth: "350", style: "font-weight:bold;"}
-				]},
-			{type: "block", list: [
-					{type: "input", name: "documento", label: "Documento", inputWidth: "180", style: "font-weight:bold;"},
-					{type: "newcolumn"},
-					{type: "input", name: "autenticacao_pessoa", label: "Autentica&ccedil;&atilde;o da pessoa", inputWidth: "160", style: "font-weight:bold;"}
-				]},
-			{type: "block", list: [
-					{type: "button", name: "localizar_morador", value: "Localizar"}
-				]}
-		]},
-	{type: "fieldset", name: "localizar_veiculo", label: "Localizar ve&iacute;culo", width: 400, list: [
-			{type: "block", list: [
-					{type: "input", name: "modelo", label: "Modelo", inputWidth: "120", style: "font-weight:bold;"},
-					{type: "newcolumn"},
-					{type: "input", name: "marca", label: "Marca", inputWidth: "120", style: "font-weight:bold;"}
-				]},
-			{type: "block", list: [
-					{type: "input", name: "placa_letras", label: "Placa", inputWidth: "35", style: "font-weight:bold;"},
-					{type: "newcolumn"},
-					{type: "input", name: "placa_numeros", label: "N&uacute;meros", inputWidth: "50", style: "font-weight:bold;"},
-					{type: "newcolumn"},
-					{type: "input", name: "autenticacao_carro", label: "Autentica&ccedil;&atilde;o do ve&iacute;culo", inputWidth: "160", style: "font-weight:bold;"}
-				]},
-			{type: "block", list: [
-					{type: "button", name: "localizar_veiculo", value: "Localizar"}
-				]}
-		]},
-	{type: "hidden", name: "pk_unidade"}
-];
