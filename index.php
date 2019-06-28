@@ -58,11 +58,12 @@
     <script src="controles/main/estrutura/campos.meu.usuario.js" type="text/javascript"></script>
     <script src="controles/main/estrutura/campos.seletor_new.js" type="text/javascript"></script>
     <script src ="controles/main/agradecimento.js" type="text/javascript"></script>
-    <script src="controles/main/main.js" type="text/javascript"></script>
+
     <script src="controles/main/recupera.js" type="text/javascript"></script>
     <script src="js/supervisor/pesquisa_avancada.js" type="text/javascript"></script>
     <script src="controles/main/seletor_grid.js" type="text/javascript"></script>
     <script src="controles/main/meusuaurio.js" type="text/javascript"></script>
+    <script src="js/supervisor/main.js" type="text/javascript"></script>
 
     <!-- usuario -->
     <script src="controles/usuario/atendimento.js" type="text/javascript"></script>
