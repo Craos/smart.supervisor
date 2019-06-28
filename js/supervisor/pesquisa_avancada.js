@@ -45,12 +45,11 @@ function pesquisa_avancada() {
 
 	form.attachEvent("onButtonClick", function () {
 		let data = form.getFormData();
-		admunidade.Executar({
+		admunidade.Pesquisar({
 			tipo: data.tipo,
-			valor: data.valor,
-			callback: function (response) {
-				console.debug(response);
-			}
+			valor: data.valor
+		}, function (response) {
+			console.debug(response)
 		})
 	});
 
