@@ -1,71 +1,58 @@
 /**
  * Created by Oberdan on 06/06/14.
  */
-var gridMoradores;
-var formMoradores;
+let gridMoradores;
+let formMoradores;
 
-function unidade_moradores() {
+unidade_moradores = function(item) {
 
-    var paramMorador;
+    let paramMorador;
 
     sessionStorage.recursocorrente = 'unidade_moradores';
 
     formMoradores = nav_layout_principal.attachForm(campos_moradores);
 
-    var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
-    var perfil_corrente;
+    let userprofile = JSON.parse(sessionStorage.auth).user.perfil;
+    let perfil_corrente;
+
     for (var i = 0; i < userprofile.length; i++)
-        if (userprofile[i].nome_recurso == 'moradores') {
+        if (userprofile[i].nome_recurso === 'moradores') {
             perfil_corrente = userprofile[i];
             break;
         }
 
-    if (perfil_corrente.adicionar == 0)
+    if (perfil_corrente.adicionar === 0)
         formMoradores.hideItem('novo');
 
-    if (perfil_corrente.editar == 0) {
+    if (perfil_corrente.editar === 0) {
         formMoradores.hideItem('salvar');
         formMoradores.hideItem('fotomorador');
         formMoradores.hideItem('reserva');
     }
 
-    if (perfil_corrente.remover == 0)
+    if (perfil_corrente.remover === 0)
         formMoradores.hideItem('remover');
 
-    if (perfil_corrente.telefones == 0)
+    if (perfil_corrente.telefones === 0)
         formMoradores.hideItem('telefone');
 
-    if (perfil_corrente.documentos == 0) {
+    if (perfil_corrente.documentos === 0) {
         formMoradores.hideItem('cpf');
         formMoradores.hideItem('rg');
     }
 
-    if (perfil_corrente.imagens == 0) {
+    if (perfil_corrente.imagens === 0) {
         formMoradores.hideItem('foto_morador');
     }
 
     formMoradores.attachEvent("onButtonClick", function (name) {
 
-        if (name == 'novo') {
+        if (name === 'novo') {
             formMoradores.reset();
             sys.FormClear(formMoradores);
             formMoradores.showItem('parentesco');
 
         } else if (name === 'salvar') {
-
-            /*if (rowdata !== undefined) {
-                var dataativacao = new Date(rowdata.ativacao);
-                var hoje = new Date();
-
-                if (dataativacao > hoje) {
-                    dhtmlx.alert({
-                        title: "Smart Supervisor",
-                        type: "alert",
-                        text: "Operação não autorizada!<br> Este registro ainda não está ativo"
-                    });
-                    return;
-                }
-            }*/
 
             if (formMoradores.getItemValue('proprietario') === '1' && formMoradores.getItemValue('rg').length === 0) {
                 alert('Informe o numero do documento de identificação');
@@ -135,10 +122,6 @@ function unidade_moradores() {
 
             new ReservadeEspaco({unidade: admunidade, nome:formMoradores.getItemValue('nome'), autenticacao:formMoradores.getItemValue('autenticacao')}).Exibir();
         }
-
-
-
-
     });
 
     formMoradores.attachEvent("onAfterValidate", function (status) {
@@ -179,27 +162,12 @@ function unidade_moradores() {
     gridMoradores.init();
     gridMoradores.attachEvent('onRowSelect', function (id) {
 
-        var formSourceMoradores;
-        formSourceMoradores = {
-            dados: 'teste',
-            contenttype: 'xml',
-            action: 'directjson',
-            origem: 'condominio.moradores_info',
-            where: 'condominio/' + admunidade.condominio +
-            '|bloco/' + admunidade.bloco +
-            '|andar/' + admunidade.andar +
-            '|admunidade/' + admunidade.pk_unidade +
-            '|num/' + id,
-            chave: 'num'
-        };
-
-        sys.FormAction(
-            sys.setParameters(formSourceMoradores), LoadFormMoradores
-        );
+        admunidade.morador.id = id;
+        admunidade.morador.ObterInfo(LoadFormMoradores);
 
     });
     gridLoadMoradores();
-}
+};
 
 function ResultFormMoradores(http) {
     var out;
@@ -239,43 +207,17 @@ function ResultFormMoradores(http) {
 }
 
 var rowdata;
-function LoadFormMoradores(http) {
+function LoadFormMoradores(response) {
 
-    var out;
-    out = JSON.parse(http.responseText);
+    sys.FormClear(formMoradores);
 
-    var itens = out[0];
-    rowdata = itens;
-    for (var key in itens)
-        if (itens.hasOwnProperty(key))
-            formMoradores.setItemValue(key, itens[key]);
+    formMoradores.setFormData(response);
+    formMoradores.getContainer("foto_morador")
+        .innerHTML = '<img id="fotodwd" style="width: 120px;" alt="" src="' + response.foto1 + '">';
 
-    if (itens.proprietario == '1') {
-        formMoradores.hideItem('parentesco');
-    } else {
-        formMoradores.showItem('parentesco');
-    }
-
-
-    formMoradores.setItemValue('nome_condominio', admunidade.nome_condominio);
-    formMoradores.setItemValue('nome_bloco', admunidade.nome_bloco);
-    formMoradores.setItemValue('nome_andar', admunidade.nome_andar);
-    formMoradores.setItemValue('nome_unidade', admunidade.unidade);
-
-    var fotocadastro = formMoradores.getContainer("foto_morador");
-    fotocadastro.innerHTML = '';
-
-    if (fotocadastro != null && itens.foto1 != null) {
-        if (itens.foto1.length > 0) {
-            fotocadastro.innerHTML = '<img id="fotodwd" style="width: 120px;" alt="" src="' + itens.foto1 + '">';
-        } else {
-
-        }
-    }
-
-    var data = new Date(itens.ativacao);
-    var hoje = new Date();
-    var ativado = data > hoje;
+    let data = new Date(response.ativacao);
+    let hoje = new Date();
+    let ativado = data > hoje;
 
     if (ativado === false) {
         formMoradores.setItemLabel('aviso_ativacao', 'Ativado');
@@ -289,20 +231,13 @@ function LoadFormMoradores(http) {
 
 function gridLoadMoradores() {
 
-    console.debug(admunidade);
-
     admunidade.morador.ListarCadastros(function (response) {
-
         gridMoradores.clearAll();
         response.dados.filter(function (item) {
-
             let data = new Date(item.filedate);
-
             gridMoradores.addRow(item.num, [item.num, data.format("dd/mm/yyyy"), item.nome, item.nascimento]);
         });
-
     });
-
 
 }
 
