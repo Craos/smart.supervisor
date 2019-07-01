@@ -53,7 +53,6 @@
     <script src="controles/main/estrutura/campos.agradecimento.js" type="text/javascript"></script>
     <script src="controles/main/estrutura/campos.login.js" type="text/javascript"></script>
     <script src="controles/main/estrutura/campos.main.js" type="text/javascript"></script>
-    <script src="controles/main/estrutura/campos.main.esquerda.js" type="text/javascript"></script>
     <script src="controles/main/estrutura/campos.recupera.js" type="text/javascript"></script>
     <script src="controles/main/estrutura/campos.meu.usuario.js" type="text/javascript"></script>
     <script src="controles/main/estrutura/campos.seletor_new.js" type="text/javascript"></script>
@@ -70,6 +69,7 @@
 
     <script src="js/unidade/usuario.js" type="text/javascript"></script>
     <script src="js/unidade/moradores.js" type="text/javascript"></script>
+    <script src="js/unidade/unidade.js" type="text/javascript"></script>
 
     <script src="controles/usuario/estrutura/campos.atendimento.js" type="text/javascript"></script>
     <script src="controles/usuario/estrutura/campos.cadastro.js" type="text/javascript"></script>
@@ -103,7 +103,6 @@
 
     <script src="controles/morador/hospedes.js" type="text/javascript"></script>
     <script src="controles/morador/grid_prestadores.js" type="text/javascript"></script>
-    <script src="controles/morador/unidade.js" type="text/javascript"></script>
     <script src="controles/morador/veiculos.js" type="text/javascript"></script>
     <script src="controles/morador/termo.js" type="text/javascript"></script>
     <script src="controles/morador/manual.js" type="text/javascript"></script>
