@@ -4,7 +4,7 @@
 let gridMoradores;
 let formMoradores;
 
-unidade_moradores = function(item) {
+unidade_moradores = function (item) {
 
     let paramMorador;
 
@@ -51,6 +51,7 @@ unidade_moradores = function(item) {
             formMoradores.reset();
             sys.FormClear(formMoradores);
             formMoradores.showItem('parentesco');
+            novo = true;
 
         } else if (name === 'salvar') {
 
@@ -113,42 +114,52 @@ unidade_moradores = function(item) {
 
             if (formMoradores.getItemValue('num').length === 0 || formMoradores.getItemValue('num') === '') {
                 dhtmlx.alert({
-                    title:"Atenção",
-                    type:"alert-warning",
-                    text:"Selecione o registro para poder efetuar a reserva!"
+                    title: "Atenção",
+                    type: "alert-warning",
+                    text: "Selecione o registro para poder efetuar a reserva!"
                 });
                 return;
             }
 
-            new ReservadeEspaco({unidade: admunidade, nome:formMoradores.getItemValue('nome'), autenticacao:formMoradores.getItemValue('autenticacao')}).Exibir();
+            new ReservadeEspaco({
+                unidade: admunidade,
+                nome: formMoradores.getItemValue('nome'),
+                autenticacao: formMoradores.getItemValue('autenticacao')
+            }).Exibir();
         }
     });
 
     formMoradores.attachEvent("onAfterValidate", function (status) {
+
         if (status === false)
             return;
 
-        var today = new Date();
+        let data = formMoradores.getFormData();
+        let infounidade = JSON.parse(sessionStorage.unidadecorrente);
 
-        paramMorador = {
-            contenttype: 'xml',
-            action: 'insert',
-            origem: 'condominio.moradores',
-            returnkey: 'num',
-            condominio: admunidade.condominio,
-            bloco: admunidade.bloco,
-            andar: admunidade.andar,
-            unidade: admunidade.pk_unidade,
-            lastdate: today.format("yyyy-mm-dd"),
-            lasttime: today.format("HH:MM:ss"),
-            lastuser: informacoesdousuario.uidins
-        };
 
-        sys.FormAction(
-            sys.setParameters(
-                sys.mergeAttributes(paramMorador, formMoradores.getFormData())
-            ), ResultFormMoradores
-        );
+        delete data.foto1;
+        data.condominio = infounidade.condominio;
+        data.bloco = infounidade.bloco;
+        data.andar = infounidade.andar;
+        data.unidade = infounidade.pk_unidade;
+
+
+        admunidade.morador.Adicionar({
+            data: data,
+            callback: function (response) {
+
+                admunidade.morador.Ativar({
+                    bloco: infounidade.bloco,
+                    unidade: infounidade.unidade,
+                    registro: null
+                }, function (response) {
+                    gridLoadMoradores();
+                });
+            }
+        })
+
+
 
     });
 
@@ -175,7 +186,7 @@ function ResultFormMoradores(http) {
     out = JSON.parse(http.responseText);
 
     if (out.registro !== undefined && out.registro.length > 0) {
-        gridLoadMoradores();
+
         sys.FormClear(formMoradores);
         formMoradores.showItem('parentesco');
 
@@ -207,6 +218,7 @@ function ResultFormMoradores(http) {
 }
 
 var rowdata;
+
 function LoadFormMoradores(response) {
 
     sys.FormClear(formMoradores);
@@ -250,7 +262,7 @@ function recebeImagemMorador(imagem) {
 }
 
 var dateFormat = function () {
-    var	token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,
+    var token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,
         timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g,
         timezoneClip = /[^-+\dA-Z]/g,
         pad = function (val, len) {
@@ -282,7 +294,7 @@ var dateFormat = function () {
             utc = true;
         }
 
-        var	_ = utc ? "getUTC" : "get",
+        var _ = utc ? "getUTC" : "get",
             d = date[_ + "Date"](),
             D = date[_ + "Day"](),
             m = date[_ + "Month"](),
@@ -293,33 +305,33 @@ var dateFormat = function () {
             L = date[_ + "Milliseconds"](),
             o = utc ? 0 : date.getTimezoneOffset(),
             flags = {
-                d:    d,
-                dd:   pad(d),
-                ddd:  dF.i18n.dayNames[D],
+                d: d,
+                dd: pad(d),
+                ddd: dF.i18n.dayNames[D],
                 dddd: dF.i18n.dayNames[D + 7],
-                m:    m + 1,
-                mm:   pad(m + 1),
-                mmm:  dF.i18n.monthNames[m],
+                m: m + 1,
+                mm: pad(m + 1),
+                mmm: dF.i18n.monthNames[m],
                 mmmm: dF.i18n.monthNames[m + 12],
-                yy:   String(y).slice(2),
+                yy: String(y).slice(2),
                 yyyy: y,
-                h:    H % 12 || 12,
-                hh:   pad(H % 12 || 12),
-                H:    H,
-                HH:   pad(H),
-                M:    M,
-                MM:   pad(M),
-                s:    s,
-                ss:   pad(s),
-                l:    pad(L, 3),
-                L:    pad(L > 99 ? Math.round(L / 10) : L),
-                t:    H < 12 ? "a"  : "p",
-                tt:   H < 12 ? "am" : "pm",
-                T:    H < 12 ? "A"  : "P",
-                TT:   H < 12 ? "AM" : "PM",
-                Z:    utc ? "UTC" : (String(date).match(timezone) || [""]).pop().replace(timezoneClip, ""),
-                o:    (o > 0 ? "-" : "+") + pad(Math.floor(Math.abs(o) / 60) * 100 + Math.abs(o) % 60, 4),
-                S:    ["th", "st", "nd", "rd"][d % 10 > 3 ? 0 : (d % 100 - d % 10 != 10) * d % 10]
+                h: H % 12 || 12,
+                hh: pad(H % 12 || 12),
+                H: H,
+                HH: pad(H),
+                M: M,
+                MM: pad(M),
+                s: s,
+                ss: pad(s),
+                l: pad(L, 3),
+                L: pad(L > 99 ? Math.round(L / 10) : L),
+                t: H < 12 ? "a" : "p",
+                tt: H < 12 ? "am" : "pm",
+                T: H < 12 ? "A" : "P",
+                TT: H < 12 ? "AM" : "PM",
+                Z: utc ? "UTC" : (String(date).match(timezone) || [""]).pop().replace(timezoneClip, ""),
+                o: (o > 0 ? "-" : "+") + pad(Math.floor(Math.abs(o) / 60) * 100 + Math.abs(o) % 60, 4),
+                S: ["th", "st", "nd", "rd"][d % 10 > 3 ? 0 : (d % 100 - d % 10 != 10) * d % 10]
             };
 
         return mask.replace(token, function ($0) {
@@ -330,17 +342,17 @@ var dateFormat = function () {
 
 // Some common format strings
 dateFormat.masks = {
-    "default":      "ddd mmm dd yyyy HH:MM:ss",
-    shortDate:      "m/d/yy",
-    mediumDate:     "mmm d, yyyy",
-    longDate:       "mmmm d, yyyy",
-    fullDate:       "dddd, mmmm d, yyyy",
-    shortTime:      "h:MM TT",
-    mediumTime:     "h:MM:ss TT",
-    longTime:       "h:MM:ss TT Z",
-    isoDate:        "yyyy-mm-dd",
-    isoTime:        "HH:MM:ss",
-    isoDateTime:    "yyyy-mm-dd'T'HH:MM:ss",
+    "default": "ddd mmm dd yyyy HH:MM:ss",
+    shortDate: "m/d/yy",
+    mediumDate: "mmm d, yyyy",
+    longDate: "mmmm d, yyyy",
+    fullDate: "dddd, mmmm d, yyyy",
+    shortTime: "h:MM TT",
+    mediumTime: "h:MM:ss TT",
+    longTime: "h:MM:ss TT Z",
+    isoDate: "yyyy-mm-dd",
+    isoTime: "HH:MM:ss",
+    isoDateTime: "yyyy-mm-dd'T'HH:MM:ss",
     isoUtcDateTime: "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'"
 };
 
