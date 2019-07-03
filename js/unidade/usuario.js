@@ -54,12 +54,7 @@ function unidade_usuario() {
         delete data.equipe;
         delete data.tecnico_suporte;
 
-
-        let today = new Date();
-        data.lastdate = today.format("yyyy-mm-dd");
-        data.lasttime = today.format("HH:MM:ss");
         data.password = base64_encode(data.password);
-        data.lastuser = JSON.parse(sessionStorage.auth).user.login;
 
         admunidade.usuario.Editar(data, function (response) {
             alert('Informações alteradas com sucesso!');
