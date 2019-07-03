@@ -32,27 +32,22 @@ function veiculos() {
     var userprofile = JSON.parse(sessionStorage.auth).user.perfil;
     var perfil_corrente;
     for (var i = 0; i < userprofile.length; i++)
-        if (userprofile[i].nome_recurso == 'veiculos') {
+        if (userprofile[i].nome_recurso === 'veiculos') {
             perfil_corrente = userprofile[i];
             break;
         }
 
-    if (perfil_corrente.adicionar == 0)
+    if (perfil_corrente.adicionar === 0)
         formVeiculos.hideItem('novo');
 
-    if (perfil_corrente.editar == 0)
+    if (perfil_corrente.editar === 0)
         formVeiculos.hideItem('salvar');
 
-    if (perfil_corrente.remover == 0) {
+    if (perfil_corrente.remover === 0) {
         formVeiculos.hideItem('remover');
         formVeiculos.hideItem('transferir');
     }
 
-/*    if (perfil_corrente.documentos == 0) {
-        formVeiculos.hideItem('placa_letras');
-        formVeiculos.hideItem('placa_numeros');
-    }
-*/
 	var data_inicial = formVeiculosPassagens.getCalendar('data_inicial');
 	data_inicial.loadUserLanguage('pt');
 	data_inicial.hideTime();
@@ -68,40 +63,41 @@ function veiculos() {
 
     formVeiculos.attachEvent("onButtonClick", function (name) {
 
-		if (name == 'novo') {
+		if (name === 'novo') {
 			sys.FormClear(formVeiculos);
 			formVeiculos.setFormData({num: null});
 
-		} else if (name == 'salvar') {
+		} else if (name === 'salvar') {
 			formVeiculos.validate();
 
-		} else if (name == 'remover') {
+		} else if (name === 'remover') {
 
-			if (formVeiculos.getItemValue('num') == '')
+			let data = formVeiculos.getFormData();
+
+			if (data.num.length === 0)
 				return;
 
 			dhtmlx.confirm("Voc&ecirc; confirma a exclus&atilde;o do registro", function (result) {
-				if (result == true) {
-					paramVeiculo = {
-						contenttype: 'xml',
-						action: 'delete',
-						origem: 'condominio.veiculos',
-						returnkey: 'num',
-						condominio: admunidade.condominio,
-						bloco: admunidade.bloco,
-						andar: admunidade.andar,
-						unidade: admunidade.pk_unidade
-					};
 
-					sys.FormAction(
-						sys.setParameters(
-							sys.mergeAttributes(paramVeiculo, formVeiculos.getFormData())
-						), ResultFormVeiculos
-					);
+				if (result === true) {
+
+					admunidade.veiculo.Remover({
+						filter: {
+							num: data.num
+						},
+						last: 'num',
+						callback: function (response) {
+							console.debug(response);
+							sys.FormClear(formVeiculos);
+							gridLoadVeiculos();
+						}
+					});
+
 				}
+
 			});
 
-		} else if (name == 'transferir') {
+		} else if (name === 'transferir') {
 
 			var busca_nova_unidade = {
 				dados: 'teste',
@@ -119,13 +115,13 @@ function veiculos() {
 				sys.setParameters(busca_nova_unidade), ResultNovaLocalizacao
 			);
 
-		} else if (name == 'finalizar') {
+		} else if (name === 'finalizar') {
 			main();
 		}
 	});
 
 	formVeiculos.attachEvent("onAfterValidate", function (status) {
-		if (status == false)
+		if (status === false)
 			return;
 
 		var dados = formVeiculos.getFormData();
@@ -231,20 +227,6 @@ function veiculos() {
 
 }
 
-function ResultFormVeiculos(http) {
-	var out;
-	out = {registro: '', situacao: ''};
-	out = JSON.parse(http.responseText);
-
-	if (out.registro != undefined && out.registro.length > 0) {
-		gridLoadVeiculos();
-		sys.FormClear(formVeiculos);
-		alert(out.situacao);
-	} else {
-		alert('Houve um erro ao enviar suas informações. Por favor tente mais tarde!');
-	}
-}
-
 function LoadFormVeiculos(http) {
 
 	var out;
@@ -255,7 +237,7 @@ function LoadFormVeiculos(http) {
 		if (itens.hasOwnProperty(key))
 			formVeiculos.setItemValue(key, itens[key]);
 
-	if (itens['situacao_estacionamento'] == 1) {
+	if (itens['situacao_estacionamento'] === 1) {
 		formVeiculos.setItemValue('situacao_estacionamento', true);
 	} else {
 		formVeiculos.setItemValue('situacao_estacionamento', false);
@@ -293,7 +275,7 @@ function LoadFormVeiculosExcluidos(http) {
         if (itens.hasOwnProperty(key))
             formVeiculosExcluidos.setItemValue(key, itens[key]);
 
-    if (itens['situacao_estacionamento'] == 1) {
+    if (itens['situacao_estacionamento'] === 1) {
         formVeiculosExcluidos.setItemValue('situacao_estacionamento', true);
     } else {
         formVeiculosExcluidos.setItemValue('situacao_estacionamento', false);
@@ -462,7 +444,7 @@ function buscaInformacoes(tipo) {
 		displaychave: 'false'
 	};
 
-	if (tipo == 'exportar') {
+	if (tipo === 'exportar') {
 
 		parametros = {
 			dados: 'teste',
@@ -483,7 +465,7 @@ function buscaInformacoes(tipo) {
 					win.focus();
 				}
 		);
-	} else if (tipo == 'imprimir') {
+	} else if (tipo === 'imprimir') {
 
 		parametros = {
 			dados: 'teste',
