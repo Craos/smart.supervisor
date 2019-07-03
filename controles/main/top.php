@@ -51,7 +51,7 @@ if (isset($_SESSION['checkauth']['bloco']) && in_array($_SESSION['checkauth']['b
     <title>Sistema Craos.NET</title>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <link rel="stylesheet" type="text/css" href="style.principal.opcao.css">
-    <link rel="stylesheet" type="text/css" href="style.principal.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="menu.top.css">
     <link rel="stylesheet" type="text/css" href="../../../craosframework/ajax/common_functions.css">
 </head>

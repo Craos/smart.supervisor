@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
-    <title>Anima Clube Parque Condom&iacute;nio</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-    <meta http-equiv="cache-control" content="max-age=0" />
-    <meta http-equiv="cache-control" content="no-cache" />
-    <meta http-equiv="expires" content="0" />
-    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-    <meta http-equiv="pragma" content="no-cache" />
+    <meta charset="UTF-8">
+    <title>Smart Auth</title>
+
+    <meta name="description" content="Verticals">
+    <meta name="author" content="Oberdan Brito">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="js/dhtmlx/codebase/dhtmlx_padrao.css">
     <link rel="stylesheet" type="text/css" href="js/dhtmlx/codebase/dhtmlx.css">
@@ -15,10 +14,7 @@
     <link rel="stylesheet" type="text/css" href="js/dhtmlx/lib/dhtmlx/dhtmlxMenu/codebase/skins/dhtmlxmenu_dhx_terrace.css">
     <link rel="stylesheet" type="text/css" href="js/dhtmlx/lib/dhtmlx/dhtmlxCombo/codebase/dhtmlxcombo.css">
     <link rel="stylesheet" type="text/css" href="js/dhtmlx/lib/dhtmlx/dhtmlxTree/codebase/dhtmlxtree.css">
-    <link rel="stylesheet" type="text/css" href="craosframework/ajax/common_functions.css">
-
-    <link rel="stylesheet" type="text/css" href="controles/main/style.principal.opcao.css">
-    <link rel="stylesheet" type="text/css" href="controles/main/style.principal.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="js/dhtmlx/codebase/dhtmlx.js" type="text/javascript"></script>
@@ -32,9 +28,9 @@
     <script src="js/dhtmlx/lib/dhtmlx/dhtmlxCombo/codebase/dhtmlxcombo.js" type="text/javascript"></script>
     <script src="js/dhtmlx/lib/dhtmlx/dhtmlxForm/codebase/ext/dhtmlxform_item_container.js" type="text/javascript"></script>
     <script src="js/dhtmlx/lib/dhtmlx/dhtmlxTree/codebase/dhtmlxtree.js" type="text/javascript"></script>
-    <script src="craosframework/ajax/common_functions.js" type="text/javascript"></script>
-    <script src="craosframework/ajax/date.format.js" type="text/javascript"></script>
-    <script src="craosframework/ajax/md5.js" type="text/javascript"></script>
+    <script src="js/common_functions.js" type="text/javascript"></script>
+    <script src="js/date.format.js" type="text/javascript"></script>
+    <script src="js/md5.js" type="text/javascript"></script>
 
 
     <script src="../smart/lib/liteapi/info.js"></script>
@@ -70,6 +66,7 @@
     <script src="js/unidade/usuario.js" type="text/javascript"></script>
     <script src="js/unidade/moradores.js" type="text/javascript"></script>
     <script src="js/unidade/unidade.js" type="text/javascript"></script>
+    <script src="js/unidade/veiculos.js" type="text/javascript"></script>
 
     <script src="controles/usuario/estrutura/campos.atendimento.js" type="text/javascript"></script>
     <script src="controles/usuario/estrutura/campos.cadastro.js" type="text/javascript"></script>
@@ -89,7 +86,6 @@
     <script src="controles/morador/estrutura/campos.moradores.js" type="text/javascript"></script>
     <script src="controles/morador/estrutura/campos.hospedes.js" type="text/javascript"></script>
     <script src="controles/morador/estrutura/campos.foto.js" type="text/javascript"></script>
-    <script src="controles/morador/estrutura/campos.veiculos.js" type="text/javascript"></script>
     <script src="controles/morador/estrutura/campos.termo.js" type="text/javascript"></script>
     <script src="controles/morador/estrutura/campos.manual.js" type="text/javascript"></script>
     <script src="controles/morador/estrutura/campos.personal_trainer.js" type="text/javascript"></script>
@@ -103,7 +99,7 @@
 
     <script src="controles/morador/hospedes.js" type="text/javascript"></script>
     <script src="controles/morador/grid_prestadores.js" type="text/javascript"></script>
-    <script src="controles/morador/veiculos.js" type="text/javascript"></script>
+
     <script src="controles/morador/termo.js" type="text/javascript"></script>
     <script src="controles/morador/manual.js" type="text/javascript"></script>
     <script src="controles/morador/personal_trainer.js" type="text/javascript"></script>
