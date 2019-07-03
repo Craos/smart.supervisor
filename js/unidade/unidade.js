@@ -10,9 +10,7 @@ var data_retirada;
 
 function unidade_cadastro() {
 
-    var formSourceUnidade;
-    var formUnidade;
-    var paramUnidade;
+    let formUnidade;
 
     var tabbarUnidade = nav_layout_principal.attachTabbar();
     tabbarUnidade.addTab('tabInformacoes', 'Cadastro', '');
@@ -76,34 +74,19 @@ function unidade_cadastro() {
         if (status === false)
             return;
 
-        let today = new Date();
 
         let data = formUnidade.getFormData();
-        data.lastdate = today.format("yyyy-mm-dd");
-        data.lasttime = today.format("HH:MM:ss");
-        data.lastuser = JSON.parse(sessionStorage.auth).user.login;
 
-        if (data.situacao === 2) {
+        if (data.situacao === 2)
             data.nome_proprietario = data.nome_proprietario_imobiliaria;
-        }
 
-        Object.keys(data).forEach(function (key, value) {
-
-            console.debug(key, value);
-            if (data[key].length === 0)
-                delete data.key;
-
-
-        });
-
-        console.debug(data);
-
+        delete data.nome_proprietario_imobiliaria;
 
         admunidade.AtualizaObjetos();
         admunidade.Atualizar({
             data: data,
             filter: {
-                unidade: admunidade.id
+                num: admunidade.id
             },
             callback: function (response) {
                 console.debug(response);
