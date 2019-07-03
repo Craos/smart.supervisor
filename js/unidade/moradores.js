@@ -63,27 +63,27 @@ unidade_moradores = function (item) {
 
         } else if (name === 'remover') {
 
-            if (formMoradores.getItemValue('num') === '')
+            let data = formMoradores.getFormData();
+
+            if (data.num.length === 0)
                 return;
 
             dhtmlx.confirm("Exclus&atilde;o do registro", "Voc&ecirc; confirma a exclus&atilde;o do registro", function (result) {
-                if (result === true) {
-                    paramMorador = {
-                        contenttype: 'xml',
-                        action: 'delete',
-                        origem: 'condominio.moradores',
-                        returnkey: 'num',
-                        condominio: admunidade.condominio,
-                        bloco: admunidade.bloco,
-                        andar: admunidade.andar,
-                        unidade: admunidade.pk_unidade
-                    };
 
-                    sys.FormAction(
-                        sys.setParameters(
-                            sys.mergeAttributes(paramMorador, formMoradores.getFormData())
-                        ), ResultFormMoradores
-                    );
+                if (result === true) {
+
+                    admunidade.morador.Remover({
+                        filter: {
+                            num: data.num
+                        },
+                        last: 'num',
+                        callback: function (response) {
+                            console.debug(response);
+                            sys.FormClear(formMoradores);
+                            gridLoadMoradores();
+                        }
+                    });
+
                 }
             });
 
@@ -137,27 +137,46 @@ unidade_moradores = function (item) {
         let data = formMoradores.getFormData();
         let infounidade = JSON.parse(sessionStorage.unidadecorrente);
 
-
-        delete data.foto1;
         data.condominio = infounidade.condominio;
         data.bloco = infounidade.bloco;
         data.andar = infounidade.andar;
         data.unidade = infounidade.pk_unidade;
 
+        if (data.num.length === 0) {
 
-        admunidade.morador.Adicionar({
-            data: data,
-            callback: function (response) {
+            admunidade.morador.Adicionar({
+                data: data,
+                last: 'num',
+                callback: function (response) {
 
-                admunidade.morador.Ativar({
-                    bloco: infounidade.bloco,
-                    unidade: infounidade.unidade,
-                    registro: null
-                }, function (response) {
+                    console.debug(response);
+
+                    admunidade.morador.Ativar({
+                        bloco: infounidade.bloco,
+                        unidade: infounidade.unidade,
+                        registro: response.dados[0].num
+                    }, function (response) {
+                        console.debug(response);
+                        gridLoadMoradores();
+                    });
+                }
+            })
+
+        } else {
+
+            admunidade.morador.Atualizar({
+                data: data,
+                filter: {
+                    num: data.num
+                },
+                last: 'num',
+                callback: function (response) {
+
+                    console.debug(response);
                     gridLoadMoradores();
-                });
-            }
-        })
+                }
+            })
+        }
 
 
 
@@ -180,42 +199,6 @@ unidade_moradores = function (item) {
     gridLoadMoradores();
 };
 
-function ResultFormMoradores(http) {
-    var out;
-    out = {registro: '', situacao: ''};
-    out = JSON.parse(http.responseText);
-
-    if (out.registro !== undefined && out.registro.length > 0) {
-
-        sys.FormClear(formMoradores);
-        formMoradores.showItem('parentesco');
-
-        var fotocadastro = formMoradores.getContainer("foto_morador");
-        if (fotocadastro != null)
-            fotocadastro.innerHTML = '';
-
-        alert(out.situacao);
-    } else {
-        alert('Houve um erro ao enviar suas informações. Por favor tente mais tarde!');
-        return;
-    }
-
-    var ec = new ws('as');
-
-    ec.Request({
-        c: 7,
-        cn: 'as',
-        process: 'condominio.ativa_registro',
-        params: JSON.stringify({
-            'bloco': admunidade.bloco,
-            'unidade': admunidade.pk_unidade,
-            'registro': out.registro
-        })
-    }, function (http) {
-        console.log(http);
-    });
-
-}
 
 var rowdata;
 
@@ -245,6 +228,10 @@ function gridLoadMoradores() {
 
     admunidade.morador.ListarCadastros(function (response) {
         gridMoradores.clearAll();
+
+        if (response.dados === null)
+            return;
+
         response.dados.filter(function (item) {
             let data = new Date(item.filedate);
             gridMoradores.addRow(item.num, [item.num, data.format("dd/mm/yyyy"), item.nome, item.nascimento]);
