@@ -37,6 +37,7 @@
     <script src="../smart/lib/liteapi/usuarios/usuarios.js"></script>
     <script src="../smart/lib/liteapi/unidade/AdmUnidade.js"></script>
     <script src="../smart/lib/liteapi/unidade/morador.js"></script>
+    <script src="../smart/lib/liteapi/unidade/veiculo.js"></script>
 
 
     <script src="controles/main/screencast.js" type="text/javascript"></script>

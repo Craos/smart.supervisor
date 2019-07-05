@@ -20,7 +20,7 @@ var menu_lateral;
 var informacoesdousuario;
 
 let sys = new SystemCraos();
-let admunidade = new AdmUnidade();
+let admunidade;
 
 function main() {
 
@@ -38,6 +38,8 @@ function main() {
         window.location = '../smart.auth';
         return;
     }
+
+    admunidade = new AdmUnidade();
 
     dhtmlx.image_path = 'js/dhtmlx/codebase/imgs/';
     dhtmlx.skin = 'dhx_terrace';
