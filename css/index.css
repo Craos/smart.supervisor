@@ -4,3 +4,22 @@ html, body {
     width: 100%;
     height: 100%;
 }
+
+.dhxsidebar_base_dhx_terrace div.dhxsidebar_cont div.dhxsidebar_side.dhxsidebar_tpl_details div.dhxsidebar_side_items div.dhxsidebar_item {
+    height: 34px;
+    line-height: 34px;
+    border-bottom: 1px #ccc dotted;
+}
+
+.dhxsidebar_base_dhx_terrace div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_sep {
+    background-color: #ccc;
+    height: 2px;
+}
+
+.dhxsidebar_base_dhx_terrace div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item {
+    background-color: #fff;
+}
+
+.dhxsidebar_base_dhx_terrace div.dhxsidebar_cont div.dhxsidebar_side {
+    background-color: #fff;
+}

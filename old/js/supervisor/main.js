@@ -39,7 +39,7 @@ function main() {
         return;
     }
 
-    admunidade = new AdmUnidade();
+    admunidade = new Admunidade();
 
     dhtmlx.image_path = 'js/dhtmlx/codebase/imgs/';
     dhtmlx.skin = 'dhx_terrace';
@@ -173,7 +173,7 @@ function reInformacoesUsuario(name, value) {
 
 function topSelecionarRegistro() {
 
-    admunidade = new AdmUnidade();
+    admunidade = new Admunidade();
 
     admunidade.Identificar(
         formTopLayoutPrincipalTop.getItemValue('left_bloco'),

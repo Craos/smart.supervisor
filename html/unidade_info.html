@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Informações da unidade</title>
+    <style>
+        .item {
+            height: 20px;
+            float: left;
+            font-family: Arial, Tahoma, serif;
+            font-size: 13px;
+            line-height: 20px;
+            font-weight: 400;
+        }
+        .titulo {
+            font-weight: bold;
+            min-width: 100px;
+            float: left;
+            text-align: right;
+        }
+
+        .valor {
+            text-align: left;
+            padding-left: 3px;
+            color: dimgrey;
+            min-width: 50px;
+            float: left;
+        }
+
+        .valor span {
+            margin-right: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="item">
+        <div class="titulo">Registro:</div>
+        <div class="valor" id="registro"></div>
+    </div>
+    <div class="item">
+        <div class="titulo">Bloco:</div>
+        <div class="valor" id="bloco"></div>
+    </div>
+    <div class="item">
+        <div class="titulo">Andar:</div>
+        <div class="valor" id="andar"></div>
+    </div>
+    <div class="item">
+        <div class="titulo">Unidade:</div>
+        <div class="valor" id="unidade"></div>
+    </div>
+    <div class="item">
+        <div class="titulo">Responsável:</div>
+        <div class="valor" id="nome_proprietario"></div>
+    </div>
+    <div class="item">
+        <div class="titulo">Atualizado em:</div>
+        <div class="valor" id="atualizacao"><span id="lastdate"></span><span id="lasttime"></span></div>
+    </div>
+    <div class="item">
+        <div class="titulo">Por:</div>
+        <div class="valor" id="lastuser"></div>
+    </div>
+</body>
+</html>
