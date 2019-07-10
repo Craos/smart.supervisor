@@ -33,9 +33,7 @@ class Informacoes {
 
         this.toolbar = this.layout.cells('b').attachToolbar({
             icon_path: 'img/toolbar/unidade/',
-            items: [
-                {type: 'button', id: 'atualizar', img: 'atualizar.png', text: 'Atualizar'}
-            ]
+            items: toolbars.unidade.geral
         });
 
         this.ApresentaUnidade();

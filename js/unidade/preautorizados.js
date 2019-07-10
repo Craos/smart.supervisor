@@ -11,9 +11,7 @@ class Preautorizados {
 
         this.toolbar = this.container.attachToolbar({
             icon_path: 'img/toolbar/unidade/',
-            items: [
-                {type: 'button', id: 'atualizar', img: 'atualizar.png', text: 'Atualizar'}
-            ]
+            items: toolbars.unidade.preautorizados
         });
 
         this.MontaForm();

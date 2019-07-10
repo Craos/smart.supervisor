@@ -10,9 +10,7 @@ class Notificacoes {
 
         this.toolbar = this.container.attachToolbar({
             icon_path: 'img/toolbar/unidade/',
-            items: [
-                {type: 'button', id: 'atualizar', img: 'atualizar.png', text: 'Atualizar'}
-            ]
+            items: toolbars.notificacoes
         });
 
         this.MontaForm();
