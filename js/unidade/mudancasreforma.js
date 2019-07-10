@@ -1,4 +1,4 @@
-class Personal {
+class MudancasReformas {
 
     constructor(container, info) {
 
@@ -11,7 +11,7 @@ class Personal {
 
         this.toolbar = this.container.attachToolbar({
             icon_path: 'img/toolbar/unidade/',
-            items: toolbars.personal
+            items: toolbars.unidade.funcionarios
         });
 
         this.MontaForm();

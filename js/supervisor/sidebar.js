@@ -40,22 +40,23 @@ let sidebaritens = [
         icon: 'preautorizados.png',
     },
     {
-        id: "sep1",
-        type: "separator"
-    },
-    {
-        id: 'personal',
-        text: 'Personal trainer',
-        icon: 'personal.png',
-    },
-    {
-        id: 'portaria',
-        text: 'Registro de acesso',
-        icon: 'registro.png',
-    },
-    {
         id: 'notificacoes',
         text: 'Notificações',
         icon: 'notificacoes.png',
     },
+    {
+        id: 'mudancareforma',
+        text: 'Mudanças e reformas',
+        icon: 'mudancas.png',
+    },
+    {
+        id: 'solicitacoes',
+        text: 'Solicitações e ocorrências',
+        icon: 'solicitacoes.png',
+    },
+    {
+        id: 'historico',
+        text: 'Histórico de atividades',
+        icon: 'historico.png',
+    }
 ];

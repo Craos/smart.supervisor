@@ -1,4 +1,5 @@
-class Notificacoes {
+class HistoricoAtividades {
+
     constructor(container, info) {
 
         this.container = container;
@@ -10,7 +11,7 @@ class Notificacoes {
 
         this.toolbar = this.container.attachToolbar({
             icon_path: 'img/toolbar/unidade/',
-            items: toolbars.notificacoes
+            items: toolbars.unidade.funcionarios
         });
 
         this.MontaForm();
