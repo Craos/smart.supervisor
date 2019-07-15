@@ -23,3 +23,9 @@ html, body {
 .dhxsidebar_base_dhx_terrace div.dhxsidebar_cont div.dhxsidebar_side {
     background-color: #fff;
 }
+
+.dhtmlx-messagem_sucesso{
+    font-weight:bold !important;
+    color:white !important;
+    background-color: #3295ff !important;
+}
