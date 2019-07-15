@@ -1,27 +1,24 @@
 class MudancasReformas {
 
-    constructor(container, info) {
+    constructor() {
+    }
 
-        this.container = container;
-        this.info = info;
+    set info(value) {
+        this._info = value;
+    }
 
+    set container(value) {
+        this._container = value;
     }
 
     MontaLayout() {
 
-        this.toolbar = this.container.attachToolbar({
+        this.toolbar = this._container.attachToolbar({
             icon_path: 'img/toolbar/unidade/',
-            items: toolbars.unidade.funcionarios
+            items: toolbars.mudancasreformas
         });
 
-        this.MontaForm();
     }
 
-    MontaForm() {
-
-        let that = this;
-        that.container.attachForm(forms.unidade.usuario);
-
-    }
 
 }

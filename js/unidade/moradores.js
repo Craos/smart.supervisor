@@ -1,17 +1,21 @@
 class Moradores {
 
-    constructor(container, info) {
+    constructor() {
+    }
 
-        this.container = container;
-        this.info = info;
+    set info(value) {
+        this._info = value;
+    }
 
+    set container(value) {
+        this._container = value;
     }
 
     MontaLayout() {
 
-        this.toolbar = this.container.attachToolbar({
+        this.toolbar = this._container.attachToolbar({
             icon_path: 'img/toolbar/unidade/',
-            items: toolbars.unidade.moradores
+            items: toolbars.moradores
         });
 
         this.MontaForm();
@@ -20,7 +24,25 @@ class Moradores {
     MontaForm() {
 
         let that = this;
-        that.container.attachForm(forms.unidade.usuario);
+        this.form = that._container.attachForm(forms.moradores);
+        this.form.attachEvent("onAfterValidate", function (status) {
+
+            if (status === false)
+                return;
+
+            let data = that.form.getFormData();
+
+            that._info.Atualizar({
+                data: data,
+                filter: {
+                    num: data.num
+                },
+                callback: function (response) {
+                    console.debug(response);
+                }
+            })
+
+        });
 
     }
 
