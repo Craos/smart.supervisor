@@ -55,6 +55,12 @@ html, body {
 
 .mainmenu-titulo {
     line-height: 28px;
+    margin-left: 5px;
+    font-weight: 400;
+    white-space: normal;
+    font-size: 14px;
+    color: #404040;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 .mainmenu-linha {
