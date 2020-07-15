@@ -66,3 +66,24 @@ html, body {
 .mainmenu-linha {
     height: 29px;
 }
+
+/***** DHTML Custom ****/
+.dhxform_obj_material div.dhxform_btn {
+    border: none;
+    background: none;
+    font-weight: lighter;
+    border-radius: 6px;
+}
+
+.dhxform_obj_material div.dhxform_btn.dhxform_btn_over {
+    background-color: rgba(30, 144, 255, 0.14);
+}
+
+.btnsmart {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    color: dodgerblue;
+}
+
+.azulescuro {
+    color: #1e88cf;
+}
