@@ -206,7 +206,7 @@ class ContaUsuario extends Cadastro {
 
 }
 
-class NotificacoesUnidade extends EndPoint {
+class Notificacoes extends Cadastro {
 
     constructor() {
         super();
