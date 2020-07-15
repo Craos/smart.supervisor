@@ -154,9 +154,42 @@ class Foto extends EndPoint {
 
 class Cadastro extends EndPoint {
 
-    constructor() {
+    toolbar;
+    grid;
+    params;
+
+    constructor(params) {
         super();
+        this.params = params;
         this.foto = new Foto();
+    }
+
+    Exibir(cell) {
+
+        let layout = cell.attachLayout({
+            pattern: '2E',
+            offsets: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            cells: [
+                {id: 'a', header: false},
+                {id: 'b', header: false},
+            ]
+        });
+
+        this.toolbar = layout.cells('a').attachToolbar({
+            iconset: 'awesome',
+            items:this.params.toolbar.campos
+        });
+
+        this.grid = layout.cells('b').attachGrid();
+        this.grid.setImagePath('./codebase/imgs/');
+        this.grid.setHeader(this.params.grid.titulos);
+        this.grid.init();
+
     }
 
 }
