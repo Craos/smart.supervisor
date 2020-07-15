@@ -240,8 +240,24 @@ class Office extends EndPoint {
 class Moradores extends Cadastro {
 
     constructor() {
-        super();
+        super({
+            toolbar: {
+                campos: [
+                    {id: 'novo', type: 'button', text: 'Novo', img: 'fas fa-file-alt'},
+                    {id: 'salvar', type: 'button', text: 'Salvar', img: 'fas fa-save'},
+                    {id: 'obterfoto', type: 'button', text: 'Obter foto', img: 'fas fa-camera'},
+                    {id: 'sep1', type: 'separator'},
+                    {id: 'remover', type: 'button', text: 'Remover', img: 'fas fa-trash-alt'},
+                    {id: 'sep2', type: 'separator'},
+                    {id: 'remover', type: 'button', text: 'Reservar espaço', img: 'fas fa-clock'},
+                ]
+            },
+            grid: {
+                titulos:'id,nome'
+            }
+        });
         this.reserva = new Office();
+
     }
 
 }
