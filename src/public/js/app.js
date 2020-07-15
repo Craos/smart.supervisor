@@ -284,12 +284,34 @@ class Academia extends EndPoint {
 
 class Seletor extends EndPoint {
 
-    constructor() {
+    constructor(cell) {
         super();
-    }
+        this.endpoint = '/condominio/unidades';
+        this.pesquisar = '?';
 
-    Exibir() {
+        let form = cell.attachForm([
+            {type: 'input', name: 'bloco', label: 'Bloco', required: true},
+            {type: 'newcolumn'},
+            {type: 'input', name: 'unidade', label: 'Unidade', required: true},
+            {type: 'newcolumn'},
+            {type: 'button', name: 'acessar', value: 'Selecionar'},
+        ]);
 
+        form.attachEvent('onAfterValidate', function (status) {
+            if (status === true) {
+                let dados = form.getFormData();
+                let id = 'bloco=eq.' + dados.bloco + '&unidade=eq.' + dados.unidade;
+                this.Pesquisar(id).then(unidade => {
+                    window.dispatchEvent(new CustomEvent('AoSelecionar', {
+                        detail: unidade
+                    }));
+                })
+            }
+        }.bind(this));
+
+        form.attachEvent('onButtonClick', function () {
+            form.validate();
+        });
     }
 }
 
@@ -316,7 +338,7 @@ class Acesso extends EndPoint {
 
         let id = 'login';
         let wins = new dhtmlXWindows({
-            image_path: "codebase/imgs/",
+            image_path: 'codebase/imgs/',
         });
 
         wins.createWindow({
@@ -337,12 +359,12 @@ class Acesso extends EndPoint {
         wins.window(id).button('close').hide();
 
         let form = wins.window(id).attachForm([
-            {type: "input", name: "login", label: "Usuário", tooltip: "Seu nome de usuário", required: true},
-            {type: "password", name: "password", label: "Senha"},
-            {type: "button", name: "acessar", value: "Iniciar"},
+            {type: 'input', name: 'login', label: 'Usuário', tooltip: 'Seu nome de usuário', required: true},
+            {type: 'password', name: 'password', label: 'Senha'},
+            {type: 'button', name: 'acessar', value: 'Iniciar'},
         ]);
 
-        form.attachEvent("onAfterValidate", function (status) {
+        form.attachEvent('onAfterValidate', function (status) {
             if (status === true) {
                 this.dados = form.getFormData();
                 wins.window(id).progressOn();
@@ -353,8 +375,8 @@ class Acesso extends EndPoint {
                     });
                 }).catch(reason => {
                     dhtmlx.alert({
-                        title: "Atenção",
-                        type: "alert-error",
+                        title: 'Atenção',
+                        type: 'alert-error',
                         text: reason
                     });
                 }).finally(() => {
@@ -363,7 +385,7 @@ class Acesso extends EndPoint {
             }
         }.bind(this));
 
-        form.attachEvent("onButtonClick", function () {
+        form.attachEvent('onButtonClick', function () {
             form.validate();
         });
 
@@ -443,19 +465,134 @@ class Acesso extends EndPoint {
     }
 }
 
-class Supervisor {
-    dados;
-    seletor;
+class MainLayout {
+
+    mainlayout;
+    header;
+    menu;
+    page;
 
     constructor() {
+        this.mainlayout = new dhtmlXLayoutObject({
+            parent: document.body,
+            pattern: '3T',
+            offsets: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            cells: [
+                {id: 'a', header: false, height: 40, fix_size: [true, true]},
+                {id: 'b', header: false, width: 240},
+                {id: 'c', header: false},
+            ]
+        });
 
+        this.header = this.mainlayout.cells('a');
+        this.menu = this.mainlayout.cells('b');
+        this.page = this.mainlayout.cells('c');
+
+    }
+
+}
+
+class MainMenu {
+
+    mainManu;
+
+    constructor(cell, lista) {
+
+        this.mainManu = cell.attachList({
+            container: 'data_container',
+            type: {
+                template: 'http->./html/mainmenu.html',
+                height: 45
+            }
+        });
+
+        this.mainManu.parse(lista.recursos, 'json');
+
+    }
+
+}
+
+class MainPage {
+
+    page;
+    seletor;
+    display;
+
+    constructor(cell) {
+
+        this.page = cell.attachLayout({
+            pattern: '2E',
+            offsets: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            cells: [
+                {id: 'a', header: false, height: 40, fix_size: [true, true]},
+                {id: 'b', header: false, width: 240},
+            ]
+        });
+
+        this.seletor = this.page.cells('a');
+        this.display = this.page.cells('b');
+
+    }
+
+}
+
+class MainHeader extends EndPoint {
+
+    ifr;
+
+    constructor(component, cell, usuario) {
+        super();
+        this.componentbase = component;
+        component.attachEvent('onContentLoaded', function (id) {
+            this.ifr = component.cells(id).getFrame();
+            this.ifr.contentWindow.document.getElementById('nome').innerText = usuario.nome.split(' ')[0];
+            this.AoCarregarHeader();
+        }.bind(this));
+
+        cell.attachURL('./html/mainheader.html', null);
+
+    }
+
+    ApresentaUnidade(unidade) {
+        this.ifr.contentWindow.document.getElementById('bloco').innerText = unidade.bloco;
+        this.ifr.contentWindow.document.getElementById('unidade').innerText = unidade.unidade;
+        this.ifr.contentWindow.document.getElementById('responsavel').innerText = unidade.nome_proprietario;
+        this.ifr.contentWindow.document.getElementById('header-unidade').style.display = 'block';
+    }
+}
+
+class Supervisor {
+    dados = {};
+    seletor;
+    layoutapp;
+    mainmenu;
+    mainpage;
+
+    constructor(params) {
+
+        this.params = params;
         this.acesso = new Acesso();
 
-        if (sessionStorage.user === undefined) {
+        if (sessionStorage.usuario === undefined) {
             this.PreparaAcessoUsuario();
             return;
         }
         this.perfil = new PerfilAcesso();
+        this.usuario = JSON.parse(sessionStorage.usuario);
+
+        if (sessionStorage.unidade !== undefined)
+            this.unidade = JSON.parse(sessionStorage.unidade);
+
         this.Iniciar();
     }
 
@@ -503,29 +640,25 @@ class Supervisor {
 
     Iniciar() {
 
-        this.MontaMenu();
-        this.MontaSeletor();
-        this.MontaPerfilAcesso();
+        this.layoutapp = new MainLayout();
+        this.header = new MainHeader(this.layoutapp.mainlayout, this.layoutapp.header, this.usuario);
+        this.mainmenu = new MainMenu(this.layoutapp.menu, this.params);
+        this.mainpage = new MainPage(this.layoutapp.page);
+        this.seletor = new Seletor(this.mainpage.seletor);
 
-        this.seletor = new Seletor();
-        this.seletor.Exibir();
-
-        this.seletor.AoSelecionarUnidade = function (unidade) {
-            this.unidade = unidade;
-            this.RastreiaAlteracoes();
+        this.header.AoCarregarHeader = function () {
+            console.debug('carregado');
+            if (this.unidade !== undefined)
+                this.header.ApresentaUnidade(this.unidade);
         }.bind(this);
 
-    }
+        window.addEventListener('AoSelecionar', function(e) {
+            this.unidade = e.detail;
+            sessionStorage.unidade = JSON.stringify(this.unidade);
+            this.header.ApresentaUnidade(this.unidade);
+        }.bind(this));
 
-    MontaMenu() {
 
-    }
-
-    MontaSeletor() {
-
-    }
-
-    MontaPerfilAcesso() {
 
     }
 
