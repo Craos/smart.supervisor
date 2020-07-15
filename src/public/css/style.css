@@ -8,3 +8,55 @@ html, body {
     font-family: Roboto, Arial, Helvetica, sans-serif;
     color: #404040;
 }
+
+.header-logo {
+    width: 137px;
+    height: 50px;
+    float: left;
+    background-image: url("../img/logo.png");
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.header-unidade {
+    float: left;
+    margin-left: 20px;
+    line-height: 64px;
+    display: none;
+}
+
+.header-unidade-titulo {
+    font-weight: initial;
+    padding-left: 10px;
+    padding-right: 3px;
+}
+
+.header-unidade-valor {
+    color: #7c7c7c;
+}
+
+.header-userinfor {
+    float: right;
+    margin: 5px;
+    padding-right: 5px;
+}
+
+.mainmenu-img, .mainmenu-titulo {
+    float: left;
+    margin: auto;
+}
+
+.mainmenu-img {
+    width: 28px;
+    height: 28px;
+    border: 1px solid gainsboro;
+    margin-right: 5px;
+}
+
+.mainmenu-titulo {
+    line-height: 28px;
+}
+
+.mainmenu-linha {
+    height: 29px;
+}
