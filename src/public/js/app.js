@@ -199,7 +199,11 @@ class ContaUsuario extends Cadastro {
     constructor() {
         super();
     }
-    
+
+    Exibir() {
+        console.debug('show');
+    }
+
 }
 
 class NotificacoesUnidade extends EndPoint {
@@ -208,13 +212,20 @@ class NotificacoesUnidade extends EndPoint {
         super();
     }
 
+    Exibir() {
+        console.debug('show');
+    }
+
 }
 
 class InformacoesGerais extends EndPoint {
 
     constructor() {
         super();
-        this.notificacoes = new NotificacoesUnidade();
+    }
+
+    Exibir() {
+        console.debug('show');
     }
 
 }
@@ -265,6 +276,10 @@ class RegistroAcesso extends EndPoint {
         super();
     }
 
+    Exibir() {
+        console.debug('show');
+    }
+
 }
 
 class AtividadesPersonalTrainer extends EndPoint {
@@ -282,6 +297,10 @@ class PersonalTrainer extends EndPoint {
         this.atividades = new AtividadesPersonalTrainer()
     }
 
+    Exibir() {
+        console.debug('show');
+    }
+
 }
 
 class TransporteEscolar extends EndPoint {
@@ -289,12 +308,20 @@ class TransporteEscolar extends EndPoint {
     constructor() {
         super();
     }
+
+    Exibir() {
+        console.debug('show');
+    }
 }
 
 class Hospedes extends Cadastro {
 
     constructor() {
         super();
+    }
+
+    Exibir() {
+        console.debug('show');
     }
 
 }
@@ -311,6 +338,10 @@ class Academia extends EndPoint {
 
     constructor() {
         super();
+    }
+
+    Exibir() {
+        console.debug('show');
     }
 
 }
