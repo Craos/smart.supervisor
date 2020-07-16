@@ -370,11 +370,14 @@ class Seletor extends EndPoint {
         this.pesquisar = '?';
 
         let form = cell.attachForm([
+            {type:'settings',position:'label-top', labelAlign:'left', offsetLeft: 10, inputWidth: 60},
             {type: 'input', name: 'bloco', label: 'Bloco', required: true},
             {type: 'newcolumn'},
             {type: 'input', name: 'unidade', label: 'Unidade', required: true},
             {type: 'newcolumn'},
-            {type: 'button', name: 'acessar', value: 'Selecionar'},
+            {type: 'button', name: 'acessar', offsetTop: 20, value: "<span class='btnsmart'><i class='fas fa-angle-double-right azulescuro'></i> Selecionar</span>"},
+            {type: 'newcolumn'},
+            {type: 'button', name: 'pesquisar', offsetTop: 20, value: "<span class='btnsmart'><i class='fas fa-search azulescuro'></i> Pesquisar</span>"},
         ]);
 
         form.attachEvent('onAfterValidate', function (status) {
