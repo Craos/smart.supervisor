@@ -385,7 +385,7 @@ class Seletor extends EndPoint {
                 let dados = form.getFormData();
                 let id = 'bloco=eq.' + dados.bloco + '&unidade=eq.' + dados.unidade;
                 this.Pesquisar(id).then(unidade => {
-                    window.dispatchEvent(new CustomEvent('AoSelecionar', {
+                    window.dispatchEvent(new CustomEvent('AoSelecionarUnidade', {
                         detail: unidade
                     }));
                 })
@@ -735,7 +735,7 @@ class Supervisor {
                 this.header.ApresentaUnidade(this.unidade);
         }.bind(this);
 
-        window.addEventListener('AoSelecionar', function(e) {
+        window.addEventListener('AoSelecionarUnidade', function(e) {
             this.unidade = e.detail;
             sessionStorage.unidade = JSON.stringify(this.unidade);
             this.header.ApresentaUnidade(this.unidade);
