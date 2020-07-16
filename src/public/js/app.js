@@ -567,7 +567,7 @@ class MainLayout {
             },
             cells: [
                 {id: 'a', header: false, height: 40, fix_size: [true, true]},
-                {id: 'b', header: false, width: 240},
+                {id: 'b', header: false, width: 230},
                 {id: 'c', header: false},
             ]
         });
