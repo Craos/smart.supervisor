@@ -594,7 +594,14 @@ class MainMenu {
             }
         });
 
-        this.mainManu.parse(lista.recursos, 'json');
+        this.mainManu.parse(lista, 'json');
+
+        this.mainManu.attachEvent('onItemClick', function (id) {
+            window.dispatchEvent(new CustomEvent('AoSelecionarItemMenu', {
+                detail: lista.find(x=> x.id === id)
+            }));
+            return true;
+        });
 
     }
 
@@ -740,6 +747,11 @@ class Supervisor {
             sessionStorage.unidade = JSON.stringify(this.unidade);
             this.header.ApresentaUnidade(this.unidade);
         }.bind(this));
+
+        window.addEventListener('AoSelecionarItemMenu', function (e) {
+            let recurso = new e.detail.recurso();
+            recurso.Exibir(this.mainpage.display);
+        }.bind(this))
 
 
 
