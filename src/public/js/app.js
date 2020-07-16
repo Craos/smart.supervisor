@@ -575,7 +575,6 @@ class MainLayout {
         this.header = this.mainlayout.cells('a');
         this.menu = this.mainlayout.cells('b');
         this.page = this.mainlayout.cells('c');
-
     }
 
 }
@@ -642,7 +641,6 @@ class MainHeader extends EndPoint {
 
     constructor(component, cell, usuario) {
         super();
-        this.componentbase = component;
         component.attachEvent('onContentLoaded', function (id) {
             this.ifr = component.cells(id).getFrame();
             this.ifr.contentWindow.document.getElementById('nome').innerText = usuario.nome.split(' ')[0];
@@ -732,12 +730,11 @@ class Supervisor {
 
         this.layoutapp = new MainLayout();
         this.header = new MainHeader(this.layoutapp.mainlayout, this.layoutapp.header, this.usuario);
-        this.mainmenu = new MainMenu(this.layoutapp.menu, this.params);
+        this.mainmenu = new MainMenu(this.layoutapp.menu, this.params.recursos);
         this.mainpage = new MainPage(this.layoutapp.page);
         this.seletor = new Seletor(this.mainpage.seletor);
 
         this.header.AoCarregarHeader = function () {
-            console.debug('carregado');
             if (this.unidade !== undefined)
                 this.header.ApresentaUnidade(this.unidade);
         }.bind(this);
@@ -761,17 +758,18 @@ class Supervisor {
 
 window.app = new Supervisor({
     recursos: [
-        {id: 'conta', titulo: 'Conta do usuário', icone: 'conta.png', recurso: new ContaUsuario()},
-        {id: 'geral', titulo: 'Informações gerais', icone: 'info.png', recurso: new InformacoesGerais()},
-        {id: 'moradores', titulo: 'Moradores da unidade', icone: 'moradores.png', recurso: new Moradores()},
-        {id: 'veiculos', titulo: 'Veículos', icone: 'veiculos.png', recurso: new Veiculos()},
-        {id: 'funcionarios', titulo: 'Funcionários da unidade', icone: 'funcionarios.png', recurso: new Funcionarios()},
-        {id: 'preautorizados', titulo: 'Visitantes pré-autorizados', icone: 'preautorizados.png', recurso: new PreAutorizados()},
-        {id: 'registroAcesso', titulo: 'Registro de acesso', icone: 'registroacesso.png', recurso: new RegistroAcesso()},
-        {id: 'personaltrainer', titulo: 'Personal trainer', icone: 'personaltrainer.png', recurso: new PersonalTrainer()},
-        {id: 'transporteescolar', titulo: 'Transporte escolar', icone: 'transporteescolar.png', recurso: new TransporteEscolar()},
-        {id: 'hospedes', titulo: 'Hóspedes', icone: 'hospedes.png', recurso: new Hospedes()},
-        {id: 'pets', titulo: 'Pets', icone: 'pets.png', recurso: new Pets()},
-        {id: 'academia', titulo: 'Academia', icone: 'academia.png', recurso: new Academia()},
+        {id: 'conta', titulo: 'Conta do usuário', icone: 'fas fa-user', recurso: ContaUsuario},
+        {id: 'geral', titulo: 'Informações gerais', icone: 'fas fa-home', recurso: InformacoesGerais},
+        {id: 'moradores', titulo: 'Moradores da unidade', icone: 'fas fa-users', recurso: Moradores},
+        {id: 'veiculos', titulo: 'Veículos', icone: 'fas fa-car', recurso: Veiculos},
+        {id: 'funcionarios', titulo: 'Funcionários da unidade', icone: 'fas fa-id-card-alt', recurso: Funcionarios},
+        {id: 'preautorizados', titulo: 'Visitantes pré-autorizados', icone: 'fas fa-user-edit', recurso: PreAutorizados},
+        {id: 'registroAcesso', titulo: 'Registro de acesso', icone: 'fas fa-chalkboard-teacher', recurso: RegistroAcesso},
+        {id: 'notificacoes', titulo: 'Multas e notificações', icone: 'fas fa-bell', recurso: Notificacoes},
+        {id: 'personaltrainer', titulo: 'Personal trainer', icone: 'fas fa-id-badge', recurso: PersonalTrainer},
+        {id: 'transporteescolar', titulo: 'Transporte escolar', icone: 'fas fa-universal-access', recurso: TransporteEscolar},
+        {id: 'hospedes', titulo: 'Hóspedes', icone: 'fas fa-street-view', recurso: Hospedes},
+        {id: 'pets', titulo: 'Pets', icone: 'fas fa-cat', recurso: Pets},
+        {id: 'academia', titulo: 'Academia', icone: 'fas fa-dumbbell', recurso: Academia},
     ]
 });
