@@ -41,17 +41,6 @@ html, body {
     padding-right: 5px;
 }
 
-.mainmenu-img, .mainmenu-titulo {
-    float: left;
-    margin: auto;
-}
-
-.mainmenu-img {
-    width: 28px;
-    height: 28px;
-    border: 1px solid gainsboro;
-    margin-right: 5px;
-}
 
 .mainmenu-titulo {
     line-height: 28px;
