@@ -346,6 +346,9 @@ class Cadastro extends EndPoint {
 
             this.Pesquisar(id).then(value => {
                 this.form.setFormData(value);
+                if (this.params.form.foto !== undefined) {
+                    this.form.getContainer(this.params.form.foto.destino).innerHTML = '<img width="200px" alt="" src="' + value[this.params.form.foto.origem] + '"/>'
+                }
             });
         }.bind(this));
 
