@@ -62,8 +62,6 @@ class EndPoint {
                     resolve(response);
                 }
             }).fail(function (jqXHR) {
-                if (jqXHR.responseJSON !== undefined)
-                    reject(new Error(jqXHR.responseJSON.message));
                 console.error(jqXHR);
                 reject(jqXHR)
             });
@@ -341,9 +339,6 @@ class Cadastro extends EndPoint {
         });
 
         this.grid.attachEvent("onRowSelect", function (id) {
-
-
-
             this.Pesquisar(id).then(value => {
                 this.form.setFormData(value);
                 if (this.params.form.foto !== undefined) {
@@ -385,7 +380,7 @@ class Atendimentos extends EndPoint {
     }
 
     Exibir() {
-        console.debug('show');
+
     }
 
 }
@@ -397,7 +392,7 @@ class ContaUsuario extends Cadastro {
     }
 
     Exibir() {
-        console.debug('show');
+
     }
 
 }
@@ -409,7 +404,7 @@ class Notificacoes extends Cadastro {
     }
 
     Exibir() {
-        console.debug('show');
+
     }
 
 }
@@ -421,7 +416,7 @@ class InformacoesGerais extends EndPoint {
     }
 
     Exibir() {
-        console.debug('show');
+
     }
 
 }
@@ -503,55 +498,61 @@ class Moradores extends Cadastro {
                                                     {value: "8", text: "Primo/a"},
                                                     {value: "9", text: "Neto/a"},
                                                             {value: "10", text: "Avó/Avô"},
-                                                            {value: "11", text: "Parente"},
-                                                            {value: "12", text: "Amigo/a"},
-                                                            {value: "13", text: "Proprietário"},
-                                                            {value: "14", text: "Locatário"}
-                                                        ]},
-                                                    {type: "newcolumn"},
-                                                    {type: "input", name: "telefone", label: "Telefone", inputWidth: "170", offsetLeft: "10", style: "font-weight:bold;"}
-                                                ]}
-                                        ]}
-                                ]},
-                            { type: "block", list: [
-                                    {type: "fieldset", name: "autorizacao", label: "Registro", width: 140, list: [
-                                            {type: "input", name: "autenticacao", label: "Autoriza&ccedil;&atilde;o", inputWidth: 120, style: "font-weight:bold; color:blue"},
-                                            {type: "input", name: "num", readonly:true,  label: "Matrícula", inputWidth: 120, style: "font-weight:bold; color:red"},
-                                            {type: "input", name: "filedate", readonly:true, label: "Data Cadastro", inputWidth: 120, style: "font-weight:bold; color:red"},
-                                            {type: "input", name: "ativacao", readonly:true, label: "Data Ativação", inputWidth: 120, style: "font-weight:bold; color:red"},
-                                            {type: "label", name:"aviso_ativacao"}
-                                        ]},
+                                                    {value: "11", text: "Parente"},
+                                                    {value: "12", text: "Amigo/a"},
+                                                    {value: "13", text: "Proprietário"},
+                                                    {value: "14", text: "Locatário"}
+                                                ]
+                                            },
+                                            {type: "newcolumn"},
+                                            {type: "input", name: "telefone", label: "Telefone", inputWidth: "170", offsetLeft: "10"}
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: "label", list: [
+                            {
+                                type: "label", name: "autorizacao", label: "Registro", offsetTop: 10, width: 140, list: [
+                                    {type: "input", name: "autenticacao", label: "Autoriza&ccedil;&atilde;o", inputWidth: 120, style: "font-weight:bold; color:blue"},
+                                    {type: "input", name: "num", readonly: true, label: "Matrícula", inputWidth: 120, style: "font-weight:bold; color:red"},
+                                    {type: "input", name: "filedate", readonly: true, label: "Data Cadastro", inputWidth: 120, style: "font-weight:bold; color:red"},
+                                    {type: "input", name: "ativacao", readonly: true, label: "Data Ativação", inputWidth: 120, style: "font-weight:bold; color:red"},
+                                    {type: "label", name: "aviso_ativacao"}
+                                ]
+                            },
+                            {type: "newcolumn"},
+                            {
+                                type: "label", name: "opcoes", label: "Informa&ccedil;&otilde;es complementares", offsetTop: 10, width: 800, list: [
+                                    {type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "20", offsetTop: "2", position: "label-top"},
+                                    {type: "input", name: "emg_plano_saude", label: "Nome do plano de sa&uacute;de", inputWidth: "250"},
+                                    {type: "input", name: "emg_alergia_medicamentos", label: "Al&eacute;rgico a medicamentos / Quais?", inputWidth: "250"},
+                                    {type: "input", name: "emg_parente", label: "Em caso de emerg&ecirc;ncia quem contactar", inputWidth: "250"},
                                     {type: "newcolumn"},
-                                    {type: "fieldset", name: "opcoes", label: "Informa&ccedil;&otilde;es complementares", width: 800, list: [
-                                            {type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "20", offsetTop: "2", position: "label-top"},
-                                            {type: "input", name: "emg_plano_saude", label: "Nome do plano de sa&uacute;de", inputWidth: "250", style: "font-weight:bold;"},
-                                            {type: "input", name: "emg_alergia_medicamentos", label: "Al&eacute;rgico a medicamentos / Quais?", inputWidth: "250", style: "font-weight:bold;"},
-                                            {type: "input", name: "emg_parente", label: "Em caso de emerg&ecirc;ncia quem contactar", inputWidth: "250", style: "font-weight:bold;"},
-                                            {type: "newcolumn"},
-                                            {type: "input", name: "emg_necessidade_especial", label: "Descreva as necessidades especiais", inputWidth: "250", style: "font-weight:bold;"},
-                                            {type: "input", name: "emg_remedio", label: "Usu&aacute;rio de medicamento controlado / Qual?", inputWidth: "250", style: "font-weight:bold;"},
-                                            {type: "input", name: "emg_parente_telefone", label: "N&uacute;mero do telefone", inputWidth: "250", style: "font-weight:bold;"},
-                                            {type: "newcolumn"},
-                                            {type: "combo", name: "emg_tipo_sanguineo", label: "Tipo sangu&iacute;neo", inputWidth: "100", style: "font-weight:bold;", options: [
-                                                    {value: "", text: "Selecione", selected: true},
-                                                    {value: "1", text: "O +"},
-                                                    {value: "2", text: "A +"},
-                                                    {value: "3", text: "B +"},
-                                                    {value: "4", text: "AB +"},
-                                                    {value: "5", text: "O -"},
-                                                    {value: "6", text: "A -"},
-                                                    {value: "7", text: "B -"},
-                                                    {value: "8", text: "AB -"}
-                                                ]}
-                                        ]}
-                                ]},
-                            {type: "block", list: [
-                                    {type: "fieldset", name: "opcoes", label: "Moradores cadastrados na unidade", width: 945, list: [
-                                            {type: "container", name: "gridfamiliares", inputWidth: 920, inputHeight: 180}
-                                        ]}
-                                ]}
-                        ]},
-                    {type: "hidden", name: "timerg"}
+                                    {type: "input", name: "emg_necessidade_especial", label: "Descreva as necessidades especiais", inputWidth: "250"},
+                                    {type: "input", name: "emg_remedio", label: "Usu&aacute;rio de medicamento controlado / Qual?", inputWidth: "250"},
+                                    {type: "input", name: "emg_parente_telefone", label: "N&uacute;mero do telefone", inputWidth: "250"},
+                                    {type: "newcolumn"},
+                                    {
+                                        type: "combo", name: "emg_tipo_sanguineo", label: "Tipo sangu&iacute;neo", inputWidth: "100", options: [
+                                            {value: "", text: "Selecione", selected: true},
+                                            {value: "1", text: "O +"},
+                                            {value: "2", text: "A +"},
+                                            {value: "3", text: "B +"},
+                                            {value: "4", text: "AB +"},
+                                            {value: "5", text: "O -"},
+                                            {value: "6", text: "A -"},
+                                            {value: "7", text: "B -"},
+                                            {value: "8", text: "AB -"}
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+
                 ]
             },
             grid: {
@@ -606,7 +607,7 @@ class RegistroAcesso extends EndPoint {
     }
 
     Exibir() {
-        console.debug('show');
+
     }
 
 }
@@ -627,7 +628,7 @@ class PersonalTrainer extends EndPoint {
     }
 
     Exibir() {
-        console.debug('show');
+
     }
 
 }
@@ -639,7 +640,7 @@ class TransporteEscolar extends EndPoint {
     }
 
     Exibir() {
-        console.debug('show');
+
     }
 }
 
@@ -650,7 +651,7 @@ class Hospedes extends Cadastro {
     }
 
     Exibir() {
-        console.debug('show');
+
     }
 
 }
@@ -670,7 +671,7 @@ class Academia extends EndPoint {
     }
 
     Exibir() {
-        console.debug('show');
+
     }
 
 }
@@ -690,7 +691,7 @@ class Seletor extends EndPoint {
             {type: 'newcolumn'},
             {type: 'button', name: 'acessar', offsetTop: 20, value: "<span class='btnsmart'><i class='fas fa-angle-double-right azulescuro'></i> Selecionar</span>"},
             {type: 'newcolumn'},
-            {type: 'button', name: 'pesquisar', offsetTop: 20, value: "<span class='btnsmart'><i class='fas fa-search azulescuro'></i> Pesquisar</span>"},
+            {type: 'button', name: 'pesquisar', offsetTop: 20, value: "<span class='btnsmart'><i class='fas fa-search azulescuro'></i> Pesquisar</span>"}
         ]);
 
         form.attachEvent('onAfterValidate', function (status) {
@@ -701,11 +702,23 @@ class Seletor extends EndPoint {
                     window.dispatchEvent(new CustomEvent('AoSelecionarUnidade', {
                         detail: unidade
                     }));
+                }).catch(reason => {
+                    if (reason.status === 406) {
+                        dhtmlx.alert({
+                            title: 'Atenção',
+                            type: 'alert-error',
+                            text: 'Não foi possível localizar a unidade ' + dados.bloco + '-' + dados.unidade
+                        });
+                    }
                 })
             }
         }.bind(this));
 
         form.attachEvent('onButtonClick', function () {
+            form.validate();
+        });
+
+        form.attachEvent("onEnter", function(){
             form.validate();
         });
     }
@@ -1059,25 +1072,28 @@ class Supervisor {
         }.bind(this));
 
         window.addEventListener('AoSelecionarItemMenu', function (e) {
-
-            let item = e.detail;
-
-            if (item.useseletor === true && this.unidade === undefined) {
-                dhtmlx.alert({
-                    title: 'Atenção',
-                    type: 'alert-warning',
-                    text: 'Selecione a unidade para acesso'
-                });
-                return;
-            }
-
-            new item.recurso ({
-                page: this.mainpage.display,
-                usuario: this.usuario,
-                unidade: this.unidade
-            });
+            this.AbreRecurso(e.detail);
         }.bind(this));
 
+    }
+
+    AbreRecurso(item) {
+
+        if (item.useseletor === true && this.unidade === undefined) {
+            dhtmlx.alert({
+                title: 'Atenção',
+                type: 'alert-warning',
+                text: 'Selecione a unidade para acesso'
+            });
+            return;
+        }
+
+        this.mainpage.display.detachObject(true);
+        new item.recurso ({
+            page: this.mainpage.display,
+            usuario: this.usuario,
+            unidade: this.unidade
+        });
     }
 
 }
