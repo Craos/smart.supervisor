@@ -76,3 +76,17 @@ html, body {
 .azulescuro {
     color: #1e88cf;
 }
+
+video {
+    margin: 2% 0 0;
+    --width: 100%;
+    width: var(--width);
+    height: calc(var(--width) * 0.95);
+}
+
+#cvfoto {
+    margin: 2% 0 0;
+    --width: 100%;
+    width: var(--width);
+    height: calc(var(--width) * 0.95);
+}
