@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0dd25298-1dfe-44f0-b119-1317e83d9ca8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/smart.supervisor.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="0dd25298-1dfe-44f0-b119-1317e83d9ca8" name="Default Changelist" comment="Verifica se o usuário selecionou a unidade">
+      <change afterPath="$PROJECT_DIR$/src/public/js/adapter-latest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/smart.supervisor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/smart.supervisor.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/js/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +34,14 @@
     <expand />
     <select />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -45,6 +54,7 @@
     <option name="sortByType" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
@@ -52,13 +62,21 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/public/js" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/public/js" />
+      <recent name="$PROJECT_DIR$/../foto_arquivos" />
+      <recent name="$PROJECT_DIR$/test/js" />
+    </key>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -82,7 +100,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1595412586116</updated>
-      <workItem from="1595412589738" duration="2965000" />
+      <workItem from="1595412589738" duration="7342000" />
+      <workItem from="1595432580075" duration="7000" />
+      <workItem from="1595432618060" duration="6662000" />
     </task>
     <task id="LOCAL-00001" summary="Revisão dos arquivos">
       <created>1595414436276</created>
@@ -91,35 +111,94 @@
       <option name="project" value="LOCAL" />
       <updated>1595414436276</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Arquivos de configuração do projeto">
+      <created>1595415762917</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1595415762917</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Verifica se o usuário selecionou a unidade">
+      <created>1595415834223</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595415834223</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+      </set>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Revisão dos arquivos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Revisão dos arquivos" />
+    <MESSAGE value="Arquivos de configuração do projeto" />
+    <MESSAGE value="Verifica se o usuário selecionou a unidade" />
+    <option name="LAST_COMMIT_MESSAGE" value="Verifica se o usuário selecionou a unidade" />
   </component>
   <component name="WindowStateProjectService">
     <state x="240" y="54" key="#Deployment" timestamp="1595415122530">
       <screen x="0" y="23" width="1280" height="729" />
     </state>
     <state x="240" y="54" key="#Deployment/0.23.1280.729@0.23.1280.729" timestamp="1595415122530" />
-    <state x="0" y="23" width="1280" height="729" key="CommitChangelistDialog2" timestamp="1595415762685">
+    <state x="0" y="23" width="1280" height="729" key="CommitChangelistDialog2" timestamp="1595440164294">
       <screen x="0" y="23" width="1280" height="729" />
     </state>
-    <state x="0" y="23" width="1280" height="729" key="CommitChangelistDialog2/0.23.1280.729@0.23.1280.729" timestamp="1595415762685" />
-    <state x="0" y="23" width="1280" height="729" key="SettingsEditor" timestamp="1595413217957">
+    <state x="-349" y="-1057" width="1104" height="790" key="CommitChangelistDialog2/-349.-1057.1920.1057/0.23.1280.729@-349.-1057.1920.1057" timestamp="1595429403049" />
+    <state x="0" y="23" width="1280" height="729" key="CommitChangelistDialog2/-349.-1057.1920.1057/0.23.1280.729@0.23.1280.729" timestamp="1595440164294" />
+    <state x="0" y="23" width="1280" height="729" key="CommitChangelistDialog2/0.23.1280.729@0.23.1280.729" timestamp="1595415833834" />
+    <state x="0" y="23" width="1280" height="729" key="SettingsEditor" timestamp="1595434437633">
       <screen x="0" y="23" width="1280" height="729" />
     </state>
+    <state x="0" y="23" key="SettingsEditor/-349.-1057.1920.1057/0.23.1280.729@0.23.1280.729" timestamp="1595434437633" />
     <state x="0" y="23" width="1280" height="729" key="SettingsEditor/0.23.1280.729@0.23.1280.729" timestamp="1595413217957" />
     <state x="240" y="129" key="Vcs.Push.Dialog.v2" timestamp="1595414453824">
       <screen x="0" y="23" width="1280" height="729" />
     </state>
     <state x="240" y="129" key="Vcs.Push.Dialog.v2/0.23.1280.729@0.23.1280.729" timestamp="1595414453824" />
+    <state x="100" y="123" width="1080" height="529" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1595438161054">
+      <screen x="0" y="23" width="1280" height="729" />
+    </state>
+    <state x="100" y="123" width="1080" height="529" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-349.-1057.1920.1057/0.23.1280.729@0.23.1280.729" timestamp="1595438161054" />
     <state x="531" y="128" key="ftp.server.browser" timestamp="1595413211172">
       <screen x="0" y="23" width="1280" height="729" />
     </state>

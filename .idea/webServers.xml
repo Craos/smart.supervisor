@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9bb2e165-0d98-4f7d-8f12-5d2844ce1547" name="anima.smart.supervisor" url="http://anima.craos.net/homologacao/smart.supervisor">
+        <fileTransfer host="anima.craos.net" port="55000" rootFolder="/htdocs/homologacao" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="55000" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
