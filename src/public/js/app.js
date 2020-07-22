@@ -65,6 +65,7 @@ class EndPoint {
                 if (jqXHR.responseJSON !== undefined)
                     reject(new Error(jqXHR.responseJSON.message));
                 console.error(jqXHR);
+                reject(jqXHR)
             });
         });
     };
