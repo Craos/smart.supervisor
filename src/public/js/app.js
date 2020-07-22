@@ -950,14 +950,24 @@ class Supervisor {
         }.bind(this));
 
         window.addEventListener('AoSelecionarItemMenu', function (e) {
-            new e.detail.recurso({
+
+            let item = e.detail;
+
+            if (item.useseletor === true && this.unidade === undefined) {
+                dhtmlx.alert({
+                    title: 'Atenção',
+                    type: 'alert-warning',
+                    text: 'Selecione a unidade para acesso'
+                });
+                return;
+            }
+
+            new item.recurso ({
                 page: this.mainpage.display,
                 usuario: this.usuario,
                 unidade: this.unidade
             });
-        }.bind(this))
-
-
+        }.bind(this));
 
     }
 
@@ -966,18 +976,18 @@ class Supervisor {
 window.app = new Supervisor({
     recursos: [
         {id: 'atendimentos', titulo: 'Atendimentos', icone: 'fas fa-calendar-check', recurso: Atendimentos},
-        {id: 'conta', titulo: 'Conta do usuário', icone: 'fas fa-user', recurso: ContaUsuario},
-        {id: 'geral', titulo: 'Informações gerais', icone: 'fas fa-home', recurso: InformacoesGerais},
-        {id: 'moradores', titulo: 'Moradores da unidade', icone: 'fas fa-users', recurso: Moradores},
-        {id: 'veiculos', titulo: 'Veículos', icone: 'fas fa-car', recurso: Veiculos},
-        {id: 'funcionarios', titulo: 'Funcionários da unidade', icone: 'fas fa-id-card-alt', recurso: Funcionarios},
-        {id: 'preautorizados', titulo: 'Visitantes pré-autorizados', icone: 'fas fa-user-edit', recurso: PreAutorizados},
+        {id: 'conta', titulo: 'Conta do usuário', icone: 'fas fa-user', recurso: ContaUsuario, useseletor: true},
+        {id: 'geral', titulo: 'Informações gerais', icone: 'fas fa-home', recurso: InformacoesGerais, useseletor: true},
+        {id: 'moradores', titulo: 'Moradores da unidade', icone: 'fas fa-users', recurso: Moradores, useseletor: true},
+        {id: 'veiculos', titulo: 'Veículos', icone: 'fas fa-car', recurso: Veiculos, useseletor: true},
+        {id: 'funcionarios', titulo: 'Funcionários da unidade', icone: 'fas fa-id-card-alt', recurso: Funcionarios, useseletor: true},
+        {id: 'preautorizados', titulo: 'Visitantes pré-autorizados', icone: 'fas fa-user-edit', recurso: PreAutorizados, useseletor: true},
+        {id: 'hospedes', titulo: 'Hóspedes', icone: 'fas fa-street-view', recurso: Hospedes, useseletor: true},
+        {id: 'pets', titulo: 'Pets', icone: 'fas fa-cat', recurso: Pets, useseletor: true},
         {id: 'registroAcesso', titulo: 'Registro de acesso', icone: 'fas fa-chalkboard-teacher', recurso: RegistroAcesso},
         {id: 'notificacoes', titulo: 'Multas e notificações', icone: 'fas fa-bell', recurso: Notificacoes},
         {id: 'personaltrainer', titulo: 'Personal trainer', icone: 'fas fa-id-badge', recurso: PersonalTrainer},
         {id: 'transporteescolar', titulo: 'Transporte escolar', icone: 'fas fa-universal-access', recurso: TransporteEscolar},
-        {id: 'hospedes', titulo: 'Hóspedes', icone: 'fas fa-street-view', recurso: Hospedes},
-        {id: 'pets', titulo: 'Pets', icone: 'fas fa-cat', recurso: Pets},
         {id: 'academia', titulo: 'Academia', icone: 'fas fa-dumbbell', recurso: Academia},
     ]
 });
