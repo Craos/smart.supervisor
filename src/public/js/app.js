@@ -453,59 +453,55 @@ class Moradores extends Cadastro {
             form: {
                 foto: {origem: 'foto1', destino: 'foto_morador'},
                 struct: [
-                    { type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "2", position: "label-top"},
-                    {type: "template", name: "titulo", value: "Cadastro de todos os moradores da unidade", style: "font-weight:bold; border: 0;"},
-                    {type: "block", list: [
-                            {type: "fieldset", name: "opcoes", label: "Opera&ccedil;&otilde;es", width: 955, list: [
-                                    {type: "button", name: "novo", value: "1. Cadastrar novo"},
-                                    {type: "newcolumn"},
-                                    {type: "button", name: "salvar", value: "2. Salvar dados"},
-                                    {type: "newcolumn"},
-                                    {type: "button", name: "remover", value: "3. Apagar dados"},
-                                    {type: "newcolumn"},
-                                    {type: "button", name: "fotomorador", value: "4. Obter foto"},
-                                    {type: "newcolumn"},
-                                    {type: "button", name: "reserva", value: "5. Reservar espaço"}
-                                ]}
-                        ]},
-                    { type: "block", list: [
-                            { type: "block", list: [
-                                    {type: "fieldset", name: "foto", label: "Identifica&ccedil;&atilde;o", width: 140, list: [
-                                            {type: "container", name: "foto_morador", inputWidth: 120, inputHeight: 120}
-                                        ]},
-                                    {type: "newcolumn"},
-                                    {type: "fieldset", name: "opcoes", label: "Informa&ccedil;&otilde;es gerais do morador", width: 800, list: [
-                                            { type: "block", list: [
-                                                    {type: "input", name: "nome", label: "Nome completo", inputWidth: 350, style: "font-weight:bold;", tooltip: "Informe o nome completo do morador", required: true, info: true, note: {text: "Nome completo do morador"}},
-                                                    {type: "newcolumn"},
-                                                    {type: "input", name: "nascimento", label: "Data de nascimento", inputWidth: 130, style: "font-weight:bold;", tooltip: "Data de nascimento do morador", required: true, info: true, note: {text: "Ex.: 12/06/1981"}},
-                                                    {type: "newcolumn"},
-                                                    {type: "input", name: "local_nascimento", label: "Local de nascimento", inputWidth: 220, style: "font-weight:bold;", tooltip: "Cidade e Estado se for no Brasil; cidade e pa&iacute;s se for no estrangeiro. Ex.: Campinas-S&atilde;o Paulo ou Roma-It&aacute;lia", required: true, info: true, note: {text: "Cidade e Estado brasileiro ou pa?s estrangeiro"}}
-                                                ]},
-                                            { type: "block", list: [
-                                                    {type: "input", name: "rg", label: "Doc. de identifica&ccedil;&atilde;o", inputWidth: "140", style: "font-weight:bold;",
-                                                        tooltip: "Informe o n&uacute;mero de RG ou RNE ou passaporte", info: true
-                                                    },
-                                                    {type: "newcolumn"},
-                                                    {type: "input", name: "cpf", label: "CPF", inputWidth: "120", style: "font-weight:bold;"},
-                                                    {type: "newcolumn"},
-                                                    {type: "combo", name: "genero", label: "G&ecirc;nero", inputWidth: "100", style: "font-weight:bold;", required: true, options: [
-                                                            {value: "", text: "Selecione", selected: true},
-                                                            {value: "1", text: "Masculino"},
-                                                            {value: "2", text: "Feminino"}
-                                                        ]},
-                                                    {type: "newcolumn"},
-                                                    {type: "combo", name: "parentesco", label: "Parentesco/Proximidade", required: true, inputWidth: "150", style: "font-weight:bold;", options: [
-                                                            {value: "", text: "Selecione", selected: true},
-                                                            {value: "1", text: "Cônjuge"},
-                                                            {value: "2", text: "Filho/a"},
-                                                            {value: "3", text: "Pai/Mãe"},
-                                                            {value: "4", text: "Sogro/a"},
-                                                            {value: "5", text: "Cunhado/a"},
-                                                            {value: "6", text: "Irmã(o)"},
-                                                            {value: "7", text: "Tio/a"},
-                                                            {value: "8", text: "Primo/a"},
-                                                            {value: "9", text: "Neto/a"},
+                    {type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", position: "label-top"},
+                    {
+                        type: "label", list: [
+                            {
+                                type: "label", width: 200, list: [
+                                    {type: "container", name: "foto_morador", inputWidth: 170, inputHeight: 170}
+                                ]
+                            },
+                            {type: "newcolumn"},
+                            {
+                                type: "label", name: "opcoes", width: 800, list: [
+                                    {
+                                        type: "block", list: [
+                                            {type: "input", name: "nome", label: "Nome completo", inputWidth: 350, tooltip: "Informe o nome completo do morador", required: true, info: true, note: {text: "Nome completo do morador"}},
+                                            {type: "newcolumn"},
+                                            {type: "input", name: "nascimento", label: "Data de nascimento", inputWidth: 130, tooltip: "Data de nascimento do morador", required: true, info: true, note: {text: "Ex.: 12/06/1981"}},
+                                            {type: "newcolumn"},
+                                            {type: "input", name: "local_nascimento", label: "Local de nascimento", inputWidth: 220, tooltip: "Cidade e Estado se for no Brasil; cidade e pa&iacute;s se for no estrangeiro. Ex.: Campinas-S&atilde;o Paulo ou Roma-It&aacute;lia", required: true, info: true, note: {text: "Cidade e Estado brasileiro ou pa?s estrangeiro"}}
+                                        ]
+                                    },
+                                    {
+                                        type: "block", list: [
+                                            {
+                                                type: "input", name: "rg", label: "Doc. de identifica&ccedil;&atilde;o", inputWidth: "140",
+                                                tooltip: "Informe o n&uacute;mero de RG ou RNE ou passaporte", info: true
+                                            },
+                                            {type: "newcolumn"},
+                                            {type: "input", name: "cpf", label: "CPF", inputWidth: "120"},
+                                            {type: "newcolumn"},
+                                            {
+                                                type: "combo", name: "genero", label: "G&ecirc;nero", inputWidth: "100", required: true, options: [
+                                                    {value: "", text: "Selecione", selected: true},
+                                                    {value: "1", text: "Masculino"},
+                                                    {value: "2", text: "Feminino"}
+                                                ]
+                                            },
+                                            {type: "newcolumn"},
+                                            {
+                                                type: "combo", name: "parentesco", label: "Parentesco/Proximidade", required: true, inputWidth: "150", options: [
+                                                    {value: "", text: "Selecione", selected: true},
+                                                    {value: "1", text: "Cônjuge"},
+                                                    {value: "2", text: "Filho/a"},
+                                                    {value: "3", text: "Pai/Mãe"},
+                                                    {value: "4", text: "Sogro/a"},
+                                                    {value: "5", text: "Cunhado/a"},
+                                                    {value: "6", text: "Irmã(o)"},
+                                                    {value: "7", text: "Tio/a"},
+                                                    {value: "8", text: "Primo/a"},
+                                                    {value: "9", text: "Neto/a"},
                                                             {value: "10", text: "Avó/Avô"},
                                                             {value: "11", text: "Parente"},
                                                             {value: "12", text: "Amigo/a"},
