@@ -451,6 +451,7 @@ class Moradores extends Cadastro {
                 ]
             },
             form: {
+                foto: {origem: 'foto1', destino: 'foto_morador'},
                 struct: [
                     { type: "settings", labelAlign: "left", inputHeight: "18", offsetLeft: "4", offsetTop: "2", position: "label-top"},
                     {type: "template", name: "titulo", value: "Cadastro de todos os moradores da unidade", style: "font-weight:bold; border: 0;"},
