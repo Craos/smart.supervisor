@@ -970,7 +970,7 @@ class MainMenu {
 
         this.mainManu.attachEvent('onItemClick', function (id) {
             window.dispatchEvent(new CustomEvent('AoSelecionarItemMenu', {
-                detail: lista.find(x=> x.id === id)
+                detail: lista.find(x => x.id.toString() === id)
             }));
             return true;
         });
@@ -1033,15 +1033,34 @@ class MainHeader extends EndPoint {
 }
 
 class Supervisor {
+
     dados = {};
     seletor;
     layoutapp;
     mainmenu;
     mainpage;
 
-    constructor(params) {
+    recursos = [
+        Atendimentos,
+        ContaUsuario,
+        InformacoesGerais,
+        Moradores,
+        Veiculos,
+        Funcionarios,
+        PreAutorizados,
+        Hospedes,
+        Pets,
+        RegistroAcesso,
+        Notificacoes,
+        PersonalTrainer,
+        TransporteEscolar,
+        Academia,
+        Usuario,
+        Perfil,
+    ];
 
-        this.params = params;
+    constructor() {
+
         this.acesso = new Acesso();
 
         if (sessionStorage.usuario === undefined) {
@@ -1104,7 +1123,7 @@ class Supervisor {
 
         this.layoutapp = new MainLayout();
         this.header = new MainHeader(this.layoutapp.mainlayout, this.layoutapp.header, this.usuario);
-        this.mainmenu = new MainMenu(this.layoutapp.menu, this.params.recursos);
+        this.mainmenu = new MainMenu(this.layoutapp.menu, this.usuario.recursos);
         this.mainpage = new MainPage(this.layoutapp.page);
         this.seletor = new Seletor(this.mainpage.seletor);
 
@@ -1127,7 +1146,7 @@ class Supervisor {
 
     AbreRecurso(item) {
 
-        if (item.useseletor === true && this.unidade === undefined) {
+        if (item.acesso_unidade === true && this.unidade === undefined) {
             dhtmlx.alert({
                 title: 'Atenção',
                 type: 'alert-warning',
@@ -1137,7 +1156,10 @@ class Supervisor {
         }
 
         this.mainpage.display.detachObject(true);
-        new item.recurso ({
+
+        let recurso = this.recursos.find(value => value.name === item.objeto);
+
+        new recurso({
             page: this.mainpage.display,
             usuario: this.usuario,
             unidade: this.unidade
@@ -1146,21 +1168,4 @@ class Supervisor {
 
 }
 
-window.app = new Supervisor({
-    recursos: [
-        {id: 'atendimentos', titulo: 'Atendimentos', icone: 'fas fa-calendar-check', recurso: Atendimentos},
-        {id: 'conta', titulo: 'Conta do usuário', icone: 'fas fa-user', recurso: ContaUsuario, useseletor: true},
-        {id: 'geral', titulo: 'Informações gerais', icone: 'fas fa-home', recurso: InformacoesGerais, useseletor: true},
-        {id: 'moradores', titulo: 'Moradores da unidade', icone: 'fas fa-users', recurso: Moradores, useseletor: true},
-        {id: 'veiculos', titulo: 'Veículos', icone: 'fas fa-car', recurso: Veiculos, useseletor: true},
-        {id: 'funcionarios', titulo: 'Funcionários da unidade', icone: 'fas fa-id-card-alt', recurso: Funcionarios, useseletor: true},
-        {id: 'preautorizados', titulo: 'Visitantes pré-autorizados', icone: 'fas fa-user-edit', recurso: PreAutorizados, useseletor: true},
-        {id: 'hospedes', titulo: 'Hóspedes', icone: 'fas fa-street-view', recurso: Hospedes, useseletor: true},
-        {id: 'pets', titulo: 'Pets', icone: 'fas fa-cat', recurso: Pets, useseletor: true},
-        {id: 'registroAcesso', titulo: 'Registro de acesso', icone: 'fas fa-chalkboard-teacher', recurso: RegistroAcesso},
-        {id: 'notificacoes', titulo: 'Multas e notificações', icone: 'fas fa-bell', recurso: Notificacoes},
-        {id: 'personaltrainer', titulo: 'Personal trainer', icone: 'fas fa-id-badge', recurso: PersonalTrainer},
-        {id: 'transporteescolar', titulo: 'Transporte escolar', icone: 'fas fa-universal-access', recurso: TransporteEscolar},
-        {id: 'academia', titulo: 'Academia', icone: 'fas fa-dumbbell', recurso: Academia},
-    ]
-});
+window.app = new Supervisor();
