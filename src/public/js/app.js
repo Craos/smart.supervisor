@@ -676,6 +676,30 @@ class Academia extends EndPoint {
 
 }
 
+class Usuario extends EndPoint {
+
+    constructor() {
+        super();
+    }
+
+    Exibir() {
+
+    }
+
+}
+
+class Perfil extends EndPoint {
+
+    constructor() {
+        super();
+    }
+
+    Exibir() {
+
+    }
+
+}
+
 class Seletor extends EndPoint {
 
     constructor(cell) {
