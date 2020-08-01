@@ -800,6 +800,29 @@ class Acesso extends EndPoint {
 
     }
 
+    InformacoesUsuario(email) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'POST',
+                url: window.location.origin + '/condominio/rpc/userinfo',
+                dataType: 'json',
+                headers: {
+                    Prefer: 'params=single-object',
+                    Accept: 'application/vnd.pgrst.object+json'
+                },
+                data: {
+                  email: email
+                },
+                success: function (response) {
+                    resolve(response);
+                }
+            }).fail(function (jqXHR) {
+                console.error(jqXHR);
+                reject(jqXHR)
+            });
+        });
+    }
+
     Encerrar() {
         if (this.parametros.logoff !== null)
             this.parametros.logoff.addEventListener('click', function () {
