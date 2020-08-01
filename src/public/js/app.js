@@ -778,7 +778,7 @@ class Acesso extends EndPoint {
                 this.dados = form.getFormData();
                 wins.window(id).progressOn();
                 this.LogarUsuario(this.dados).then(() => {
-                    this.Pesquisar(this.dados.login).then(usuario => {
+                    this.InformacoesUsuario(this.dados.login).then(usuario => {
                         wins.window(id).close();
                         this.AoEfetuarLogin(usuario);
                     });
@@ -1055,6 +1055,7 @@ class Supervisor {
     PreparaAcessoUsuario() {
 
         this.acesso.AoEfetuarLogin = function (usuario) {
+            console.debug(usuario);
             sessionStorage.usuario = JSON.stringify(usuario);
             this.usuario = usuario;
             this.Iniciar();
