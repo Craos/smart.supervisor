@@ -141,6 +141,10 @@ class Supervisor {
 
 }
 
+/**
+ * @todo comentários nas linhas do código do arquivo app
+ * @body Incluir os comentários que descrevem os objetos e também a execução de métodos para facilitar o entendimento
+ */
 $(document).ready(function () {
 
     /**
