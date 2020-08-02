@@ -303,11 +303,15 @@ class Pesquisar extends EndPoint {
         });
 
         this.toolbar.attachEvent("onClick", function () {
-            this.IniciarPesquisa();
+            this.IniciarPesquisa().then(function (response) {
+                this.ProcessaResultados(response);
+            }.bind(this));
         }.bind(this));
 
         this.toolbar.attachEvent("onEnter", function () {
-            this.IniciarPesquisa();
+            this.IniciarPesquisa().then(function (response) {
+                this.ProcessaResultados(response);
+            }.bind(this));
         }.bind(this));
 
         let layout = wins.window(id).attachLayout({
