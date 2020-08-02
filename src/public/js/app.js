@@ -370,14 +370,26 @@ class Pesquisar extends EndPoint {
      */
     ProcessaResultados(resultado) {
 
+        console.debug(window.app.usuario.recursos);
+
+        let icones = [];
+        let titulos = [];
+
+        window.app.usuario.recursos.forEach(function (item) {
+            icones[item.nome] = item.icone;
+            titulos[item.nome] = item.titulo;
+        });
+
+        console.debug(icones);
+
         Object.keys(resultado).forEach(function (categoria) {
 
             if (resultado[categoria] === null)
                 return;
 
             resultado[categoria].filter(function (registro) {
-                registro.icone = 'fas fa-users';
-                registro.tipo = categoria;
+                registro.icone = icones[categoria];
+                registro.tipo = titulos[categoria];
                 this.list.add(registro);
             }.bind(this));
         }.bind(this));
@@ -391,6 +403,7 @@ class Pesquisar extends EndPoint {
         data.texto = this.toolbar.getInput('texto').value;
 
         this.list.clearAll();
+        this.layout.cells('b').progressOn();
 
         return new Promise((resolve, reject) => {
             $.ajax({
