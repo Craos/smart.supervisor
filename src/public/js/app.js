@@ -22,116 +22,6 @@ class Perfil {
 
 }
 
-class MainLayout {
-
-    mainlayout;
-    header;
-    menu;
-    page;
-
-    constructor() {
-        this.mainlayout = new dhtmlXLayoutObject({
-            parent: document.body,
-            pattern: '3T',
-            offsets: {
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0
-            },
-            cells: [
-                {id: 'a', header: false, height: 40, fix_size: [true, true]},
-                {id: 'b', header: false, width: 230},
-                {id: 'c', header: false},
-            ]
-        });
-
-        this.header = this.mainlayout.cells('a');
-        this.menu = this.mainlayout.cells('b');
-        this.page = this.mainlayout.cells('c');
-    }
-
-}
-
-class MainMenu {
-
-    mainManu;
-
-    constructor(cell, lista) {
-
-        this.mainManu = cell.attachList({
-            container: 'data_container',
-            type: {
-                template: 'http->./html/mainmenu.html',
-                height: 45
-            }
-        });
-
-        this.mainManu.parse(lista, 'json');
-        this.mainManu.attachEvent('onItemClick', function (id) {
-            window.dispatchEvent(new CustomEvent('AoSelecionarItemMenu', {
-                detail: lista.find(x => x.id.toString() === id)
-            }));
-            return true;
-        });
-
-    }
-
-}
-
-class MainPage {
-
-    page;
-    seletor;
-    display;
-
-    constructor(cell) {
-
-        this.page = cell.attachLayout({
-            pattern: '2E',
-            offsets: {
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0
-            },
-            cells: [
-                {id: 'a', header: false, height: 40, fix_size: [true, true]},
-                {id: 'b', header: false, width: 240},
-            ]
-        });
-
-        this.seletor = this.page.cells('a');
-        this.display = this.page.cells('b');
-
-    }
-
-}
-
-class MainHeader extends EndPoint {
-
-    ifr;
-
-    constructor(component, cell, usuario) {
-        super();
-        component.attachEvent('onContentLoaded', function (id) {
-            this.ifr = component.cells(id).getFrame();
-            this.ifr.contentWindow.document.getElementById('nome').innerText = usuario.nome.split(' ')[0];
-            this.AoCarregarHeader();
-        }.bind(this));
-
-        cell.attachURL('./html/mainheader.html', null);
-
-    }
-
-    ApresentaUnidade(unidade) {
-        this.ifr.contentWindow.document.getElementById('bloco').innerText = unidade.bloco;
-        this.ifr.contentWindow.document.getElementById('unidade').innerText = unidade.unidade;
-        this.ifr.contentWindow.document.getElementById('responsavel').innerText = unidade.nome_proprietario;
-        this.ifr.contentWindow.document.getElementById('header-unidade').style.display = 'block';
-    }
-}
-
 class Supervisor {
 
     dados = {};
@@ -172,7 +62,7 @@ class Supervisor {
             this.PreparaAcessoUsuario();
             return;
         }
-        this.perfil = new PerfilAcesso();
+
         this.usuario = JSON.parse(sessionStorage.usuario);
 
         if (sessionStorage.unidade !== undefined)
