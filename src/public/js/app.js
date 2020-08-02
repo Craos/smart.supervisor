@@ -30,31 +30,7 @@ class Supervisor {
     mainmenu;
     mainpage;
 
-    recursos = [
-        Atendimentos,
-        ContaUsuario,
-        InformacoesGerais,
-        Moradores,
-        Veiculos,
-        Funcionarios,
-        PreAutorizados,
-        Hospedes,
-        Pets,
-        RegistroAcesso,
-        Notificacoes,
-        PersonalTrainer,
-        TransporteEscolar,
-        Academia,
-        Usuario,
-        Perfil,
-        Prestadores
-    ];
-
     constructor() {
-
-        $(document).ready(function(){
-            $.getScript('js/endpoint.js');
-        });
 
         this.acesso = new Acesso();
 
@@ -93,7 +69,6 @@ class Supervisor {
     PreparaAcessoUsuario() {
 
         this.acesso.AoEfetuarLogin = function (usuario) {
-            console.debug(usuario);
             sessionStorage.usuario = JSON.stringify(usuario);
             this.usuario = usuario;
             window.usuario = usuario;
@@ -153,20 +128,25 @@ class Supervisor {
 
         this.mainpage.display.detachObject(true);
 
-        let recurso = this.recursos.find(value => value.name === item.objeto);
-
-        new recurso({
+        /**
+         * Inicia a execução do recurso
+         */
+        new (Object.values(window.recursos).find(value => value.name === item.objeto))({
             page: this.mainpage.display,
             usuario: this.usuario,
             unidade: this.unidade
         });
+
     }
 
 }
 
-/**
- * @todo código em arquivos separados
- * @body Separar o código em arquivos que representem os objetos do app
- * @type {Supervisor}
- */
-window.app = new Supervisor();
+$(document).ready(function () {
+
+    /**
+     * @type {Supervisor}
+     */
+    window.app = new Supervisor();
+
+});
+
