@@ -397,7 +397,7 @@ class Pesquisar extends EndPoint {
                 },
                 data: data,
                 success: function (response) {
-                    resolve(response);
+                    resolve(response.pesquisar[0]);
                 }
             }).fail(function (jqXHR) {
                 console.error(jqXHR);
@@ -419,7 +419,7 @@ class Cadastro extends EndPoint {
     constructor(params) {
         super();
         this.params = params;
-        this.foto = new Foto();
+        //this.foto = new Foto();
     }
 
     Exibir() {
@@ -857,12 +857,12 @@ class Seletor extends EndPoint {
         this.pesquisar = '?';
 
         let form = cell.attachForm([
-            {type:'settings',position:'label-top', labelAlign:'left', offsetLeft: 10, inputWidth: 60},
+            {type: 'settings', position: 'label-top', labelAlign: 'left', offsetLeft: 10, inputWidth: 60},
             {type: 'input', name: 'bloco', label: 'Bloco', required: true},
             {type: 'newcolumn'},
             {type: 'input', name: 'unidade', label: 'Unidade', required: true},
             {type: 'newcolumn'},
-            {type: 'button', name: 'acessar', offsetTop: 20, value: "<span class='btnsmart'><i class='fas fa-angle-double-right azulescuro'></i> Selecionar</span>"},
+            {type: 'button', name: 'selecionar', offsetTop: 20, value: "<span class='btnsmart'><i class='fas fa-angle-double-right azulescuro'></i> Selecionar</span>"},
             {type: 'newcolumn'},
             {type: 'button', name: 'pesquisar', offsetTop: 20, value: "<span class='btnsmart'><i class='fas fa-search azulescuro'></i> Pesquisar</span>"}
         ]);
@@ -897,7 +897,7 @@ class Seletor extends EndPoint {
 
         });
 
-        form.attachEvent("onEnter", function(){
+        form.attachEvent("onEnter", function () {
             form.validate();
         });
     }
@@ -1122,7 +1122,6 @@ class MainMenu {
         });
 
         this.mainManu.parse(lista, 'json');
-
         this.mainManu.attachEvent('onItemClick', function (id) {
             window.dispatchEvent(new CustomEvent('AoSelecionarItemMenu', {
                 detail: lista.find(x => x.id.toString() === id)
