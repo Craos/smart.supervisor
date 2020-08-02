@@ -56,6 +56,18 @@ html, body {
     height: 29px;
 }
 
+.pesquisar-linha {
+    height: auto;
+}
+
+.campo {
+    color: #000;
+}
+
+.valor {
+    color: #7c7c7c;
+}
+
 /***** DHTML Custom ****/
 .dhxform_obj_material div.dhxform_btn {
     border: none;
