@@ -887,8 +887,14 @@ class Seletor extends EndPoint {
             }
         }.bind(this));
 
-        form.attachEvent('onButtonClick', function () {
-            form.validate();
+        form.attachEvent('onButtonClick', function (id) {
+
+            if (id === 'selecionar') {
+                form.validate();
+            } else if (id === 'pesquisar') {
+                new Pesquisar();
+            }
+
         });
 
         form.attachEvent("onEnter", function(){
