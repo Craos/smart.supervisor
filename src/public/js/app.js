@@ -269,6 +269,15 @@ class Pesquisar extends EndPoint {
 
     constructor() {
         super();
+
+        this.icones = [];
+        this.titulos = [];
+
+        window.app.usuario.recursos.forEach((item) => {
+            this.icones[item.nome] = item.icone;
+            this.titulos[item.nome] = item.titulo;
+        });
+
         this.Exibir();
     }
 
