@@ -1,4 +1,4 @@
-class ContaUsuario extends Cadastro {
+window.recursos.hospedes = class Hospedes extends Cadastro {
 
     constructor() {
         super();

@@ -1,4 +1,4 @@
-class Academia extends EndPoint {
+window.recursos.conta = class ContaUsuario extends Cadastro {
 
     constructor() {
         super();

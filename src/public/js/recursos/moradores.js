@@ -1,4 +1,4 @@
-class Moradores extends Cadastro {
+window.recursos.moradores = class Moradores extends Cadastro {
 
     constructor(app) {
 

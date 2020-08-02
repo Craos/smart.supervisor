@@ -1,4 +1,4 @@
-class TransporteEscolar extends EndPoint {
+window.recursos.geral = class InformacoesGerais extends EndPoint {
 
     constructor() {
         super();
@@ -7,4 +7,5 @@ class TransporteEscolar extends EndPoint {
     Exibir() {
 
     }
+
 }

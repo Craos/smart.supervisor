@@ -1,4 +1,4 @@
-class RegistroAcesso extends EndPoint {
+window.recursos.academia = class Academia extends EndPoint {
 
     constructor() {
         super();

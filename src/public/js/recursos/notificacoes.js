@@ -1,4 +1,4 @@
-class Hospedes extends Cadastro {
+window.recursos.notificacoes = class Notificacoes extends Cadastro {
 
     constructor() {
         super();

@@ -6,7 +6,7 @@ class AtividadesPersonalTrainer extends EndPoint {
 
 }
 
-class PersonalTrainer extends EndPoint {
+window.recursos.personaltrainer = class PersonalTrainer extends EndPoint {
 
     constructor() {
         super();
