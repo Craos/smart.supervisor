@@ -353,7 +353,13 @@ class Pesquisar extends EndPoint {
             }
         ]);
 
-        this.list = layout.cells('b').attachList();
+        this.list = layout.cells('b').attachList({
+            container: 'data_container',
+            type: {
+                template: 'http->./html/pesquisar.html',
+                height: 'auto'
+            }
+        });
 
     }
 
