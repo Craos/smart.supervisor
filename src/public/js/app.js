@@ -384,6 +384,8 @@ class Pesquisar extends EndPoint {
         let data = this.form.getFormData();
         data.texto = this.toolbar.getInput('texto').value;
 
+        this.list.clearAll();
+
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: 'POST',
