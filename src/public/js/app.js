@@ -265,6 +265,7 @@ class Pesquisar extends EndPoint {
     toolbar;
     form;
     list;
+    layout;
 
     constructor() {
         super();
@@ -314,7 +315,7 @@ class Pesquisar extends EndPoint {
             }.bind(this));
         }.bind(this));
 
-        let layout = wins.window(id).attachLayout({
+        this.layout = wins.window(id).attachLayout({
             pattern: '2E',
             offsets: {
                 top: 0,
@@ -328,7 +329,7 @@ class Pesquisar extends EndPoint {
             ]
         });
 
-        this.form = layout.cells('a').attachForm([
+        this.form = this.layout.cells('a').attachForm([
             {type:"settings", position:"label-right", labelAlign:"left"},
             {type: 'label', label:'Pelo nome da pessoa', list:[
                 {type:'checkbox', name:'moradores', label:'Moradores', checked: true},
@@ -353,7 +354,7 @@ class Pesquisar extends EndPoint {
             }
         ]);
 
-        this.list = layout.cells('b').attachList({
+        this.list = this.layout.cells('b').attachList({
             container: 'data_container',
             type: {
                 template: 'http->./html/pesquisar.html',
@@ -380,6 +381,7 @@ class Pesquisar extends EndPoint {
                 this.list.add(registro);
             }.bind(this));
         }.bind(this));
+        this.layout.cells('b').progressOff();
 
     }
 
