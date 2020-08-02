@@ -334,7 +334,7 @@ class Pesquisar extends EndPoint {
             {type: 'label', label:'Pelo nome da pessoa', list:[
                 {type:'checkbox', name:'moradores', label:'Moradores', checked: true},
                 {type:'checkbox', name:'funcionarios', label:'Funcionários', checked: false},
-                {type:'checkbox', name:'visitantes', label:'Visitantes pré-autorizados', checked: false},
+                {type:'checkbox', name:'preautorizados', label:'Visitantes pré-autorizados', checked: false},
                 {type:"newcolumn", offset:10},
                 {type:'checkbox', name:'hospedes', label:'Hóspedes', checked: false},
                 {type:'checkbox', name:'prestadores', label:'Prestadores / Fornecedores', checked: false},
