@@ -340,28 +340,22 @@ class Pesquisar extends EndPoint {
 
         this.form = this.layout.cells('a').attachForm([
             {type:"settings", position:"label-right", labelAlign:"left"},
-            {type: 'label', label:'Pelo nome da pessoa', list:[
-                {type:'checkbox', name:'moradores', label:'Moradores', checked: true},
-                {type:'checkbox', name:'funcionarios', label:'Funcionários', checked: false},
-                {type:'checkbox', name:'preautorizados', label:'Visitantes pré-autorizados', checked: false},
-                {type:"newcolumn", offset:10},
-                {type:'checkbox', name:'hospedes', label:'Hóspedes', checked: false},
-                {type:'checkbox', name:'prestadores', label:'Prestadores / Fornecedores', checked: false},
-            ]},
-            {type:"newcolumn", offset:40},
-            {type: 'label', label:'Tipo de identificação', list:[
-                {type:'checkbox', name:'placa', label:'Placa de veículo', checked: false},
-                {type:'checkbox', name:'telefone', label:'Telefone', checked: false},
-                    {type: 'checkbox', name: 'email', label: 'Endereço de email', checked: false},
-                    {type: "newcolumn", offset: 10},
-                    {type: 'checkbox', name: 'rg', label: 'RG', checked: false},
-                    {type: 'checkbox', name: 'cpf', label: 'CPF', checked: false},
-                    {type: 'checkbox', name: 'cnh', label: 'CNH', checked: false},
-                    {type: "newcolumn", offset: 10},
-                    {type: 'checkbox', name: 'cnpj', label: 'CNPJ', checked: false},
-                ]
-            }
+            {type: 'label', name: 'labelregistros', label:'Tipo de registro'}
         ]);
+
+        let itensform = 0;
+        window.app.usuario.recursos.forEach(function (recurso) {
+
+            if (recurso.pesquisar === false)
+                return;
+
+            itensform++;
+            this.form.addItem('labelregistros', {type:'checkbox', offsetTop: 0, name:recurso.nome, label: "<i class='"+recurso.icone+"'><span class='mainmenu-titulo'>"+recurso.titulo+"</span></i>", checked: false});
+            if (itensform === 3) {
+                this.form.addItem('labelregistros', {type:"newcolumn", offset:10});
+                itensform = 0;
+            }
+        }.bind(this));
 
         this.list = this.layout.cells('b').attachList({
             container: 'data_container',
