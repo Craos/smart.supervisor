@@ -279,6 +279,7 @@ class Pesquisar extends EndPoint {
         });
 
         this.Exibir();
+
     }
 
     Exibir() {
@@ -307,7 +308,7 @@ class Pesquisar extends EndPoint {
         this.toolbar = wins.window(id).attachToolbar({
             iconset: 'awesome',
             items: [
-                {id: 'texto', type:'buttonInput', width: 150},
+                {id: 'texto', type:'buttonInput', width: 300},
                 {id: 'localizar', type: 'button', text: 'Iniciar pesquisa', img: 'fas fa-search', imgdis:'fas fa-search'},
             ]
         });
@@ -367,23 +368,7 @@ class Pesquisar extends EndPoint {
 
     }
 
-    /**
-     * @todo Icones dos tipos
-     * @body Colocar icones nos resultados das pesquisas
-     */
     ProcessaResultados(resultado) {
-
-        console.debug(window.app.usuario.recursos);
-
-        let icones = [];
-        let titulos = [];
-
-        window.app.usuario.recursos.forEach(function (item) {
-            icones[item.nome] = item.icone;
-            titulos[item.nome] = item.titulo;
-        });
-
-        console.debug(icones);
 
         Object.keys(resultado).forEach(function (categoria) {
 
@@ -391,8 +376,8 @@ class Pesquisar extends EndPoint {
                 return;
 
             resultado[categoria].filter(function (registro) {
-                registro.icone = icones[categoria];
-                registro.tipo = titulos[categoria];
+                registro.icone = this.icones[categoria];
+                registro.tipo = this.titulos[categoria];
                 this.list.add(registro);
             }.bind(this));
         }.bind(this));
@@ -1240,6 +1225,7 @@ class Supervisor {
         Academia,
         Usuario,
         Perfil,
+        Prestadores
     ];
 
     constructor() {
@@ -1352,4 +1338,9 @@ class Supervisor {
 
 }
 
+/**
+ * @todo código em arquivos separados
+ * @body Separar o código em arquivos que representem os objetos do app
+ * @type {Supervisor}
+ */
 window.app = new Supervisor();
