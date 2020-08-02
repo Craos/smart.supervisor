@@ -871,6 +871,13 @@ class Perfil extends EndPoint {
 
 }
 
+class Prestadores extends Cadastro {
+    constructor() {
+        super();
+    }
+}
+
+
 class Seletor extends EndPoint {
 
     constructor(cell) {
