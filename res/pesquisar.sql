@@ -9,13 +9,7 @@ declare
     visitantes json;
     hospedes json;
     prestadores json;
-    placa json;
-    telefone json;
-    email json;
-    rg json;
-    cpf json;
-    cnh json;
-    cnpj json;
+    veiculos json;
 
     saida json;
 begin
@@ -26,7 +20,12 @@ begin
         moradores := array_to_json(array_agg(row_to_json(m))) from (
                                                                        select num, nome
                                                                        from condominio.moradores
-                                                                       where lower(nome) like '%' || texto || '%'
+                                                                       where
+                                                                               lower(nome) like '%' || texto || '%'
+                                                                          or telefone like '%' || texto || '%'
+                                                                          or email like '%' || texto || '%'
+                                                                          or rg like '%' || texto || '%'
+                                                                          or cpf like '%' || texto || '%'
                                                                    ) as m;
     end if;
 
@@ -34,7 +33,11 @@ begin
         funcionarios := array_to_json(array_agg(row_to_json(m))) from (
                                                                           select num, nome
                                                                           from condominio.empregados
-                                                                          where lower(nome) like '%' || texto || '%'
+                                                                          where
+                                                                                  lower(nome) like '%' || texto || '%'
+                                                                             or telefone like '%' || texto || '%'
+                                                                             or rg like '%' || texto || '%'
+                                                                             or cpf like '%' || texto || '%'
                                                                       ) as m;
     end if;
 
@@ -46,13 +49,7 @@ begin
                           visitantes,
                           hospedes,
                           prestadores,
-                          placa,
-                          telefone,
-                          email,
-                          rg,
-                          cpf,
-                          cnh,
-                          cnpj
+                          veiculos
                   ) as s;
 
     return saida;
