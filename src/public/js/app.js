@@ -342,14 +342,15 @@ class Pesquisar extends EndPoint {
             {type: 'label', label:'Tipo de identificação', list:[
                 {type:'checkbox', name:'placa', label:'Placa de veículo', checked: false},
                 {type:'checkbox', name:'telefone', label:'Telefone', checked: false},
-                {type:'checkbox', name:'email', label:'Endereço de email', checked: false},
-                {type:"newcolumn", offset:10},
-                {type:'checkbox', name:'rg', label:'RG', checked: false},
-                {type:'checkbox', name:'cpf', label:'CPF', checked: false},
-                {type:'checkbox', name:'cnh', label:'CNH', checked: false},
-                {type:"newcolumn", offset:10},
-                {type:'checkbox', name:'cnpj', label:'CNPJ', checked: false},
-            ]}
+                    {type: 'checkbox', name: 'email', label: 'Endereço de email', checked: false},
+                    {type: "newcolumn", offset: 10},
+                    {type: 'checkbox', name: 'rg', label: 'RG', checked: false},
+                    {type: 'checkbox', name: 'cpf', label: 'CPF', checked: false},
+                    {type: 'checkbox', name: 'cnh', label: 'CNH', checked: false},
+                    {type: "newcolumn", offset: 10},
+                    {type: 'checkbox', name: 'cnpj', label: 'CNPJ', checked: false},
+                ]
+            }
         ]);
 
         this.list = layout.cells('b').attachList();
