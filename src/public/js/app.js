@@ -352,6 +352,22 @@ class Pesquisar extends EndPoint {
 
     }
 
+    ProcessaResultados(resultado) {
+
+        Object.keys(resultado).forEach(function (categoria) {
+
+            if (resultado[categoria] === null)
+                return;
+
+            resultado[categoria].filter(function (registro) {
+                registro.icone = 'fas fa-users';
+                registro.tipo = categoria;
+                this.list.add(registro);
+            }.bind(this));
+        }.bind(this));
+
+    }
+
     IniciarPesquisa() {
 
         let data = this.form.getFormData();
