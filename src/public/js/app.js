@@ -1256,6 +1256,7 @@ class Supervisor {
             console.debug(usuario);
             sessionStorage.usuario = JSON.stringify(usuario);
             this.usuario = usuario;
+            window.usuario = usuario;
             this.Iniciar();
         }.bind(this);
 
