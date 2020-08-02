@@ -363,6 +363,10 @@ class Pesquisar extends EndPoint {
 
     }
 
+    /**
+     * @todo Icones dos tipos
+     * @body Colocar icones nos resultados das pesquisas
+     */
     ProcessaResultados(resultado) {
 
         Object.keys(resultado).forEach(function (categoria) {
