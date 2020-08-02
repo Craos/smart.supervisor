@@ -260,6 +260,126 @@ class Foto extends EndPoint {
 
 }
 
+class Pesquisar extends EndPoint {
+
+    toolbar;
+    form;
+    list;
+
+    constructor() {
+        super();
+        this.Exibir();
+    }
+
+    Exibir() {
+
+        let id = 'pesquisar';
+        let wins = new dhtmlXWindows({
+            image_path: 'codebase/imgs/',
+        });
+
+        wins.createWindow({
+            id: id,
+            width: 800,
+            height: 600,
+            center: true,
+            park: false,
+            resize: false,
+            move: false,
+            caption: 'Pesquisar'
+        });
+
+        wins.window(id).button('stick').hide();
+        wins.window(id).button('help').hide();
+        wins.window(id).button('park').hide();
+        wins.window(id).button('minmax').hide();
+
+        this.toolbar = wins.window(id).attachToolbar({
+            iconset: 'awesome',
+            items: [
+                {id: 'texto', type:'buttonInput', width: 150},
+                {id: 'localizar', type: 'button', text: 'Iniciar pesquisa', img: 'fas fa-search', imgdis:'fas fa-search'},
+            ]
+        });
+
+        this.toolbar.attachEvent("onClick", function () {
+            this.IniciarPesquisa();
+        }.bind(this));
+
+        this.toolbar.attachEvent("onEnter", function () {
+            this.IniciarPesquisa();
+        }.bind(this));
+
+        let layout = wins.window(id).attachLayout({
+            pattern: '2E',
+            offsets: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            cells: [
+                {id: 'a', header: false, height: 160, },
+                {id: 'b', header: false},
+            ]
+        });
+
+        this.form = layout.cells('a').attachForm([
+            {type:"settings", position:"label-right", labelAlign:"left"},
+            {type: 'label', label:'Pelo nome da pessoa', list:[
+                {type:'checkbox', name:'moradores', label:'Moradores', checked: true},
+                {type:'checkbox', name:'funcionarios', label:'Funcionários', checked: false},
+                {type:'checkbox', name:'visitantes', label:'Visitantes pré-autorizados', checked: false},
+                {type:"newcolumn", offset:10},
+                {type:'checkbox', name:'hospedes', label:'Hóspedes', checked: false},
+                {type:'checkbox', name:'prestadores', label:'Prestadores / Fornecedores', checked: false},
+            ]},
+            {type:"newcolumn", offset:40},
+            {type: 'label', label:'Tipo de identificação', list:[
+                {type:'checkbox', name:'placa', label:'Placa de veículo', checked: false},
+                {type:'checkbox', name:'telefone', label:'Telefone', checked: false},
+                {type:'checkbox', name:'email', label:'Endereço de email', checked: false},
+                {type:"newcolumn", offset:10},
+                {type:'checkbox', name:'rg', label:'RG', checked: false},
+                {type:'checkbox', name:'cpf', label:'CPF', checked: false},
+                {type:'checkbox', name:'cnh', label:'CNH', checked: false},
+                {type:"newcolumn", offset:10},
+                {type:'checkbox', name:'cnpj', label:'CNPJ', checked: false},
+            ]}
+        ]);
+
+        this.list = layout.cells('b').attachList();
+
+    }
+
+    IniciarPesquisa() {
+
+        let data = this.form.getFormData();
+        data.texto = this.toolbar.getInput('texto').value;
+
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'POST',
+                url: window.location.origin + '/condominio/rpc/pesquisar',
+                dataType: 'json',
+                headers: {
+                    Prefer: 'params=single-object',
+                    Accept: 'application/vnd.pgrst.object+json'
+                },
+                data: data,
+                success: function (response) {
+                    resolve(response);
+                }
+            }).fail(function (jqXHR) {
+                console.error(jqXHR);
+                reject(jqXHR)
+            });
+        });
+
+    }
+
+}
+
 class Cadastro extends EndPoint {
 
     toolbar;
