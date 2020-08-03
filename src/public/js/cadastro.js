@@ -1,5 +1,11 @@
 class Cadastro extends EndPoint {
 
+    /**
+     * O objeto dados armazena as informações do formulário corrente
+     * @type object
+     */
+    dados = {};
+
     toolbar;
     form;
     grid;
@@ -98,7 +104,7 @@ class Cadastro extends EndPoint {
     }
 
     SalvarForm() {
-
+        this.RastreiaAlteracoes();
     }
 
     ObterFoto() {
@@ -109,4 +115,22 @@ class Cadastro extends EndPoint {
 
     }
 
+    RastreiaAlteracoes() {
+
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0');
+        let yyyy = today.getFullYear();
+        let hour = today.getHours();
+        let mi = today.getMinutes();
+        let se = today.getSeconds();
+
+        this.dados.lastuser = this.usuario.login;
+        this.dados.lastdate = `${yyyy}-${mm}-${dd}`;
+        this.dados.lasttime = `${hour}:${mi}:${se}`;
+        this.dados.condominio = this.unidade.condominio;
+        this.dados.bloco = this.unidade.bloco;
+        this.dados.andar = this.unidade.andar;
+        this.dados.unidade = this.unidade.num;
+    }
 }
