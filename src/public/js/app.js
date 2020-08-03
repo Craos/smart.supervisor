@@ -21,6 +21,10 @@ class Supervisor {
      * Contém o objeto responsável pelo menu seletor de recursos
      */
     mainmenu;
+
+    /**
+     * Contém o objeto responsável pela exibicao da pagina corrente
+     */
     mainpage;
 
     constructor() {
@@ -32,34 +36,55 @@ class Supervisor {
             return;
         }
 
+        this.PreencheObjetos();
+        this.Iniciar();
+    }
+
+    PreencheObjetos() {
+
         this.usuario = JSON.parse(sessionStorage.usuario);
+        window.usuario = this.usuario;
 
         if (sessionStorage.unidade !== undefined)
-            this.unidade = JSON.parse(sessionStorage.unidade);
+            window.unidade = JSON.parse(sessionStorage.unidade);
 
-        this.Iniciar();
     }
 
     PreparaAcessoUsuario() {
 
+        /**
+         * Recebe o evento ao efetuar login do usuário
+         * @type {void}
+         */
         this.acesso.AoEfetuarLogin = function (usuario) {
             sessionStorage.usuario = JSON.stringify(usuario);
-            this.usuario = usuario;
-            window.usuario = usuario;
+            this.PreencheObjetos();
             this.Iniciar();
         }.bind(this);
 
-        this.acesso.AoFalharLogin = function () {
+        /**
+         * @todo Adicionar método ao falar login
+         * @constructor
+         */
+        /*this.acesso.AoFalharLogin = function () {
 
-        };
+        };*/
 
-        this.acesso.AoSolicitarRecuperarSenha = function () {
+        /**
+         * @todo Adicionar método ao solictar a recuperação de senha
+         * @constructor
+         */
+        /*this.acesso.AoSolicitarRecuperarSenha = function () {
 
-        };
+        };*/
 
-        this.acesso.AoSolicitarNovoUsuário = function () {
+        /**
+         * @todo Adicionar método para solicitação de novo usuário
+         * @constructor
+         */
+        /*this.acesso.AoSolicitarNovoUsuário = function () {
 
-        };
+        };*/
 
         this.acesso.ExibirLogin();
     }
@@ -67,22 +92,20 @@ class Supervisor {
     Iniciar() {
 
         this.layoutapp = new MainLayout();
-        this.header = new MainHeader(this.layoutapp.mainlayout, this.layoutapp.header, this.usuario);
-
+        this.header = new MainHeader(this.layoutapp.mainlayout, this.layoutapp.header);
         this.mainmenu = new MainMenu(this.layoutapp.menu);
-        //this.mainmenu = new MainMenu(this.layoutapp.menu, this.usuario.recursos);
         this.mainpage = new MainPage(this.layoutapp.page);
         this.seletor = new Seletor(this.mainpage.seletor);
 
         this.header.AoCarregarHeader = function () {
-            if (this.unidade !== undefined)
-                this.header.ApresentaUnidade(this.unidade);
+            if (window.unidade !== undefined)
+                this.header.ApresentaUnidade(window.unidade);
         }.bind(this);
 
         window.addEventListener('AoSelecionarUnidade', function(e) {
-            this.unidade = e.detail;
-            sessionStorage.unidade = JSON.stringify(this.unidade);
-            this.header.ApresentaUnidade(this.unidade);
+            window.unidade = e.detail;
+            sessionStorage.unidade = JSON.stringify(window.unidade);
+            this.header.ApresentaUnidade(window.unidade);
         }.bind(this));
 
         window.addEventListener('AoSelecionarItemMenu', function (e) {
@@ -93,7 +116,7 @@ class Supervisor {
 
     AbreRecurso(recurso) {
 
-        if (recurso.prototype.Config().requer_unidade === true && this.unidade === undefined) {
+        if (recurso.prototype.Config().requer_unidade === true && window.unidade === undefined) {
             dhtmlx.alert({
                 title: 'Atenção',
                 type: 'alert-warning',
@@ -109,8 +132,8 @@ class Supervisor {
          */
         new recurso({
             page: this.mainpage.display,
-            usuario: this.usuario,
-            unidade: this.unidade
+            usuario: window.usuario,
+            unidade: window.unidade
         });
 
     }
