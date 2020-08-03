@@ -13,8 +13,18 @@ window.recursos.personaltrainer = class PersonalTrainer extends EndPoint {
         this.atividades = new AtividadesPersonalTrainer()
     }
 
+    Config() {
+        return {
+            id: 'personaltrainer',
+            titulo: 'Personal trainer',
+            icone: 'fas fa-id-badge',
+            requer_unidade: false,
+            pesquisavel: true
+        }
+    };
+
     Exibir() {
 
     }
 
-}
+};

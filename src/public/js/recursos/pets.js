@@ -4,4 +4,18 @@ window.recursos.pets = class Pets extends Cadastro {
         super();
     }
 
-}
+    Config() {
+        return {
+            id: 'pets',
+            titulo: 'Pets',
+            icone: 'fas fa-cat',
+            requer_unidade: true,
+            pesquisavel: true
+        }
+    };
+
+    Exibir() {
+
+    }
+
+};

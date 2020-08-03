@@ -144,4 +144,4 @@ window.recursos.moradores = class Moradores extends Cadastro {
         this.Exibir();
     }
 
-}
+};
