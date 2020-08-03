@@ -1,6 +1,6 @@
--- pesquisa informações do usuário
-create or replace function condominio.userinfo(param json) returns json
-    language plpgsql as
+create function userinfo(param json) returns json
+    language plpgsql
+as
 $$
 declare
     _email  text;
@@ -13,9 +13,9 @@ begin
 
     _info := row_to_json(info)
              from (
-                      select usuario.usuario, autorizacao.autorizacoes, recursos.recursos
+                      select usuario.informacoes, autorizacao.autorizacoes
                       from (
-                               SELECT row_to_json(u) as usuario
+                               SELECT row_to_json(u) as informacoes
                                from (
                                         select email, users.id, filedate, users.nome, avatar, unidade, perfil  as id_perfil, perfil.nome as perfil
                                         FROM basic_auth.users
@@ -28,18 +28,11 @@ begin
                                FROM basic_auth.autorizacao
                                where perfil = _perfil
                                  and visualizar = true
-                           ) as autorizacao,
-                           (
-                               SELECT array_to_json(array_agg(row_to_json(recurso))) AS recursos
-                               FROM basic_auth.recurso
-                               where id in (select recurso from basic_auth.autorizacao where perfil = _perfil and visualizar = true)
-                           ) as recursos
+                           ) as autorizacao
                   ) as info;
 
     return _info;
 end
 $$;
 
-select condominio.userinfo('{
-  "email": "oberdan@craos.net"
-}');
+alter function userinfo(json) owner to postgres;
