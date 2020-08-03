@@ -8,7 +8,7 @@ window.recursos.registroacesso = class RegistroAcesso extends EndPoint {
         return {
             id: 'registroacesso',
             titulo: 'Registro de acesso',
-            icone: 'fas fa-chalkboard-teacher',
+            icone: 'chrome_reader_mode',
             requer_unidade: false,
             pesquisavel: false
         }

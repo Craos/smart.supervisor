@@ -8,7 +8,7 @@ window.recursos.pets = class Pets extends Cadastro {
         return {
             id: 'pets',
             titulo: 'Pets',
-            icone: 'fas fa-cat',
+            icone: 'pets',
             requer_unidade: true,
             pesquisavel: true
         }

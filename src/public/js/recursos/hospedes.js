@@ -8,7 +8,7 @@ window.recursos.hospedes = class Hospedes extends Cadastro {
         return {
             id: 'hospedes',
             titulo: 'Hóspedes',
-            icone: 'fas fa-street-view',
+            icone: 'contact_mail',
             requer_unidade: false,
             pesquisavel: true
         }

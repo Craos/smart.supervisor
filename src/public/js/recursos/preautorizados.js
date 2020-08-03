@@ -8,7 +8,7 @@ window.recursos.preautorizados = class PreAutorizados extends Cadastro {
         return {
             id: 'prestadores',
             titulo: 'Prestadores de serviço',
-            icone: 'fas fa-id-card-alt',
+            icone: 'supervised_user_circle',
             requer_unidade: false,
             pesquisavel: true
         }

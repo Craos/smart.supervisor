@@ -8,7 +8,7 @@ window.recursos.atendimentos = class Atendimentos extends EndPoint {
         return {
             id: 'atendimentos',
             titulo: 'Atendimentos',
-            icone: 'fas fa-calendar-check',
+            icone: 'support_agent',
             requer_unidade: false,
             pesquisavel: true
         }

@@ -8,7 +8,7 @@ window.recursos.reservaespacos = class ReservaEspacos extends EndPoint {
         return {
             id: 'reservaespacos',
             titulo: 'Reserva de espaços',
-            icone: 'fas fa-bell',
+            icone: 'layers',
             requer_unidade: false,
             pesquisavel: false
         }

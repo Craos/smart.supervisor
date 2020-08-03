@@ -8,7 +8,7 @@ window.recursos.veiculos = class Veiculos extends Cadastro {
         return {
             id: 'veiculos',
             titulo: 'Veículos',
-            icone: 'fas fa-car',
+            icone: 'drive_eta',
             requer_unidade: true,
             pesquisavel: true
         }

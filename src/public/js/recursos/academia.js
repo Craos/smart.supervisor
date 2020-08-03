@@ -8,7 +8,7 @@ window.recursos.academia = class Academia extends EndPoint {
         return {
             id: 'academia',
             titulo: 'Academia',
-            icone: 'fas fa-dumbbell',
+            icone: 'directions_bike',
             requer_unidade: false,
             pesquisavel: false
         }

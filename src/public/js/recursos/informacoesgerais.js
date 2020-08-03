@@ -8,7 +8,7 @@ window.recursos.geral = class InformacoesGerais extends EndPoint {
         return {
             id: 'geral',
             titulo: 'Informações gerais',
-            icone: 'fas fa-home',
+            icone: 'roofing',
             requer_unidade: true,
             pesquisavel: false
         }

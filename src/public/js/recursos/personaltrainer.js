@@ -17,7 +17,7 @@ window.recursos.personaltrainer = class PersonalTrainer extends EndPoint {
         return {
             id: 'personaltrainer',
             titulo: 'Personal trainer',
-            icone: 'fas fa-id-badge',
+            icone: 'assignment_ind',
             requer_unidade: false,
             pesquisavel: true
         }

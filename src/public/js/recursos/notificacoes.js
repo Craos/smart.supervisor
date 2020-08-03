@@ -8,7 +8,7 @@ window.recursos.notificacoes = class Notificacoes extends Cadastro {
         return {
             id: 'notificacoes',
             titulo: 'Multas e notificações',
-            icone: 'fas fa-bell',
+            icone: 'menu_book',
             requer_unidade: false,
             pesquisavel: false
         }

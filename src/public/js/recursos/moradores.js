@@ -144,4 +144,14 @@ window.recursos.moradores = class Moradores extends Cadastro {
         this.Exibir();
     }
 
+    Config() {
+        return {
+            id: 'moradores',
+            titulo: 'Moradores da unidade',
+            icone: 'family_restroom',
+            requer_unidade: true,
+            pesquisavel: true
+        }
+    };
+
 };

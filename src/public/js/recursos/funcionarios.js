@@ -8,7 +8,7 @@ window.recursos.funcionarios = class Funcionarios extends Cadastro {
         return {
             id: 'funcionarios',
             titulo: 'Funcionários da unidade',
-            icone: 'fas fa-id-card-alt',
+            icone: 'baby_changing_station',
             requer_unidade: true,
             pesquisavel: true
         }

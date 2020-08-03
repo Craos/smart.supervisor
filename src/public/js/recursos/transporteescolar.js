@@ -8,7 +8,7 @@ window.recursos.transporteescolar = class TransporteEscolar extends EndPoint {
         return {
             id: 'transporteescolar',
             titulo: 'Transporte escolar',
-            icone: 'fas fa-universal-access',
+            icone: 'directions_bus',
             requer_unidade: false,
             pesquisavel: false
         }

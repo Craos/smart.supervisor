@@ -8,7 +8,7 @@ window.recursos.conta = class ContaUsuario extends Cadastro {
         return {
             id: 'conta',
             titulo: 'Conta do usuário',
-            icone: 'fas fa-user',
+            icone: 'account_circle',
             requer_unidade: true,
             pesquisavel: false
         }

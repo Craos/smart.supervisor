@@ -8,7 +8,7 @@ window.recursos.prestadores = class Prestadores extends Cadastro {
         return {
             id: 'preautorizados',
             titulo: 'Visitantes pré-autorizados',
-            icone: 'fas fa-user-edit',
+            icone: 'engineering',
             requer_unidade: true,
             pesquisavel: true
         }
