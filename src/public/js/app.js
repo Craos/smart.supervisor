@@ -1,32 +1,25 @@
-class Usuario {
-
-    constructor() {
-
-    }
-
-    Exibir() {
-
-    }
-
-}
-
-class Perfil {
-
-    constructor() {
-
-    }
-
-    Exibir() {
-
-    }
-
-}
-
+/**
+ * @class Supervisor
+ * @description O supervisor faz parte do conjunto de subsistemas que compõem o sistema Verticals
+ * @copyright 2020 Craos.NET
+ * @author Oberdan Brito
+ * @version 2
+ */
 class Supervisor {
 
-    dados = {};
+    /**
+     * Contém o objeto responsável pela seleção da unidade corrente
+     */
     seletor;
+
+    /**
+     * Contém o objeto responsável pelo layout do aplicativo
+     */
     layoutapp;
+
+    /**
+     * Contém o objeto responsável pelo menu seletor de recursos
+     */
     mainmenu;
     mainpage;
 
@@ -45,25 +38,6 @@ class Supervisor {
             this.unidade = JSON.parse(sessionStorage.unidade);
 
         this.Iniciar();
-    }
-
-    RastreiaAlteracoes() {
-
-        let today = new Date();
-        let dd = String(today.getDate()).padStart(2, '0');
-        let mm = String(today.getMonth() + 1).padStart(2, '0');
-        let yyyy = today.getFullYear();
-        let hour = today.getHours();
-        let mi = today.getMinutes();
-        let se = today.getSeconds();
-
-        this.dados.lastuser = this.usuario.login;
-        this.dados.lastdate = `${yyyy}-${mm}-${dd}`;
-        this.dados.lasttime = `${hour}:${mi}:${se}`;
-        this.dados.condominio = this.unidade.condominio;
-        this.dados.bloco = this.unidade.bloco;
-        this.dados.andar = this.unidade.andar;
-        this.dados.unidade = this.unidade.num;
     }
 
     PreparaAcessoUsuario() {
