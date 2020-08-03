@@ -2,11 +2,11 @@ class MainHeader extends EndPoint {
 
     ifr;
 
-    constructor(component, cell, usuario) {
+    constructor(component, cell) {
         super();
         component.attachEvent('onContentLoaded', function (id) {
             this.ifr = component.cells(id).getFrame();
-            this.ifr.contentWindow.document.getElementById('nome').innerText = usuario.nome.split(' ')[0];
+            this.ifr.contentWindow.document.getElementById('nome').innerText = window.usuario.informacoes.nome.split(' ')[0];
             this.AoCarregarHeader();
         }.bind(this));
 
