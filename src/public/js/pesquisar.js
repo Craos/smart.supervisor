@@ -11,9 +11,12 @@ class Pesquisar extends EndPoint {
         this.icones = [];
         this.titulos = [];
 
-        window.app.usuario.recursos.forEach((item) => {
-            this.icones[item.nome] = item.icone;
-            this.titulos[item.nome] = item.titulo;
+        window.usuario.autorizacoes.forEach(autorizacao => {
+            if (typeof window.recursos[autorizacao.nome].prototype.Config === "function") {
+                let recurso = window.recursos[autorizacao.nome].prototype.Config();
+                this.icones[autorizacao.nome] = recurso.icone;
+                this.titulos[autorizacao.nome] = recurso.titulo;
+            }
         });
 
         this.Exibir();
@@ -83,13 +86,34 @@ class Pesquisar extends EndPoint {
         ]);
 
         let itensform = 0;
-        window.app.usuario.recursos.forEach(function (recurso) {
+        window.usuario.autorizacoes.forEach(function (autorizacao) {
 
-            if (recurso.pesquisar === false)
+            /**
+             * Verifica se o objeto está na lista
+             */
+            if (typeof window.recursos[autorizacao.nome].prototype.Config !== "function")
                 return;
 
+            /**
+             * Obtem as informações do recurso
+             */
+            let recurso = window.recursos[autorizacao.nome].prototype.Config();
+
+            /**
+             * Se o objeto não oferecer pesquisas encerra
+             */
+            if (recurso.pesquisavel === false)
+                return;
+
+            /**
+             * O objeto oferece pesquisa mas o perfil do usuário está negado para esta ação
+             */
+            if (autorizacao.pesquisar === false)
+                return;
+
+
             itensform++;
-            this.form.addItem('labelregistros', {type:'checkbox', offsetTop: 0, name:recurso.nome, label: "<i class='"+recurso.icone+"'><span class='mainmenu-titulo'>"+recurso.titulo+"</span></i>", checked: false});
+            this.form.addItem('labelregistros', {type:'checkbox', offsetTop: 0, name:autorizacao.nome, label: "<div class='material-icons esquerda'>"+recurso.icone+"</div><div class='mainmenu-titulo esquerda'>"+recurso.titulo+"</div>", checked: false});
             if (itensform === 3) {
                 this.form.addItem('labelregistros', {type:"newcolumn", offset:10});
                 itensform = 0;
@@ -107,6 +131,8 @@ class Pesquisar extends EndPoint {
     }
 
     ProcessaResultados(resultado) {
+
+        console.debug(resultado);
 
         Object.keys(resultado).forEach(function (categoria) {
 
