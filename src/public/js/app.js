@@ -68,7 +68,9 @@ class Supervisor {
 
         this.layoutapp = new MainLayout();
         this.header = new MainHeader(this.layoutapp.mainlayout, this.layoutapp.header, this.usuario);
-        this.mainmenu = new MainMenu(this.layoutapp.menu, this.usuario.recursos);
+
+        this.mainmenu = new MainMenu(this.layoutapp.menu);
+        //this.mainmenu = new MainMenu(this.layoutapp.menu, this.usuario.recursos);
         this.mainpage = new MainPage(this.layoutapp.page);
         this.seletor = new Seletor(this.mainpage.seletor);
 
@@ -89,9 +91,9 @@ class Supervisor {
 
     }
 
-    AbreRecurso(item) {
+    AbreRecurso(recurso) {
 
-        if (item.acesso_unidade === true && this.unidade === undefined) {
+        if (recurso.prototype.Config().requer_unidade === true && this.unidade === undefined) {
             dhtmlx.alert({
                 title: 'Atenção',
                 type: 'alert-warning',
@@ -105,7 +107,7 @@ class Supervisor {
         /**
          * Inicia a execução do recurso
          */
-        new (Object.values(window.recursos).find(value => value.name === item.objeto))({
+        new recurso({
             page: this.mainpage.display,
             usuario: this.usuario,
             unidade: this.unidade
