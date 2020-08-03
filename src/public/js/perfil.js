@@ -1,0 +1,11 @@
+class Perfil {
+
+    constructor() {
+
+    }
+
+    Exibir() {
+
+    }
+
+}
