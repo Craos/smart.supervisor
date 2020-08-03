@@ -2,7 +2,7 @@ class MainMenu {
 
     mainManu;
 
-    constructor(cell, lista) {
+    constructor(cell) {
 
         this.mainManu = cell.attachList({
             container: 'data_container',
@@ -12,11 +12,26 @@ class MainMenu {
             }
         });
 
-        this.mainManu.parse(lista, 'json');
+        /**
+         * @todo Filtrar os itens do menu
+         * @body Os menus devem ser filtrados de acordo com o perfil do usuário
+         */
+        Object.values(window.recursos).forEach(value => {
+            if (typeof value.prototype.Config === "function")
+                this.mainManu.add(value.prototype.Config());
+        });
+
         this.mainManu.attachEvent('onItemClick', function (id) {
-            window.dispatchEvent(new CustomEvent('AoSelecionarItemMenu', {
-                detail: lista.find(x => x.id.toString() === id)
-            }));
+            Object.values(window.recursos).forEach(recurso => {
+
+                if (recurso.prototype.Config().id !== id)
+                    return;
+
+                window.dispatchEvent(new CustomEvent('AoSelecionarItemMenu', {
+                    detail: recurso
+                }));
+
+            });
             return true;
         });
 
