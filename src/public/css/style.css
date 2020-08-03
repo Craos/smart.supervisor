@@ -43,25 +43,39 @@ html, body {
 
 
 .mainmenu-titulo {
-    line-height: 28px;
+    line-height: 24px;
     margin-left: 5px;
+    margin-top: 0;
     font-weight: 400;
     white-space: normal;
     font-size: 14px;
     color: #404040;
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+    float: left;
 }
 
 .mainmenu-linha {
     height: 29px;
 }
 
+.mainmenu-icone {
+    float: left;
+}
+
 .pesquisar-linha {
     height: auto;
 }
 
+.linha {
+    width: 100%;
+    display: inline-block;
+}
+
 .campo {
     color: #000;
+}
+
+.esquerda {
+    float: left;
 }
 
 .valor {
