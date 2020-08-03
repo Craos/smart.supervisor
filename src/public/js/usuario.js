@@ -1,0 +1,11 @@
+class Usuario {
+
+    constructor() {
+
+    }
+
+    Exibir() {
+
+    }
+
+}
