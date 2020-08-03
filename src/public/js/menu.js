@@ -16,9 +16,9 @@ class MainMenu {
          * @todo Filtrar os itens do menu
          * @body Os menus devem ser filtrados de acordo com o perfil do usuário
          */
-        Object.values(window.recursos).forEach(value => {
-            if (typeof value.prototype.Config === "function")
-                this.mainManu.add(value.prototype.Config());
+        window.usuario.autorizacoes.forEach(autorizacao => {
+            if (typeof window.recursos[autorizacao.nome].prototype.Config === "function")
+                this.mainManu.add(window.recursos[autorizacao.nome].prototype.Config());
         });
 
         this.mainManu.attachEvent('onItemClick', function (id) {
